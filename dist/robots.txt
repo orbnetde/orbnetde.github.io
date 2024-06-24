@@ -1,3 +1,0 @@
-User-agent: *
-
-Sitemap: https://www.orbnet.de/sitemap-index.xml
