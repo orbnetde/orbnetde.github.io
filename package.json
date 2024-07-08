@@ -32,6 +32,7 @@
   },
   "devDependencies": {
     "@iconify-json/bi": "^1.1.23",
+    "@types/clone-deep": "^4.0.4",
     "clone-deep": "^4.0.1",
     "local-ssl-proxy": "^2.0.5",
     "prettier": "^3.0.3",
