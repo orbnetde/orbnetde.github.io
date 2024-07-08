@@ -1,0 +1,104 @@
+---
+import { getImage } from 'astro:assets';
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+
+import Card from '../../components/Card.astro';
+import SectionText from '../../components/SectionText.astro';
+import ellipsis from '../../assets/svg/ellipse-14.svg';
+const optEllipsis = await getImage({ src: ellipsis, format: 'svg' });
+
+interface Card extends SbBlokData {
+  title: string,
+  body: string,
+}
+
+interface CardTower extends SbBlokData {
+  sectionTitle?: string,
+  title: string,
+  titleHighlight?: string,
+  text: string,
+  cards: Card[]
+}
+
+interface Props {
+  blok: CardTower;
+}
+
+const { blok } = Astro.props;
+
+const cardPositions: string[] = [
+  '',
+  'lg:even:mt-80',
+  'lg:odd:-mt-40',
+  'even:mt-0',
+  'odd:-mt-52',
+  'even:mt-0',
+  'odd:-mt-24',
+];
+---
+<section class="py-12" {...storyblokEditable(blok)}>
+  <div class="flex flex-col lg:flex-row mx-auto w-full max-w-screen-xl items-center gap-12 pb-12">
+    <div class="w-full px-6 lg:w-2/6">
+      <SectionText start={blok.sectionTitle}
+                   headline={blok.title}
+                   headlineHighlight={blok.titleHighlight}
+      >
+        <div class="mt-12">
+          {blok.text}
+        </div>
+      </SectionText>
+    </div>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14 items-center px-6 w-full lg:w-4/6 bg-contain bg-center bg-no-repeat" style={`background-image: url(${optEllipsis.src})`}>
+      {blok?.cards.map((card: Card, k) => (
+        <Card
+          classes=`w-full rounded-xl shadow-xl ${cardPositions[k]}`
+          title={card.title}
+          body={card.body}
+          bodyClasses="pb-6"
+        />
+      ))}
+      <!--<Card-->
+      <!--  classes="w-full rounded-xl shadow-xl"-->
+      <!--  title="Steuerberater"-->
+      <!--  body="Spare dir stundenlanges Vorbereiten auf deinen Termin mit deinem Steuerberater. Mit der orbnet Komplettlösung stellst du deinem Steuerberater sämtliche Informationen per einfachem Zugriff auf deine Unterlagen zur Verfügung. Und dieser erstellt dir dann Jahresabschlüsse, die EÜR oder zieht Bilanz."-->
+      <!--  bodyClasses="pb-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl shadow-xl lg:even:mt-80"-->
+      <!--  title="Finanzamt"-->
+      <!--  body="Du bist zur Umsatzsteuervoranmeldung (USt-VA) verpflichtet? Dann nutze unsere praktische Schnittstelle zum Finanzamt und übermittle sämtliche Voranmeldungen schnell und einfach direkt aus dem System. Beinahe automatisch."-->
+      <!--  bodyClasses="pb-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl shadow-xl lg:odd:-mt-40"-->
+      <!--  title="Jede Unternehmensgröße"-->
+      <!--  body="Egal, ob einfache oder doppelte Buchführung - die vorbereitende Buchführung läuft in der orbnet Software einfach im Hintergrund. So brauchst du dich am Stichtag nicht mehr um eine rechtzeitige Abgabe zu sorgen."-->
+      <!--  bodyClasses="pb-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl even:mt-0"-->
+      <!--  alt="orbnet datenschutz"-->
+      <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+      <!--  bodyClasses="py-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl odd:-mt-52"-->
+      <!--  alt="orbnet datenschutz"-->
+      <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+      <!--  bodyClasses="py-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl even:mt-0"-->
+      <!--  alt="orbnet datenschutz"-->
+      <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+      <!--  bodyClasses="py-6"-->
+      <!--/>-->
+      <!--<Card-->
+      <!--  classes="rounded-xl odd:-mt-24"-->
+      <!--  alt="orbnet datenschutz"-->
+      <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+      <!--  bodyClasses="py-6"-->
+      <!--/>-->
+    </div>
+  </div>
+</section>

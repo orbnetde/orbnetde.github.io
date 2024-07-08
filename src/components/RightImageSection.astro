@@ -1,0 +1,26 @@
+---
+import { getImage } from 'astro:assets';
+
+interface Props {
+  src?: any;
+}
+
+const { src } = Astro.props;
+
+let optSrc = { src: '' };
+if (src) {
+  optSrc = await getImage({ src: src });
+}
+---
+<div class="container py-0 md:py-12 max-w-screen-xl mx-auto">
+  <div class="flex flex-wrap md:flex-row-reverse items-stretch">
+    <div class="w-full flex md:w-5/12 lg:w-3/6 items-stretch">
+      <div class="w-full min-h-96 p-6 justify-end bg-center bg-contain bg-no-repeat rotate-6" style={`background-image: url(${optSrc.src})`}></div>
+    </div>
+    <div class="flex md:pr-6 w-full md:w-7/12 lg:w-3/6 items-center">
+      <div class="mb-12 lg:mb-0 dark:text-white">
+        <slot name="text" />
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+---
+import Section from '../../components/Section.astro';
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+
+interface CTA extends SbBlokData {
+  headline: string,
+  text: string,
+  href: string,
+  button: string,
+  info?: string,
+  classes?: string
+}
+
+interface Props {
+  blok: CTA;
+}
+
+const { blok } = Astro.props;
+---
+<Section bgColor={blok.classes || ''} {...storyblokEditable(blok)}>
+  <div class="flex flex-col mx-auto px-6 items-center max-w-screen-xl">
+    <span class="uppercase">{blok.headline}</span>
+    <h4 class="text-2xl my-6">{blok.text}</h4>
+    <a href={blok.href}
+       class="bg-primary px-24 py-4 text-white rounded-md text-center font-semibold hover:bg-secondary hover:shadow-md transition duration-500 mb-4"
+    >
+      {blok.button}
+    </a>
+    <span class="text-xs">{blok.info}</span>
+  </div>
+</Section>

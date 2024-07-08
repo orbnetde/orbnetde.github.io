@@ -1,0 +1,68 @@
+---
+import { Image } from 'astro:assets';
+
+import Section from '../../components/Section.astro';
+
+import sandraK from '../../assets/testimonials/orbnet-testimonial-sandra-klimm.webp';
+import ralfL from '../../assets/testimonials/orbnet-testimonial-ralf-lenhart-150x150.webp';
+import tanjaL from '../../assets/testimonials/tanjalenke-profilbild.webp';
+import TestimonialItem from '../../components/TestimonialItem.astro';
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+
+interface Testimonials extends SbBlokData {
+  classes?: string,
+}
+
+interface Props {
+  blok: Testimonials;
+}
+
+const { blok } = Astro.props;
+---
+<Section
+  sectionTitle="Bewertungen"
+  title="Das finden auch unsere Kunden gut"
+  subLine="Wir freuen uns über jeden Kunden, der seinen Businessalltag dank unserer Softwarelösung vereinfachen und optimieren konnte!"
+  bgColor=`${blok.classes || ''}`
+>
+  <div class="container mx-auto max-w-screen-xl flex justify-between" {...storyblokEditable(blok)}>
+    <div class="flex flex-wrap justify-between gap-8">
+      <TestimonialItem
+        from="Ralf Lenhart"
+        job="Immobilienmakler"
+        classes="flex-1 lg:flex-none"
+      >
+        <Fragment slot="text">
+          Ich kann orbnet.de nur empfehlen. Danke für alles!
+        </Fragment>
+        <Image slot="image" src={ralfL} alt="Ralf Lenhart" width="50" height="50" class="rounded-full" />
+      </TestimonialItem>
+      <TestimonialItem
+        from="Sandra Klimm"
+        job="Tierärzting"
+        classes="flex-1"
+      >
+        <Fragment slot="text">
+          Tolle innovative Software, die einem Unternehmer sehr viel lästige Arbeit abnimmt!
+          Gleichzeitig spitzenmäßige persönliche Betreuung und Unterstützung.
+          Empfehle ich uneingeschränkt jederzeit gerne weiter!
+        </Fragment>
+        <Image slot="image" src={sandraK} alt="Sandra Klimm" width="50" height="50" class="rounded-full" />
+      </TestimonialItem>
+      <TestimonialItem
+        from="Tanja Lenke"
+        job="Gründerin von shepreneur"
+        classes="w-full"
+      >
+        <Fragment slot="text" class="font-sm">
+          Ich hatte so viele amerikanische Tools, die ich vor dem DSGVO-Hintergrund versucht
+          habe abzuschaffen und war begeistert von orbnet: In Deutschland ansässig,
+          genau das was ich brauche und dann habe ich zugeschlagen.
+          Die Terminbuchungsfunktion bei orbnet erspart mir die gesamte Terminierung
+          enorm und ich möchte diese Funktion nicht mehr missen.
+        </Fragment>
+        <Image slot="image" src={tanjaL} alt="Tanja Lenk" width="50" height="50" class="rounded-full" />
+      </TestimonialItem>
+    </div>
+  </div>
+</Section>

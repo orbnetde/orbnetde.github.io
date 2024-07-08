@@ -1,0 +1,25 @@
+---
+import { Image } from 'astro:assets';
+
+import girl from '../assets/general/carefree-young-woman.webp';
+---
+<section class="my-12">
+  <div class="relative w-full bg-primary-100 text-white h-[325px]">
+    <div class="absolute z-20 left-[50%] -top-[75px] -ml-[650px]">
+      <Image src={girl} width="650" height="400" alt="orbnet jetzt kostenlos testen"
+      />
+    </div>
+    <div class="absolute flex items-center z-10 left-[50%] top-0 -ml-[325px] bg-white w-full h-[325px]">
+      <div class="flex flex-col pl-[175px] text-left w-full max-w-[650px] text-dark">
+        <span class="text-primary uppercase">ALL IN OHNE RISIKO</span>
+        <h4 class="text-2xl my-6">Starte deine 7 Tage Premium Test-Version noch heute!</h4>
+        <a href="https://my.orbnet.de/account/register/"
+           class="bg-primary px-4 py-4 text-white rounded-md text-center font-semibold mb-4"
+        >
+          Premium-Version Testen
+        </a>
+        <span class="text-xs">Die Probezeit endet automatisch - keine weiteren Kosten!</span>
+      </div>
+    </div>
+  </div>
+</section>

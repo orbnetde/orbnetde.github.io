@@ -1,0 +1,43 @@
+---
+import type { GetStaticPathsResult, GetStaticPathsItem } from 'astro';
+import type { ISbStoryData } from '@storyblok/astro';
+
+import Overview from '../../../components/blog/Overview.astro';
+import { getBlogPosts } from '../../../utils/storyblok';
+
+interface Props {
+  page: number,
+  total: number,
+  stories: ISbStoryData[]
+}
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
+  const { data, total } = await getBlogPosts(1, 100);
+
+  const perPage = parseInt(String(import.meta.env.BLOG_ITEMS_PER_PAGE));
+
+  const pagePath: GetStaticPathsItem[] = [];
+  let pages: number = Math.ceil(total / perPage);
+  if (pages <= 0) {
+    pages = 1;
+  }
+
+  for (let i: number = 1; i <= pages; i++) {
+    pagePath.push({
+      params: { page: String(i), path: String(i) },
+      props: {
+        page: i,
+        stories: data.stories.slice(
+          parseInt(String(i * perPage)) - perPage,
+          parseInt(String(i * perPage)),
+        ),
+        total: total,
+      },
+    });
+  }
+
+  return pagePath;
+}
+const { page, total, stories } = Astro.props;
+---
+<Overview page={page} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={stories} />

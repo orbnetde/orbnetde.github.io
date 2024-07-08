@@ -1,0 +1,130 @@
+---
+import '@fontsource/poppins/400.css';
+import '@fontsource/poppins/600.css';
+import '@fontsource/poppins/700.css';
+
+import { type Breadcrumb } from '../types/Breadcrumb';
+
+import Header from '../components/layout/Header.astro';
+import Footer from '../components/layout/Footer.astro';
+import BackToTop from '../components/layout/BackToTop.astro';
+import MyOrbnetJsonLd from '../components/jsonld/MyOrbnet.astro';
+import OrbnetGmbHJsonLd from '../components/jsonld/OrbnetGmbH.astro';
+import WebsiteJsonLd from '../components/jsonld/Website.astro';
+import BreadcrumbsJsonLd from '../components/jsonld/Breadcrumbs.astro';
+
+interface Props {
+  title: string,
+  description: string,
+  canonical?: URL | string,
+  robots?: string,
+  image?: string,
+  breadcrumbs?: Breadcrumb[] | undefined
+}
+
+const { title, description, canonical, robots, image, breadcrumbs } = Astro.props;
+---
+<!DOCTYPE html>
+<html lang="de" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    {canonical &&
+      <link rel="canonical" href={canonical} />
+    }
+    {robots &&
+      <meta name="robots" content={robots} />
+    }
+    <title>{title} - orbnet</title>
+    <meta name="description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    {image &&
+      <meta property="og:image" content={image} />
+    }
+    {canonical &&
+      <meta property="og:url" content={canonical} />
+    }
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:site" content="@orbnetde" />
+    <meta property="twitter:creator" content="@orbnetde" />
+    <meta property="twitter:title" content={title} />
+    <meta property="twitter:description" content={description} />
+    <MyOrbnetJsonLd />
+    <OrbnetGmbHJsonLd />
+    <WebsiteJsonLd />
+    <BreadcrumbsJsonLd breadcrumbs={breadcrumbs}/>
+  </head>
+  <body id="top">
+    <Header />
+    <main class="bg-white dark:bg-dark">
+      <slot />
+    </main>
+    <Footer />
+    <BackToTop />
+    <style is:global>
+        @view-transition {
+            navigation: auto; /* enabled! */
+        }
+
+        body {
+            @apply text-body-color antialiased w-full overflow-y-auto overflow-x-hidden;
+            font-family: Poppins, system-ui, sans-serif;
+        }
+
+        .sticky-header {
+            @apply fixed z-[9999] bg-white/80 dark:bg-dark/80 transition w-full text-dark;
+            backdrop-filter: blur(5px);
+            box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .main-page .header-logo,
+        .main-page.open-menu .header-logo-dark {
+            display: none !important;
+        }
+
+        .main-page .header-logo-dark {
+            display: inline-block !important;
+        }
+
+        .main-page.open-menu .header-logo,
+        .main-page.sticky-header .header-logo {
+            display: inline-block !important;
+        }
+
+        .main-page.sticky-header .header-logo-dark {
+            display: none !important;
+        }
+
+        .dark .main-page.sticky-header .header-logo,
+        .dark .main-page.open-menu .header-logo {
+            display: none !important;
+        }
+
+        .dark .main-page.sticky-header .header-logo-dark,
+        .dark .main-page.open-menu .header-logo-dark {
+            display: inline-block !important;
+        }
+
+        .dark .sticky-header {
+            @apply text-white;
+        }
+    </style>
+    <script>
+      import '../scripts/stickymenu.js';
+      import '../scripts/scrolltop.js';
+      import '../scripts/darkMode.js';
+    </script>
+    <script is:raw is:inline type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-Y1PV48Q98S"></script>
+    <script is:raw is:inline type="text/plain" data-category="analytics">
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag("js", new Date());
+
+      gtag("consent", "default", {"ad_storage": "granted", "analytics_storage": "granted"});
+      gtag("config", "G-Y1PV48Q98S", {"anonymize_ip": true, cookie_flags: "SameSite=Strict;Secure" });
+    </script>
+  </body>
+</html>

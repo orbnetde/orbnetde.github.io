@@ -1,0 +1,13 @@
+---
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+
+interface Props {
+  blok: SbBlokData,
+}
+
+const { blok } = Astro.props;
+---
+<h3 id={blok._uid} class="text-lg font-semibold text-dark dark:text-white pt-4 pb-0 target:before:content-[''] target:before:block target:before:h-[120px] target:before:-mt-[40px]" {...storyblokEditable(blok)}>
+  {blok.Text}
+</h3>

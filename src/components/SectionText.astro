@@ -1,0 +1,21 @@
+---
+interface Props {
+  start?: string,
+  headline: string,
+  headlineHighlight?: string
+}
+
+const { start, headline, headlineHighlight } = Astro.props;
+---
+<div class="flex flex-col">
+  {start &&
+    <div class="text-primary dark:text-primary-400 uppercase text-base mb-4">
+      {start}
+    </div>}
+  <h3 class="text-4xl font-semibold text-dark dark:text-white leading-snug">
+    {headline}{headlineHighlight && <span class="text-primary dark:text-primary-400">{' '}{headlineHighlight}</span>}
+  </h3>
+  <div class="text-dark dark:text-white">
+    <slot />
+  </div>
+</div>

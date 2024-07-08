@@ -1,0 +1,35 @@
+---
+import {getImage} from 'astro:assets'
+
+interface Props {
+  sectionTitle?: string,
+  bgColor?: string,
+  title?: string,
+  subLine?: string,
+  src?: any
+}
+
+const { sectionTitle, bgColor, title, subLine ,src} = Astro.props;
+
+let optSrc = {src: ""};
+if (src) {
+  optSrc = await getImage({ src: src, format: 'svg' })
+}
+---
+
+<section class={'relative py-12 lg:pb-16 ' + (bgColor || '')} style={`background-image: url(${optSrc.src})`}>
+  {sectionTitle &&
+    <div class="container text-base text-center mx-auto text-primary dark:text-warning uppercase font-semibold tracking-wide pb-12">{sectionTitle}</div>}
+  {
+    (title || subLine) &&
+    <div class="container max-w-screen-xl mx-auto">
+      {title && <h3 class="max-w-2xl mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">{title}</h3>}
+      {subLine &&
+        <div class="pb-12 mx-auto text-center text-dark-3 dark:text-white max-w-screen-lg">{subLine}</div>}
+      <div class="pb-12">
+        <div class="bg-primary h-[3px] w-[60px] mx-auto"></div>
+      </div>
+    </div>
+  }
+  <slot />
+</section>

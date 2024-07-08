@@ -1,0 +1,24 @@
+---
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import type { GetStaticPathsResult } from 'astro';
+
+import Layout from '../layouts/Layout.astro';
+import { getBreadcrumb, getPage, getPages } from '../utils/storyblok';
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult> {
+  return getPages();
+}
+
+const { slug } = Astro.params;
+const { data } = await getPage(String(slug));
+const breadcrumbs = await getBreadcrumb(data.story);
+---
+<Layout
+  title={data.story.content.title}
+  description={data.story.content.description}
+  image={data.story.content.ogimage?.filename}
+  canonical={Astro.url}
+  breadcrumbs={breadcrumbs}
+>
+  <StoryblokComponent blok={data.story.content} />
+</Layout>

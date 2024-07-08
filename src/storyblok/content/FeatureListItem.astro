@@ -1,0 +1,10 @@
+---
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+
+interface Props {
+  blok: SbBlokData;
+}
+
+const { blok } = Astro.props;
+---
+<span  {...storyblokEditable(blok)}>{blok.feature}</span>

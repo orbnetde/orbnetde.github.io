@@ -1,0 +1,21 @@
+---
+interface Props {
+  from: string,
+  job: string,
+  classes?: string
+}
+
+const { from, job, classes } = Astro.props;
+---
+<figure class={`rounded-2xl bg-white dark:bg-dark-2/[0.5] shadow-lg ring-1 ring-gray-900/5 dark:ring-gray-700 ${classes}`}>
+  <blockquote class=`p-6 text-gray-900 dark:text-white sm:p-12 min-h-[190px] z-0 before:content-['"'] before:block before:text-9xl before:text-primary-100 before:-mt-4 before:-ml-4 before:-mb-16 before:lg:-mt-6 before:lg:-mb-22 before:lg:-ml-8 before:italic before:font-serif`>
+    <slot name="text" />
+  </blockquote>
+  <figcaption class="flex flex-wrap bottom-0 w-full tems-center gap-x-4 gap-y-4 border-t border-gray-900/10 dark:border-gray-700 px-6 py-4 sm:flex-nowrap">
+    <slot name="image" />
+    <div class="flex-auto text-gray-600 dark:text-gray-300">
+      <div class="font-semibold">{from}</div>
+      <div>{job}</div>
+    </div>
+  </figcaption>
+</figure>

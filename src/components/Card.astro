@@ -1,0 +1,57 @@
+---
+import { getFormattedDate } from '../utils/all';
+import { loadImage } from '../utils/get-image';
+
+interface Props {
+  body: string,
+  date?: string,
+  title?: string,
+  src?: any,
+  classes?: string,
+  titleClasses?: string,
+  bodyClasses?: string,
+  link?: string,
+}
+
+const {
+  body,
+  date,
+  title,
+  src,
+  classes,
+  titleClasses,
+  bodyClasses,
+  link,
+} = Astro.props;
+
+let optImage = { src: '' };
+if (src?.src) {
+  optImage = src;
+} else if (src) {
+  optImage = await loadImage(src);
+}
+---
+<div class={'relative group transition border border-white/[0.75] dark:border-black rounded-lg ' + classes}>
+  <div class="after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500"></div>
+  <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
+    {optImage.src !== '' &&
+      <div class="rounded-t-lg h-[280px] w-full bg-center bg-cover transition duration-500 group-hover:scale-105" style={`background-image: url(${optImage.src})`}></div>
+    }
+    <div class="p-4">
+      {title && <h4 class={'text-xl text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + titleClasses}>{title}</h4>}
+      {date && <span class="text-sm bg-primary-200 text-dark dark:bg-dark dark:text-white px-2 py-1 rounded-md">{getFormattedDate(date)}</span>}
+      <div class={'text-dark-3 dark:text-white ' + bodyClasses}>
+        {body}
+        <slot />
+      </div>
+    </div>
+  </div>
+  {link && <a href={link} aria-label="Link zu mehr Informationen zu diesem Thema" class="card-link" />}
+</div>
+
+<style>
+    .card-link::after {
+        @apply absolute top-0 left-0 right-0 bottom-0 z-20;
+        content: '';
+    }
+</style>

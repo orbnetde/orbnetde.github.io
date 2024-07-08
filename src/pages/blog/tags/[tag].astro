@@ -1,0 +1,16 @@
+---
+import type { GetStaticPathsResult } from 'astro';
+import { getBlogPosts, getStaticBlogTags } from '../../../utils/storyblok';
+import Overview from '../../../components/blog/Overview.astro';
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
+  return getStaticBlogTags(import.meta.env.DEV ? 'draft' : 'published');
+}
+
+const { tag } = Astro.params;
+if (!tag) {
+  return Astro.redirect('/404')
+}
+const {data, total} = await getBlogPosts(1, import.meta.env.BLOG_ITEMS_PER_PAGE, String(tag));
+---
+<Overview page={1} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={data.stories} />

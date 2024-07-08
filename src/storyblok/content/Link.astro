@@ -1,0 +1,37 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+
+interface Link extends SbBlokData {
+  href: string,
+  title: string,
+  external?: boolean,
+  classes?: string,
+}
+
+interface Props {
+  blok: Link;
+}
+
+const { blok } = Astro.props;
+---
+{blok.external && (
+<a
+  href={blok.href}
+  class=`text-primary dark:text-primary-400 block font-semibold mt-4 ${blok.classes || ''}`
+  target="_blank" rel="noopener nofollow"
+  {...storyblokEditable(blok)}
+>
+  {blok.title}
+</a>
+  )
+  }
+{!blok.external && (
+<a
+  href={blok.href}
+  class=`text-primary dark:text-primary-400 block font-semibold mt-4 ${blok.classes || ''}`
+  {...storyblokEditable(blok)}
+>
+  {blok.title}
+</a>
+  )
+  }

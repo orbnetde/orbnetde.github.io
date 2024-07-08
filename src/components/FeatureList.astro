@@ -1,0 +1,19 @@
+---
+import { Image } from 'astro:assets';
+
+import blueCheck from '../assets/svg/bluecheck.svg';
+
+interface Props {
+  features: Array<string>;
+}
+
+const { features } = Astro.props;
+---
+<ul>
+  {features.map((feature: string) => (
+    <li class="flex items-center mb-3">
+      <Image src={blueCheck} loading="lazy" width="24" height="24" alt="check icon" class="mr-2" />
+      {feature}
+    </li>
+  ))}
+</ul>

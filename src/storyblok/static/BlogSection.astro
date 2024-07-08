@@ -1,0 +1,42 @@
+---
+import Section from '../../components/Section.astro';
+import Card from '../../components/Card.astro';
+import { getBlogPosts } from '../../utils/storyblok';
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+
+const posts = await getBlogPosts(1, 3);
+
+interface Testimonials extends SbBlokData {
+  title: string,
+  subtitle: string,
+  sectionTitle?: string,
+  classes?: string,
+}
+
+interface Props {
+  blok: Testimonials;
+}
+
+const { blok } = Astro.props;
+---
+<Section
+  sectionTitle={blok.sectionTitle || ''}
+  title={blok.title || ''}
+  subLine={blok.subtitle || ''}
+  bgColor={blok.classes || ''}
+>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto" {...storyblokEditable(blok)}>
+    {
+      posts.data.stories.map((post) => (
+        <Card
+          src={post.content?.hero.filename}
+          title={post.content.title}
+          classes="rounded-md"
+          body={post.content.description}
+          bodyClasses="py-6"
+          link={`/${post.full_slug}`}
+        />
+      ))
+    }
+  </div>
+</Section>

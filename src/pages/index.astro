@@ -1,0 +1,403 @@
+---
+import { getImage, Image } from 'astro:assets';
+import { Icon } from 'astro-icon/components';
+
+import Hero from '../components/Hero.astro';
+import Layout from '../layouts/Layout.astro';
+import CTAPill from '../components/CTAPill.astro';
+import BlogSection from '../storyblok/static/BlogSection.astro';
+import LeftImageTextRight from '../components/LeftImageSection.astro';
+import RightImageTextLeft from '../components/RightImageSection.astro';
+import Section from '../components/Section.astro';
+import Card from '../components/Card.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+import girlWithCoffee from '../assets/landing/girl-with-coffee.webp';
+import guyInChair from '../assets/landing/guy-in-chair.webp';
+import stuff from '../assets/general/background-stuff.svg';
+import ellipsis from '../assets/svg/ellipse-14.svg';
+import lines from '../assets/svg/lines.svg';
+
+import useCaseBeratung from '../assets/landing/orbnet-all-in-one-home-usecase-beratung-800x800.webp';
+import useCaseHandwerker from '../assets/landing/orbnet-all-in-one-home-usecase-handwerker-800x800.webp';
+import useCaseArzt from '../assets/landing/orbnet-all-in-one-home-usecase-aerzte-800x800.webp';
+
+import buchhaltung from '../assets/landing/orbnet-buchhaltung.webp';
+import onlineTermin from '../assets/landing/orbnet-online-terminvereinbarung.webp';
+import kundenverwaltung from '../assets/landing/orbnet-kundenverwaltung.webp';
+import datevSchnittstelle from '../assets/landing/orbnet-datev-schnittstelle-header-small.webp';
+import gobd from '../assets/landing/orbnet-gobd.webp';
+import datenschutz from '../assets/landing/orbnet-datenschutz.webp';
+import SectionText from '../components/SectionText.astro';
+
+const optStuff = await getImage({ src: stuff, format: 'svg' });
+const optEllipsis = await getImage({ src: ellipsis, format: 'svg' });
+const optLines = await getImage({ src: lines, format: 'svg' });
+
+import { prices } from '../content/prices';
+import Testimonials from '../storyblok/static/Testimonials.astro';
+import FeatureList from '../components/FeatureList.astro';
+// import FullWidthCTAWithPicture from '../components/FullWidthCTAWithPicture.astro';
+---
+
+<Layout
+  title="Die Software für Coaches und Berater"
+  description="orbnet ist ein neues Tool mit einfacher Benutzeroberfläche und den besten Funktionen für dein Coaching-Business. Jetzt KOSTENLOS testen!"
+  canonical={Astro.url}
+>
+  <Hero />
+  <Section bgColor="bg-white dark:bg-dark max-w-screen-xl mx-auto">
+    <LeftImageTextRight src={girlWithCoffee}>
+      <SectionText
+        start="Herzensbusiness"
+        headline="Die sichere ALL-IN-ONE Softwarelösung"
+        headlineHighlight="für Dein Herzensbusiness"
+        slot="text"
+      >
+        <p class="my-6">In jedem Business ist es essenziell wichtig, den Überblick zu behalten. Unnötig viele Softwares oder Tools behindern dich dabei, deinen Kernaufgaben nachzugehen!</p>
+
+        <p class="mb-6">Du suchst eine sichere Lösung für eine einfachere Buchhaltung, brauchst gleichzeitig eine Software, die deine Kunden verwaltet und deinen Terminkalender wie von allein füllt?</p>
+
+        <p class="mb-8">Die orbnet Cloud Software organisiert und automatisiert deine Businessprozesse in allen Bereichen. Und stellt verschiedene Schnittstellen her, die für dich wichtig sind.</p>
+
+        <FeatureList features={[
+          'Integrierte Online-Terminverwaltung',
+          'Praktische Kundenverwaltung',
+          'Übersichtliche Belegverwaltung & Buchhaltung',
+          'Inklusive Steuerberaterzugriff & Online-Banking',
+          'Automatisierte Abläufe in allen Bereichen',
+        ]} />
+      </SectionText>
+    </LeftImageTextRight>
+  </Section>
+  <Section bgColor="bg-white dark:bg-dark max-w-screen-xl mx-auto">
+    <RightImageTextLeft src={guyInChair}>
+      <SectionText
+        start="Coaching Business"
+        headline="Die perfekte Alternative für Dein"
+        headlineHighlight="Coaching Business"
+        slot="text"
+      >
+        <p class="my-6">Wir wissen aus Erfahrung, welche Bedürfnisse und Anforderungen Coaches, Berater oder Trainer mit in ihren Alltag bringen. Allem voran automatisierte Abläufe und eine perfekte Zeitplanung.</p>
+
+        <p class="my-8">Demzufolge vereinfachen wir zahlreiche Einzelvorgänge, um dir im täglichen Coaching Business Zeit und Geld zu sparen. Sämtliche Features und Tools fassen wir in einer praktischen Anwendung zusammen - ohne dabei Kompromisse einzugehen!</p>
+
+        <FeatureList features={[
+          'Praktische Kalendersynchronisierung',
+          'Gesamte Terminierung per Online Terminverwaltung',
+          'Einfache Bezahlfunktionen für deine Kunden',
+          'Mobile Kundenverwaltung',
+        ]} />
+      </SectionText>
+    </RightImageTextLeft>
+  </Section>
+  <Section
+    sectionTitle="Branchen"
+    title="Perfekt für folgende Branchen"
+    subLine="Unsere speziell auf Coaching & Berater ausgerichtete Softwarelösung lässt sich auch in anderen Branchen integrieren - daran arbeiten wir täglich!"
+    bgColor="bg-primary-100 dark:bg-dark mt-24 pt-80 md:pt-60 lg:pt-60"
+  >
+    <CTAPill>
+      <div
+        slot="title"
+        class="uppercase text-white text-2xl mb-6"
+      >
+        ICH WILL ALL-IN! TESTE UNSERE ORBNET PREMIUM-VERSION JETZT 7 TAGE KOSTENLOS!
+      </div>
+      <a
+        slot="button"
+        href="https://my.orbnet.de/account/register/"
+        class="inline-block py-3 text-base font-semibold text-dark border border-transparent rounded-md bg-white px-7 hover:bg-success-darker uppercase shadow-md w-3/4">
+        Jetzt testen
+      </a>
+      <div
+        slot="infoline"
+        class="text-white text-sm mt-6"
+      >
+        Kein Abo, ohne Risiko - Muss man einfach testen!
+      </div>
+    </CTAPill>
+    <div class="container">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl mx-auto">
+        <Card
+          src={useCaseBeratung}
+          classes="rounded-lg hover:-translate-y-2.5 duration-500"
+          title="Coaching & Berater"
+          body="Webinare, Seminare oder Online-Kurse organisieren, eine automatisierte Terminvereinbarung und Kunden verwalten. Mit orbnet die perfekte Zeitplanung kreieren, anstehende Termine sofort und direkt zur Hand haben und alles unter einen Hut bekommen."
+        />
+        <Card
+          src={useCaseHandwerker}
+          classes="rounded-md hover:-translate-y-2.5 duration-500"
+          title="Handwerker"
+          body="Belege verwalten, Rechnungen schreiben und am Ende alles an den Steuerberater übergeben - es war nie einfacher seine gesamte Buchhaltung so zu organisieren, um sich wieder komplett auf sein Handwerk konzentrieren zu können."
+        />
+        <Card
+          src={useCaseArzt}
+          classes="rounded-md hover:-translate-y-2.5 duration-500"
+          title="Ärzte & Therapeuten"
+          body="Termine koordinieren und dennoch ausreichend Zeit für Therapiestunden oder persönliche Sitzungen haben. Orbnet koordiniert all das automatisch unter Einhaltung aller gesetzlicher Vorschriften."
+        />
+      </div>
+    </div>
+  </Section>
+  <Section
+    title="Kümmere dich um dein Business, wir erledigen den Rest!"
+    subLine="Was machen wir, was andere nicht machen? Orbnet verknüpft Terminvereinbarung, Kundenverwaltung und Buchhaltung und löst verschiedene Business-Problematiken in EINER Software für Dienstleister."
+    bgColor="bg-gray-1 dark:bg-dark-2"
+  >
+    <LeftImageTextRight src={buchhaltung}>
+      <div slot="text" class="text-dark dark:text-white">
+        <h3 class="mb-6 text-2xl font-semibold">Buchhaltung</h3>
+        <p class="mb-6">Zu wenig Zeit für Familie und Freizeit! Schuld ist die lästige Buchhaltung? Wir prüfen deine Belege auf Zahlungseingänge, Fälligkeiten und steuerrechtliche Konformität.</p>
+        <p class="mb-6">Du schreibst Rechnungen, verknüpfst alles mit deinem Online-Banking und gibst deinem Steuerberater Zugriff auf deine Unterlagen zur Erstellung deiner Steuererklärung.</p>
+        <a href="/buchhaltung/" class="text-primary dark:text-primary-400 font-semibold">Buchhaltung</a>
+      </div>
+      <Image slot="image" src={buchhaltung} alt="orbnet buchhaltung" width={520} height={520} />
+    </LeftImageTextRight>
+    <RightImageTextLeft src={onlineTermin}>
+      <div slot="text" class="text-dark dark:text-white">
+        <h3 class="mb-6 text-2xl font-semibold">Online Terminvereinbarung</h3>
+        <p class="mb-6">Nerviges E-Mail Pingpong, hunderte Anrufe am Tag - die Vereinbarung von Terminen frisst Zeit - in jeder Branche. Lass deine Kunden ihre Termine künftig einfach selbst buchen.</p>
+        <p class="mb-6">Du stellst freie Termine zur Verfügung, organisierst deine Tage und dein Terminkalender füllt sich ganz von allein! Lass deine Kunden automatisch bei dir buchen.</p>
+        <a href="/online-terminvereinbarung/" class="text-primary dark:text-primary-400 font-semibold">Online-Terminvereinbarung</a>
+      </div>
+    </RightImageTextLeft>
+    <LeftImageTextRight src={kundenverwaltung}>
+      <div slot="text" class="text-dark dark:text-white">
+        <h3 class="mb-6 text-2xl font-semibold">Kundenverwaltung</h3>
+        <p class="mb-6">Behalte all deine Kundendaten immer im Blick - auch von Unterwegs aus. Hinterlege neben sämtlicher Stammdaten auch persönliche Notizen.</p>
+        <p class="mb-6">Orbnet übernimmt teilweise automatisch die Aktualisierung deiner Daten - online, schnell und strukturiert!</p>
+        <a href="/kundenverwaltung/" class="text-primary dark:text-primary-400 font-semibold">Kundenverwaltung</a>
+      </div>
+    </LeftImageTextRight>
+  </Section>
+  <section class="bg-white dark:bg-dark">
+    <Section
+      sectionTitle="Features"
+      title="Unsere besten Skills und Features für dein Business!"
+      subLine="Buchhaltung, Kundenverwaltung und Terminvereinbarung - können wir! Unser All-in-One Paket ergänzen wir mit zahlreichen weiteren Funktionen, die dein Businessalltag erleichtern."
+    >
+      <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-12 bg-top bg-repeat-y bg-cover lg:bg-contain lg:bg-no-repeat max-w-screen-xl mx-auto" style={`background-image: url(${optStuff.src})`}>
+        <FeatureCard
+          title="Landingpage"
+          body="Landingpages sind die ideale Ergänzung zur Online Terminvereinbarung. Bewirb gezielte Aktionen, Seminare, Kurse oder Workshops und lass dich buchen!"
+          link="/landingpage-builder/"
+        />
+        <FeatureCard
+          title="Online-Banking"
+          body="Täglich ganz von allein über den tagesaktuellen Status deiner Rechnungen Bescheid wissen? Dank Online-Banking Schnittstelle kein lästiges Rechnung-Suchen mehr!"
+          link="/online-banking/"
+        />
+        <FeatureCard
+          title="Steuerberater Login"
+          body="Dein Steuerberater sucht sich selbst zusammen, was er für die Erstellung deiner Steuererklärung benötigt. Per eigenem Steuerberaterzugriff so einfach wie nie!"
+          link="/steuerberater-login/"
+        />
+        <FeatureCard
+          title="Kalendersynchronisation"
+          body="Ganz einfach von Unterwegs aus deine Zeitplanung durchführen und Doppelbuchungen oder Chaos im Terminkalender ein Ende bereiten."
+          link="/online-kalender/"
+        />
+        <FeatureCard
+          title="Belegverwaltung"
+          body="Verträge, Dokumente oder Tankbelege digitalisieren, aufbewahren und verwalten. Das funktioniert auch per Smartphone!"
+          link="/belege-erfassen/"
+        />
+        <FeatureCard
+          title="Gutschriften erstellen"
+          body="Erstelle in nur wenigen Klicks Gutschriften und mach deine Kunden glücklich. Wir kümmern uns um die nötige Rechtssicherheit."
+          link="/gutschrift-erstellen/"
+        />
+        <FeatureCard
+          title="Finanz-Dashboard"
+          body="Unser Finanz-Dashboard hilft dir, den Überblick über deine Zahlen zu behalten. Schaue dir tagesaktuelle Umsätze, Abbuchungen oder Steuerbelastungen an."
+          link="/finanz-dashboard/"
+        />
+        <FeatureCard
+          title="Angebote"
+          body="Sende professionelle Angebote schnell und einfach an deine Kunden und tracke diese mit unserer Smart-View Funktion, um deinen Umsatz zu steigern."
+          link="/angebote-schreiben/"
+        />
+        <FeatureCard
+          title="Rechnungen"
+          body="In wenigen Klicks zur perfekten Rechnung. Hänge je nach Bedarf Whitepaper oder AGB an und versende die Dokumente schnell per Post, Mail oder Shared-Link."
+          link="/rechnung-schreiben/"
+        />
+        <FeatureCard
+          title="Steuerrecht & Währung"
+          body="Wir berücksichtigen steuerrechtliche Aspekte in deinen Anlagen, sowie unterschiedliche Währungen und machen alles unkompliziert für dich. So sorgst du für eine bessere Kundenerfahrung und Kundenbindung."
+          link="/rechnung-schreiben/"
+        />
+        <FeatureCard
+          title="Mahnungen"
+          body="Offene Positionen gehen zukünftig nicht mehr unter. Überwache versäumte Zahlungseingänge mit unserem 3-stufigen Mahnsystem und erstelle schnell Zahlungserinnerungen für deine Kunden."
+          link="/mahnung-schreiben/"
+        />
+        <FeatureCard
+          title="DATEV Schnittstelle"
+          body="Buchhalteische Kontenvorgänge werden dank praktischer  DATEV Schnittstelle aufgearbeitet und können von deinem Steuerberater im DATEV-Format exportiert werden. Deine Steuerangelegenheiten klären sich somit wie von selbst."
+          link="/datev-schnittstelle/"
+        />
+      </div>
+    </Section>
+  </section>
+  <Section bgColor="bg-gray-1 dark:bg-dark-4">
+    <RightImageTextLeft src={datevSchnittstelle}>
+      <div slot="text" class="flex flex-col">
+        <span class="uppercase">ALL IN OHNE RISIKO</span>
+        <h4 class="text-2xl my-6">Starte deine 7 Tage Premium Test-Version noch heute!</h4>
+        <a href="https://my.orbnet.de/account/register/"
+           class="bg-primary px-4 py-4 text-white rounded-md text-center font-semibold hover:bg-success-darker hover:shadow-md hover:-translate-y-0.5 transition duration-500 mb-4"
+        >
+          Premium-Version Testen
+        </a>
+        <span class="text-xs">Die Probezeit endet automatisch - keine weiteren Kosten!</span>
+      </div>
+    </RightImageTextLeft>
+  </Section>
+  <Section
+    sectionTitle="Datenschutz"
+    title="Datenschutz Made in Augsburg"
+    subLine="Deine Daten sind bei uns sicher!"
+    bgColor="bg-primary-100 dark:bg-dark-2"
+  >
+    <div class="container max-w-screen-xl mx-auto">
+      <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
+        <Card
+          src={datenschutz}
+          classes="rounded-md"
+          body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."
+          bodyClasses="py-6"
+        />
+        <Card
+          src={gobd}
+          classes="rounded-md"
+          body="Sämtliche Unternehmensformen sind an die GoBD gebunden, deren Umsetzung oft eine Herausforderung darstellt. Wir konzentrieren uns auf eine durchsichtige Einbindung sämtlicher GoBD-Richtlinien."
+          bodyClasses="py-6"
+        />
+      </div>
+    </div>
+  </Section>
+  <section class="py-12">
+    <div class="flex flex-col lg:flex-row mx-auto w-full max-w-screen-xl items-center gap-12 pb-12">
+      <div class="w-full px-6 lg:w-2/6">
+        <SectionText start="Work"
+                     headline="Wir arbeiten zusammen und angepasst auf"
+                     headlineHighlight="deine Bedürfnisse!"
+        >
+          <div class="mt-12">
+            Unsere All-in-one Software für Dienstleister fokussiert sich auf einfache Vorgänge in Sachen perfekte Zusammenarbeit.
+          </div>
+        </SectionText>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14 items-center px-6 w-full lg:w-4/6 bg-contain bg-center bg-no-repeat" style={`background-image: url(${optEllipsis.src})`}>
+        <Card
+          classes="w-full rounded-xl shadow-xl"
+          title="Steuerberater"
+          body="Spare dir stundenlanges Vorbereiten auf deinen Termin mit deinem Steuerberater. Mit der orbnet Komplettlösung stellst du deinem Steuerberater sämtliche Informationen per einfachem Zugriff auf deine Unterlagen zur Verfügung. Und dieser erstellt dir dann Jahresabschlüsse, die EÜR oder zieht Bilanz."
+          bodyClasses="pb-6"
+        />
+        <Card
+          classes="rounded-xl shadow-xl lg:even:mt-80"
+          title="Finanzamt"
+          body="Du bist zur Umsatzsteuervoranmeldung (USt-VA) verpflichtet? Dann nutze unsere praktische Schnittstelle zum Finanzamt und übermittle sämtliche Voranmeldungen schnell und einfach direkt aus dem System. Beinahe automatisch."
+          bodyClasses="pb-6"
+        />
+        <Card
+          classes="rounded-xl shadow-xl lg:odd:-mt-40"
+          title="Jede Unternehmensgröße"
+          body="Egal, ob einfache oder doppelte Buchführung - die vorbereitende Buchführung läuft in der orbnet Software einfach im Hintergrund. So brauchst du dich am Stichtag nicht mehr um eine rechtzeitige Abgabe zu sorgen."
+          bodyClasses="pb-6"
+        />
+        <!--<Card-->
+        <!--  classes="rounded-xl even:mt-0"-->
+        <!--  alt="orbnet datenschutz"-->
+        <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+        <!--  bodyClasses="py-6"-->
+        <!--/>-->
+        <!--<Card-->
+        <!--  classes="rounded-xl odd:-mt-52"-->
+        <!--  alt="orbnet datenschutz"-->
+        <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+        <!--  bodyClasses="py-6"-->
+        <!--/>-->
+        <!--<Card-->
+        <!--  classes="rounded-xl even:mt-0"-->
+        <!--  alt="orbnet datenschutz"-->
+        <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+        <!--  bodyClasses="py-6"-->
+        <!--/>-->
+        <!--<Card-->
+        <!--  classes="rounded-xl odd:-mt-24"-->
+        <!--  alt="orbnet datenschutz"-->
+        <!--  body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."-->
+        <!--  bodyClasses="py-6"-->
+        <!--/>-->
+      </div>
+    </div>
+  </section>
+  <Section
+    sectionTitle="Plans"
+    title="All in zahlt sich aus!"
+    subLine="Dank einfachster Preis-Bundles auf monatlicher Basis passen sich unsere Funktionen deinem Business an!"
+    bgColor="bg-white dark:bg-dark"
+    src={lines}
+  >
+    <div x-data="{monthly: true}" class={`background-image:url(${optLines.src})`}>
+      <div class="mb-6 flex justify-center">
+        <fieldset aria-label="Payment frequency">
+          <div class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200">
+            <label class="cursor-pointer rounded-full px-2.5 py-1 dark:text-white" @click="monthly = true" :class="monthly ? 'bg-primary text-white' : ''">
+              <input type="radio" name="frequency" value="monthly" class="sr-only">
+              <span>Monatlich</span>
+            </label>
+            <label class="cursor-pointer rounded-full px-2.5 py-1 dark:text-white" @click="monthly = false" :class="monthly ? '' : 'bg-primary text-white'">
+              <input type="radio" name="frequency" value="annually" class="sr-only">
+              <span>Jährlich</span>
+            </label>
+          </div>
+        </fieldset>
+      </div>
+      <div class="flex flex-wrap justify-center max-w-screen-xl mx-auto">
+        {prices.map((price) => (
+          <div class={`w-full px-4 md:w-1/2 lg:w-1/3 text-center ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
+            <div
+              class={`relative z-10 mb-10 overflow-hidden rounded-xl ${price.popular ? 'bg-primary dark:bg-primary ' : 'bg-primary-100 dark:bg-dark-2'} py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-14`}
+            >
+              <span class="block text-2xl font-semibold">
+                {price.packageName}
+              </span>
+              <span class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
+                {price.users} Benutzer
+              </span>
+              <span aria-label="Monatlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
+              <span aria-label="Jährlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</span>
+              <span class="inline-block border-b border-b-gray-300 w-full">&nbsp;</span>
+              <span class="flex flex-col gap-2 my-6">
+              {price.features.map((item) => (
+                <p class={`text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                  {item.amount !== true && item.amount !== false && item.amount}
+                  {item.title}
+                </p>
+              ))}
+              </span>
+              <a href={price.purchaseLink}
+                 class={`group flex flex-row justify-center mt-10 font-semibold text-center ${price.popular ? 'text-white' : 'text-primary dark:text-primary-400'}`}
+              >
+                {price.btn}
+                <Icon name="arrow-right" width={20} height={20} class="ml-3 group-hover:translate-x-1.5 duration-500 transition" />
+              </a>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div class="max-w-screen-xl mx-auto text-center dark:text-gray-300">
+        * Alle Preise zuzüglich aktuell gültiger USt. Die Vertragslaufzeit beträgt 30 Tage.<br>
+        Verkauf nur an gewerbliche Endkunden in Deutschland.
+      </div>
+    </div>
+  </Section>
+  <!--<FullWidthCTAWithPicture/>-->
+  <Testimonials blok={{classes: ""}} />
+  <BlogSection blok={{sectionTitle: "Blog", subtitle: "", title: "Unsere neuesten News", classes: "bg-primary-100 dark:bg-dark-2"}} />
+</Layout>

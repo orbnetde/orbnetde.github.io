@@ -1,0 +1,26 @@
+---
+import { type Breadcrumb } from '../../types/Breadcrumb';
+
+interface Props {
+  breadcrumbs?: Breadcrumb[] | undefined;
+}
+const { breadcrumbs } = Astro.props;
+
+const items: Array<{}> = [];
+(breadcrumbs || []).map((breadcrumb: Breadcrumb, k: number) => {
+  items.push({
+    '@type': 'ListItem',
+    position: (k + 1),
+    name: breadcrumb.title,
+    item: new URL(breadcrumb.slug, Astro.site),
+  });
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  'name': 'Breadcrumbs',
+  'itemListElement': items,
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

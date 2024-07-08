@@ -1,0 +1,21 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Grid2 extends SbBlokData {
+  content: SbBlokData[],
+}
+
+interface Props {
+  blok: Grid2;
+}
+
+const { blok } = Astro.props;
+---
+<div class="container">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-screen-xl mx-auto" {...storyblokEditable(blok)}>
+    {blok?.content.map((item: SbBlokData) => (
+      <StoryblokComponent blok={item} />
+    ))}
+  </div>
+</div>

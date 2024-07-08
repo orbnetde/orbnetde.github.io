@@ -1,0 +1,22 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Page extends SbBlokData
+{
+  body?: SbBlokData[]
+}
+
+interface Props {
+  blok: Page,
+}
+
+const { blok } = Astro.props;
+---
+<main {...storyblokEditable(blok)}>
+  {
+    (blok.body || []).map((blok: SbBlokData) => (
+      <StoryblokComponent blok={blok} />
+    ))
+  }
+</main>

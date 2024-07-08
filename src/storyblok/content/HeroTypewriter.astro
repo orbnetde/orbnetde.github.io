@@ -1,0 +1,153 @@
+---
+import { Picture } from 'astro:assets';
+
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+
+interface Image extends SbBlokData {
+  filename: string;
+}
+
+interface HeroSection extends SbBlokData {
+  title: string,
+  subtitle: string,
+  typewriterStart: string,
+  cta_link: string,
+  cta_text: string,
+  images?: Image[]
+}
+
+interface Props {
+  blok: HeroSection;
+}
+
+const { blok } = Astro.props;
+---
+<section id="start" class=`relative ${blok?.images && blok.images.length > 0 ? " pb-12" :""}` {...storyblokEditable(blok)}>
+  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3">
+    <div class="flex flex-wrap items-center text-center h-[100lvh] w-full">
+      <div class=`pt-[120px] px-6 lg:pt-0 w-full text-white ${blok?.images && blok.images.length > 0 ? " -mt-[200px] md:-mt-[100px] lg:-mt-[140px]" : ""}`>
+        <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold">
+          {blok.title}
+        </h1>
+        <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold">
+          {blok.title}
+          <br>
+          {blok.typewriterStart} <span class="typewrite" data-period="2000" data-type='["Dienstleister", "Berater", "Coaches", "Ärzte", "Handwerker", "Salons"]'>Dienstleister</span>
+        </h1>
+
+        <h2 class="lg:text-xl py-6 lg:py-9">
+          {blok.subtitle}
+        </h2>
+
+        <a
+          href={blok.cta_link}
+          class="w-full lg:w-2/5 tracking-wide text-lg font-semibold text-dark items-center bg-white hover:bg-white/[0.95] dark:bg-primary dark:text-white inline-flex justify-center px-7 py-4 rounded-lg shadow-md text-center transition duration-500 hover:shadow-xl">
+          {blok.cta_text}
+        </a>
+      </div>
+    </div>
+  </div>
+  {blok?.images && blok.images.length > 0 &&
+    <div class="container px-6 relative mb-[90px] md:mb-[190px] lg:mb-[290px]">
+      {blok?.images && blok.images[0] &&
+        <Picture
+          loading="eager"
+          src={blok.images[0].filename}
+          widths={[1000, 600, 300]}
+          width={1000}
+          height={480}
+          alt="orbnet dashboard"
+          format="webp"
+          class="rounded-2xl shadow-2xl absolute z-30 left-[50%] w-[300px] md:w-[600px] lg:w-[800px] xl:w-[1000px] -ml-[150px] md:-ml-[300px] lg:-ml-[400px] xl:-ml-[500px] -mt-[120px] md:landscape:-mt-[40px] md:portrait:-mt-[120px] lg:landscape:-mt-[200px] transition duration-500 hover:-translate-y-1.5"
+        />
+      }
+      {blok?.images && blok.images[1] &&
+        <Picture
+          loading="eager"
+          src={blok.images[1].filename}
+          widths={[800, 420, 209]}
+          width={800}
+          height={465}
+          alt="orbnet dashboard"
+          format="webp"
+          class="rounded-2xl shadow-lg absolute z-20 left-0 w-[200px] md:w-[400px] lg:w-[600px} xl:w-[800px] -mt-[90px] md:portrait:-mt-[80px] md:landscape:-mt-[20px] lg:landscape:-mt-[130px] -rotate-6 transition duration-500 hover:-translate-y-1.5"
+        />
+      }
+      {blok?.images && blok.images[2] &&
+        <Picture
+          loading="eager"
+          src={blok.images[2].filename}
+          widths={[800, 420, 209]}
+          width={800}
+          height={465}
+          alt="orbnet dashboard"
+          format="webp"
+          class="rounded-2xl shadow-lg absolute z-10 right-0 w-[200px] md:w-[400px] lg:w-[600px} xl:w-[800px] -mt-[90px] md:portrait:-mt-[80px] md:landscape:-mt-[20px] lg:landscape:-mt-[130px] rotate-6 transition duration-500 hover:-translate-y-1.5"
+        />
+      }
+    </div>
+  }
+</section>
+<style>
+    .typewrite {
+        @apply text-warning;
+    }
+</style>
+<script>
+  class TxtType {
+    private readonly toRotate: string[];
+    private el: Element;
+    private loopNum: number = 0;
+    private readonly period: number;
+    private txt: string = '';
+    private isDeleting: boolean = false;
+
+    constructor(el: Element, toRotate: string[], period: string) {
+      this.toRotate = toRotate;
+      this.el = el;
+      this.period = parseInt(period, 10) || 2000;
+      this.tick();
+    }
+
+    private tick = (): void => {
+      let i = this.loopNum % this.toRotate.length;
+      const fullTxt = this.toRotate[i];
+
+      if (this.isDeleting) {
+        this.txt = fullTxt.substring(0, this.txt.length - 1);
+      } else {
+        this.txt = fullTxt.substring(0, this.txt.length + 1);
+      }
+
+      this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
+      let delta = 200 - Math.random() * 100;
+
+      if (this.isDeleting) {
+        delta /= 2;
+      }
+
+      if (!this.isDeleting && this.txt === fullTxt) {
+        delta = this.period;
+        this.isDeleting = true;
+      } else if (this.isDeleting && this.txt === '') {
+        this.isDeleting = false;
+        this.loopNum++;
+        delta = 500;
+      }
+
+      setTimeout(this.tick, delta);
+    };
+  }
+
+  window.addEventListener('DOMContentLoaded', () => {
+    const elements = document.getElementsByClassName('typewrite');
+    for (let i = 0; i < elements.length; i++) {
+      const toRotate = elements[i].getAttribute('data-type') ?? '[]';
+      const period = elements[i].getAttribute('data-period') ?? '2000';
+      if (toRotate) {
+        new TxtType(elements[i], JSON.parse(toRotate), period);
+      }
+    }
+  });
+</script>

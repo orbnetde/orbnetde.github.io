@@ -1,0 +1,30 @@
+---
+import { Picture } from 'astro:assets';
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+
+interface Image extends SbBlokData {
+  Image: {
+    title: string,
+    alt: string,
+    filename: string,
+  }
+}
+
+interface Props {
+  blok: Image,
+}
+
+const { blok } = Astro.props;
+---
+<figure id={blok._uid} class="flex flex-col items-center">
+  <Picture src={blok.Image.filename}
+           alt={blok.Image.alt}
+           widths={[800, 400, 200]}
+           height={300}
+           inferSize={true}
+           class="rounded-md"
+           {...storyblokEditable(blok)}
+  />
+  <figcaption class="text-sm text-dark-3 dark:text-dark-6 mt-3">{blok.Image.title}</figcaption>
+</figure>

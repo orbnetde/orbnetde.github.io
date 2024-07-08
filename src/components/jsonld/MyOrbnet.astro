@@ -1,0 +1,26 @@
+---
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'SoftwareApplication',
+  'name': 'orbnet',
+  'operatingSystem': 'All',
+  'applicationCategory': 'BusinessApplication',
+  'image': {
+    '@type': 'ImageObject',
+    'url': '/assets/orbnet-aio-feature-img.webp',
+    'width': 1200,
+    'height': 630,
+  },
+  'aggregateRating': {
+    '@type': 'AggregateRating',
+    'ratingValue': '5',
+    'reviewCount': '6',
+  },
+  'offers': {
+    '@type': 'Offer',
+    'price': '25',
+    'priceCurrency': 'EUR',
+  },
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

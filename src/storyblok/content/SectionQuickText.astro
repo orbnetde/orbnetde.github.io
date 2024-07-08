@@ -1,0 +1,46 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Grid4 extends SbBlokData {
+  title: string,
+  sub_title: string,
+  section_title?: string,
+  items: SbBlokData[]
+
+}
+
+interface Props {
+  blok: Grid4;
+}
+
+const { blok } = Astro.props;
+---
+<section class="bg-gray-1 dark:bg-dark-2">
+  <div class="bg-white dark:bg-dark pt-12" {...storyblokEditable(blok)}>
+    {blok.sectionTitle &&
+      <div class="container text-base text-center mx-auto text-primary dark:text-warning uppercase font-semibold tracking-wide pb-12">{blok.sectionTitle}</div>
+    }
+    {
+      (blok.title || blok.subtitle) &&
+      <div class="container max-w-screen-xl mx-auto pb-4">
+        {blok.title &&
+          <h3 class="max-w-2xl mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">{blok.title}</h3>
+        }
+        {blok.subtitle &&
+          <div class="pb-12 mx-auto text-center text-dark-3 dark:text-white max-w-screen-lg">{blok.subtitle}</div>
+        }
+      </div>
+    }
+  </div>
+  <div class="container relative text-dark dark:text-white">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="xMidYMin" class="absolute top-0 left-0 right-0">
+      <path d="M649.97 0L550.03 0 599.91 54.12 649.97 0z" class="fill-white dark:fill-dark"></path>
+    </svg>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-screen-xl mx-auto" {...storyblokEditable(blok)}>
+      {blok?.items.map((item: SbBlokData) => (
+        <StoryblokComponent blok={item} />
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,37 @@
+---
+import { Image } from 'astro:assets';
+import { getBlogPosts } from '../utils/storyblok';
+
+const posts = await getBlogPosts(1, 4);
+---
+
+<div class="-mx-4 mb-8 flex flex-wrap">
+  <div class="w-full px-4">
+    <h2 class="relative pb-5 text-2xl font-semibold text-dark dark:text-white sm:text-[28px]">
+      Neues im Blog
+    </h2>
+    <span class="mb-10 inline-block h-[2px] w-20 bg-primary"></span>
+  </div>
+  {posts.data.stories.map(post => (
+    <div class="w-full px-4 md:w-1/2 lg:w-full">
+      <div
+        class="mb-5 flex w-full items-center border-b border-stroke dark:border-dark-3 pb-5"
+      >
+        <Image src={post.content?.hero.filename}
+               alt=`Bild für Blogbeitrag - ${post.content.title }`
+               width="240"
+               height="240"
+               format="webp"
+               class="h-20 w-full max-w-[80px] overflow-hidden rounded-full mr-5"
+        />
+        <div class="w-full">
+          <a href=`/${post.full_slug}`>
+            <span class="mb-1 inline-block text-lg font-medium leading-snug text-dark dark:text-dark-6 hover:text-primary dark:hover:text-primary lg:text-base xl:text-lg">
+              {post.content.title}
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+  ))}
+</div>

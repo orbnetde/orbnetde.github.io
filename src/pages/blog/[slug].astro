@@ -1,0 +1,133 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import { Picture } from 'astro:assets';
+import type { GetStaticPathsResult } from 'astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+import { getPost, getStaticBlogPaths } from '../../utils/storyblok';
+import { getFormattedDate } from '../../utils/all';
+
+import NewsletterBox from '../../components/Newsletterbox.astro';
+import PopularArticles from '../../components/PopularArticles.astro';
+import Layout from '../../layouts/Layout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
+  return getStaticBlogPaths(import.meta.env.DEV ? 'draft' : 'published');
+}
+
+const { slug } = Astro.params;
+const { data } = await getPost(String(slug));
+const entry = data.story;
+const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog', title: 'Blog' }, { slug: String(entry.full_slug), title: entry.content.title }];
+---
+<Layout title={entry.content.title}
+        description={entry.content.description}
+        canonical={new URL(entry.full_slug, Astro.site)}
+        image={entry.content?.hero?.filename || ''}
+        breadcrumbs={breadcrumbs}
+>
+  <section id="start" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
+    <div class="container max-w-screen-xl">
+      <div class="-mx-4 flex flex-wrap justify-center">
+        <div class="w-full px-4">
+          <div class="relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]">
+            {entry.content.hero && entry.content.hero.filename &&
+              <Picture
+                loading="eager"
+                src={entry.content.hero.filename}
+                alt={entry.content.hero.alt || ''}
+                width={1920}
+                height={1080}
+                widths={[1100, 800, 600, 400]}
+                class="h-full w-full object-cover object-center"
+              />}
+            <div class="absolute top-0 left-0 z-10 flex h-full w-full items-end bg-gradient-to-t from-dark-700 to-transparent">
+              <div class="flex flex-wrap items-center p-4 pb-4 sm:px-8">
+                <div class="mb-4 mr-5 flex items-center md:mr-10">
+                  <p class="text-base font-medium text-white bg-dark/[0.7] px-4 rounded-md">
+                    Von orbnet GmbH
+                  </p>
+                </div>
+                <div class="mb-4 flex items-center text-base font-medium text-white md:mr-6 bg-dark/[0.7] px-4 rounded-md">
+                    <span class="mr-3">
+                      <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"
+                           class="fill-current">
+                        <path
+                          d="M13.9998 2.6499H12.6998V2.0999C12.6998 1.7999 12.4498 1.5249 12.1248 1.5249C11.7998 1.5249 11.5498 1.7749 11.5498 2.0999V2.6499H4.4248V2.0999C4.4248 1.7999 4.1748 1.5249 3.8498 1.5249C3.5248 1.5249 3.2748 1.7749 3.2748 2.0999V2.6499H1.9998C1.1498 2.6499 0.424805 3.3499 0.424805 4.2249V12.9249C0.424805 13.7749 1.1248 14.4999 1.9998 14.4999H13.9998C14.8498 14.4999 15.5748 13.7999 15.5748 12.9249V4.1999C15.5748 3.3499 14.8498 2.6499 13.9998 2.6499ZM1.5748 7.2999H3.6998V9.7749H1.5748V7.2999ZM4.8248 7.2999H7.4498V9.7749H4.8248V7.2999ZM7.4498 10.8999V13.3499H4.8248V10.8999H7.4498V10.8999ZM8.5748 10.8999H11.1998V13.3499H8.5748V10.8999ZM8.5748 9.7749V7.2999H11.1998V9.7749H8.5748ZM12.2998 7.2999H14.4248V9.7749H12.2998V7.2999ZM1.9998 3.7749H3.2998V4.2999C3.2998 4.5999 3.5498 4.8749 3.8748 4.8749C4.1998 4.8749 4.4498 4.6249 4.4498 4.2999V3.7749H11.5998V4.2999C11.5998 4.5999 11.8498 4.8749 12.1748 4.8749C12.4998 4.8749 12.7498 4.6249 12.7498 4.2999V3.7749H13.9998C14.2498 3.7749 14.4498 3.9749 14.4498 4.2249V6.1749H1.5748V4.2249C1.5748 3.9749 1.7498 3.7749 1.9998 3.7749ZM1.5748 12.8999V10.8749H3.6998V13.3249H1.9998C1.7498 13.3499 1.5748 13.1499 1.5748 12.8999ZM13.9998 13.3499H12.2998V10.8999H14.4248V12.9249C14.4498 13.1499 14.2498 13.3499 13.9998 13.3499Z" />
+                      </svg>
+                    </span>
+                  {getFormattedDate(entry.published_at || entry.created_at)}
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="-mx-4 flex flex-wrap">
+            <div class="w-full px-4 lg:w-8/12">
+              <div id="blog-entry" {...storyblokEditable(entry.content)}>
+                <h1 class="mb-8 text-2xl font-semibold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]">
+                  {entry.content.title}
+                </h1>
+                <Breadcrumbs breadcrumbs={breadcrumbs} />
+                <!-- TOC //-->
+                <div class="bg-primary-100 dark:bg-dark-3 text-dark dark:text-white rounded-md p-5">
+                  <strong>Inhalt</strong>
+                  <ol class="list-inside list-none mt-3">
+                    {entry.content.items && entry.content.items.map((item: SbBlokData) => {
+                      return (
+                        <>
+                        {item.component === 'h2' ?
+                          <li class="mb-1"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                        {item.component === 'h3' ?
+                          <li class="mb-1 ml-4"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                        </>
+                      );
+                    })}
+                  </ol>
+                </div>
+                <!-- BLOG TEXT //-->
+                {entry.content.items && entry.content.items.map((item: SbBlokData) => (
+                  <StoryblokComponent blok={item} />
+                ))}
+                <div class="my-12 flex flex-wrap items-center gap-2">
+                  {
+                    entry.tag_list.map((tag: string) => (
+                      <a
+                        href=`/blog/tags/${tag}`
+                        class="block rounded-md bg-primary dark:bg-dark-3 py-1 px-2 text-base text-white dark:text-white"
+                      >
+                        {tag}
+                      </a>
+                    ))
+                  }
+                </div>
+              </div>
+              <div id="blog-finish"></div>
+            </div>
+            <div class="w-full px-4 lg:w-4/12">
+              <NewsletterBox />
+              <PopularArticles />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+<script is:inline>
+  document.addEventListener('DOMContentLoaded', () => {
+    const blogEntry = document.getElementById('blog-entry');
+    const blogFinish = document.getElementById('blog-finish');
+    const indicator = document.getElementById('reading-indicator');
+
+    function onScroll() {
+      const scrolled = (100 / (blogFinish.offsetTop - blogEntry.offsetTop - 300)) * (document.documentElement.scrollTop - blogEntry.offsetTop);
+      indicator.style.width = '0%';
+      if (document.documentElement.scrollTop > blogEntry.offsetTop) {
+        indicator.style.width = scrolled + '%';
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+  });
+</script>

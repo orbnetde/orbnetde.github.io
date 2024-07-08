@@ -1,0 +1,35 @@
+---
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'Corporation',
+  'name': 'orbnet GmbH',
+  'url': 'https://www.orbnet.de/',
+  'ContactPoint': {
+    '@type': 'ContactPoint',
+    'contactType': 'technical support',
+    'telephone': '+49 821 570 89790',
+    'url': 'https://www.orbnet.de/kontakt/',
+    'contactOption': [
+      'HearingImpairedSupported',
+      'TollFree',
+    ],
+    'areaServed': [
+      'DE',
+    ],
+    'availableLanguage': [
+      'Deutsch',
+    ],
+  },
+  'logo': {
+    '@type': 'ImageObject',
+    'url': '/assets/favicon.png',
+    'width': 60,
+    'height': 60,
+  },
+  'sameAs': [
+    'https://www.youtube.com/channel/UCUNGvivuw621XnzpdVOkCIw',
+    'https://www.twitter.com/orbnetde',
+  ],
+};
+---
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />

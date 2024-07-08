@@ -1,0 +1,37 @@
+---
+import { getBreadcrumb, getPages } from '../../../utils/storyblok';
+import Layout from '../../../layouts/Layout.astro';
+import Card from '../../../storyblok/content/Card.astro';
+import Breadcrumbs from '../../../components/Breadcrumbs.astro';
+
+const pages = await getPages('funktionen/buchhaltung/*', 'name:asc');
+const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/buchhaltung', name: 'Buchhaltung' });
+---
+<Layout title="Buchhaltung"
+        description="Alle Buchhaltungsfunktionen auf einen Blick."
+        canonical={new URL('/funktionen/buchhaltung', Astro.site)}
+        breadcrumbs={breadcrumbs}
+>
+  <section class="relative py-12 lg:pb-16 pt-[120px]">
+    <div class="container max-w-screen-xl mx-auto">
+      <h3 class="max-w-2xl mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">
+        Alle unsere Buchhaltungsfunktionen.
+      </h3>
+      <div class="container">
+        <Breadcrumbs breadcrumbs={breadcrumbs}/>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
+          {pages.map(page => (
+            <Card blok={
+              {
+                title: String(page.params.title || ''),
+                body: String(page.params.description || ''),
+                link: '/' + page.params.slug,
+                image: {filename: String(page.params.image || '')}
+              }
+            } />
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

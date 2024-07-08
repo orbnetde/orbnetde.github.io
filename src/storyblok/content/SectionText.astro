@@ -1,0 +1,32 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Section extends SbBlokData {
+  title: string,
+  titleHighlight?: string,
+  sectionTitle?: string,
+  content?: SbBlokData[]
+}
+
+interface Props {
+  blok: Section;
+}
+
+const { blok } = Astro.props;
+---
+<div class="flex flex-col" {...storyblokEditable(blok)}>
+  {blok.sectionTitle &&
+    <div class="text-primary dark:text-primary-400 uppercase text-base mb-4" {...storyblokEditable(blok)}>
+      {blok.sectionTitle}
+    </div>
+  }
+  <h3 class="text-4xl font-semibold text-dark dark:text-white leading-snug">
+    {blok.title}{blok.titleHighlight && <span class="text-primary dark:text-primary-400">{' '}{blok.titleHighlight}</span>}
+  </h3>
+  <div class="text-dark dark:text-white">
+    {blok.content?.map((blok: SbBlokData) => (
+      <StoryblokComponent blok={blok} />
+    ))}
+  </div>
+</div>

@@ -1,0 +1,38 @@
+---
+import { Image } from 'astro:assets';
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import { type ImageMetadata } from 'astro';
+
+interface SectionQuickTextItemIcon extends ImageMetadata {
+  filename: string,
+}
+
+interface SectionQuickTextItem extends SbBlokData {
+  icon: SectionQuickTextItemIcon,
+  title: string,
+  text: string,
+}
+
+interface Props {
+  blok: SectionQuickTextItem;
+}
+
+const { blok } = Astro.props;
+---
+<div class="flex flex-col items-center text-center py-12" {...storyblokEditable(blok)}>
+  <div class="rounded-full bg-primary-200 text-primary p-6">
+    <Image
+      loading="eager"
+      src={blok.icon.filename}
+      width={32}
+      height={32}
+      alt=`icon - ${blok.title}`
+      format="webp"
+      quality="high"
+      class="fill-primary h-8 w-8"
+    />
+  </div>
+
+  <b class="block font-semibold my-4">{blok.title}</b>
+  {blok.text}
+</div>

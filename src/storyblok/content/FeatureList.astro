@@ -1,0 +1,29 @@
+---
+import { Image } from 'astro:assets';
+import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+import blueCheck from '../../assets/svg/bluecheck.svg';
+
+interface FeatureListItem extends SbBlokData {
+  feature: string;
+}
+
+interface FeatureList extends SbBlokData {
+  features: FeatureListItem[];
+}
+
+interface Props {
+  blok: FeatureList;
+}
+
+const { blok } = Astro.props;
+---
+<ul {...storyblokEditable(blok)}>
+  {blok.features.map((feature: SbBlokData) => (
+    <li class="flex items-start mb-3">
+      <Image src={blueCheck} loading="lazy" width="24" height="24" alt="check icon" class="mr-2" />
+      <StoryblokComponent blok={feature}/>
+    </li>
+  ))}
+</ul>
