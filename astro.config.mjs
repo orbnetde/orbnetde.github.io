@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import { loadEnv } from 'vite';
-
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import alpinejs from '@astrojs/alpinejs';
 import compress from 'astro-compress';
@@ -9,6 +8,7 @@ import sitemap from '@astrojs/sitemap';
 import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
 import icon from 'astro-icon';
 import storyblok from '@storyblok/astro';
+import node from '@astrojs/node';
 
 const env = loadEnv('', process.cwd(), ['STORYBLOK']);
 
@@ -30,6 +30,10 @@ export default defineConfig({
     // Allows Astro to download and optimize images from this source.
     domains: ['a.storyblok.com'],
   },
+  output: 'hybrid',
+  adapter: node({
+    mode: 'standalone',
+  }),
   redirects: {
     '/angebot-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
     '/angebote-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
@@ -45,14 +49,18 @@ export default defineConfig({
   },
   integrations: [
     tailwind(),
-    compress({ ext: '.br', algorithm: 'brotliCompress' }),
-    compress({ ext: '.gz', algorithm: 'gzip' }),
+    compress({
+      ext: '.br',
+      algorithm: 'brotliCompress',
+    }),
+    compress({
+      ext: '.gz',
+      algorithm: 'gzip',
+    }),
     sitemap(),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {
         analytics: {},
-        // facebook: {},
-        // youtube: {},
       },
       language: {
         default: 'de',
@@ -71,23 +79,11 @@ export default defineConfig({
               acceptNecessaryBtn: 'Alle ablehnen',
               savePreferencesBtn: 'Aktuelle Auswahl akzeptieren',
               closeIconLabel: 'Schließen',
-              sections: [
-                {
-                  title: 'Google Analytics',
-                  description: 'Cookie von Google für Website-Analysen. Erzeugt statistische Daten darüber, wie der Besucher die Website nutzt.',
-                  linkedCategory: 'analytics',
-                },
-                // {
-                //   title: 'Facebook Pixel',
-                //   description: 'Cookie von Facebook, das für Website-Analysen, Ad-Targeting und Anzeigenmessung verwendet wird.',
-                //   linkedCategory: 'facebook',
-                // },
-                // {
-                //   title: 'Youtube',
-                //   description: 'Wird verwendet, um YouTube-Inhalte zu entsperren.',
-                //   linkedCategory: 'youtube',
-                // },
-              ],
+              sections: [{
+                title: 'Google Analytics',
+                description: 'Cookie von Google für Website-Analysen. Erzeugt statistische Daten darüber, wie der Besucher die Website nutzt.',
+                linkedCategory: 'analytics',
+              }],
             },
           },
         },

@@ -1,0 +1,9 @@
+---
+export const prerender: boolean = false;
+
+const { slug } = Astro.params;
+
+return (!slug) ?
+  Astro.redirect('/404') :
+  Astro.redirect('https://dev.orbnet.de/seminars/slug/' + Astro.params.slug, 301);
+---
