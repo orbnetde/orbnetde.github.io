@@ -29,7 +29,6 @@ export default defineConfig({
     // Allows Astro to download and optimize images from this source.
     domains: ['a.storyblok.com'],
   },
-  output: 'static',
   redirects: {
     '/angebot-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
     '/angebote-schreiben': '/funktionen/buchhaltung/angebot-schreiben',

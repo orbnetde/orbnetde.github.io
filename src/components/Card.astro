@@ -25,8 +25,10 @@ const {
 } = Astro.props;
 
 let optImage = { src: '' };
-if (src?.src) {
+if (src?.src && !String(src.src).includes("storyblok")) {
   optImage = src;
+} else if (src?.src) {
+  optImage = await loadImage(src.src);
 } else if (src) {
   optImage = await loadImage(src);
 }
