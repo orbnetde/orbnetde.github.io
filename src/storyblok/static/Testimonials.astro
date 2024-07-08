@@ -6,6 +6,7 @@ import Section from '../../components/Section.astro';
 import sandraK from '../../assets/testimonials/orbnet-testimonial-sandra-klimm.webp';
 import ralfL from '../../assets/testimonials/orbnet-testimonial-ralf-lenhart-150x150.webp';
 import tanjaL from '../../assets/testimonials/tanjalenke-profilbild.webp';
+import alexW from '../../assets/testimonials/alexwiethaus-profilbild.jpg';
 import TestimonialItem from '../../components/TestimonialItem.astro';
 import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
 
@@ -26,11 +27,11 @@ const { blok } = Astro.props;
   bgColor=`${blok.classes || ''}`
 >
   <div class="container mx-auto max-w-screen-xl flex justify-between" {...storyblokEditable(blok)}>
-    <div class="flex flex-wrap justify-between gap-8">
+    <div class="grid grid-flow-row-dense grid-cols-6 gap-8">
       <TestimonialItem
         from="Ralf Lenhart"
         job="Immobilienmakler"
-        classes="flex-1 lg:flex-none"
+        classes="col-span-6 lg:col-span-2"
       >
         <Fragment slot="text">
           Ich kann orbnet.de nur empfehlen. Danke für alles!
@@ -40,11 +41,13 @@ const { blok } = Astro.props;
       <TestimonialItem
         from="Sandra Klimm"
         job="Tierärzting"
-        classes="flex-1"
+        classes="col-span-6 lg:col-span-4"
       >
         <Fragment slot="text">
           Tolle innovative Software, die einem Unternehmer sehr viel lästige Arbeit abnimmt!
           Gleichzeitig spitzenmäßige persönliche Betreuung und Unterstützung.
+          <br>
+          <br>
           Empfehle ich uneingeschränkt jederzeit gerne weiter!
         </Fragment>
         <Image slot="image" src={sandraK} alt="Sandra Klimm" width="50" height="50" class="rounded-full" />
@@ -52,16 +55,31 @@ const { blok } = Astro.props;
       <TestimonialItem
         from="Tanja Lenke"
         job="Gründerin von shepreneur"
-        classes="w-full"
+        classes="col-span-6 lg:col-span-3"
       >
         <Fragment slot="text" class="font-sm">
           Ich hatte so viele amerikanische Tools, die ich vor dem DSGVO-Hintergrund versucht
           habe abzuschaffen und war begeistert von orbnet: In Deutschland ansässig,
           genau das was ich brauche und dann habe ich zugeschlagen.
+          <br>
+          <br>
           Die Terminbuchungsfunktion bei orbnet erspart mir die gesamte Terminierung
           enorm und ich möchte diese Funktion nicht mehr missen.
         </Fragment>
-        <Image slot="image" src={tanjaL} alt="Tanja Lenk" width="50" height="50" class="rounded-full" />
+        <Image slot="image" src={tanjaL} alt="Tanja Lenke" width="50" height="50" class="rounded-full" />
+      </TestimonialItem>
+      <TestimonialItem
+        from="Alex Wiethaus"
+        job="Gründer emailmarketinghelden.de"
+        classes="col-span-6 lg:col-span-3"
+      >
+        <Fragment slot="text" class="font-sm">
+          Bevor ich orbnet kannte, hatte ich mehrere Tools, die alle nicht so funktionierten, wie ich mir das wirklich wünschte. Automatisierte Abläufe waren ein Krampf und ich hatte keine Lust meine Rechnungen zu schreiben.
+          <br>
+          <br>
+          Mit orbnet geht das alles im Vorbeigehen und das Beste: Es kommen ständig neue Funktionen, die mir mein Coaching-Alltag massiv erleichtern.
+        </Fragment>
+        <Image slot="image" src={alexW} alt="Alex Wiethaus" width="50" height="50" class="rounded-full" />
       </TestimonialItem>
     </div>
   </div>

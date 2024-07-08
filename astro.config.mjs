@@ -117,6 +117,7 @@ export default defineConfig({
         quote: 'storyblok/blog/Quote',
         // Structure
         CardTower: 'storyblok/structure/CardTower',
+        Container: 'storyblok/structure/Container',
         CTA: 'storyblok/structure/CTA',
         CTAPill: 'storyblok/structure/CTAPill',
         Grid2: 'storyblok/structure/Grid2',
@@ -126,6 +127,7 @@ export default defineConfig({
         RightLeftSection: 'storyblok/structure/RightImageSection',
         Section: 'storyblok/structure/Section',
         // Content
+        Button: 'storyblok/content/Button',
         Card: 'storyblok/content/Card',
         FeatureCard: 'storyblok/content/FeatureCard',
         FeatureList: 'storyblok/content/FeatureList',
@@ -152,7 +154,9 @@ export default defineConfig({
       },
       livePreview: false,
       // Enable storyblok only in dev mode
-      bridge: import.meta.env.DEV,
+      bridge: {
+        resolveLinks: 'url'
+      },
     }),
   ],
 });

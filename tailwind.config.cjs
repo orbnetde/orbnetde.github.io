@@ -9,20 +9,20 @@ module.exports = {
   darkMode: 'class',
   theme: {
     screens: {
-      sm: '540px',
-      // => @media (min-width: 576px) { ... }
+      sm: '640px',
+      // => @media (min-width: 640px) { ... }
 
-      md: '720px',
+      md: '768px',
       // => @media (min-width: 768px) { ... }
 
-      lg: '960px',
-      // => @media (min-width: 992px) { ... }
+      lg: '1024px',
+      // => @media (min-width: 1024px) { ... }
 
-      xl: '1140px',
-      // => @media (min-width: 1200px) { ... }
+      xl: '1280px',
+      // => @media (min-width: 1280px) { ... }
 
-      '2xl': '1440px',
-      // => @media (min-width: 1400px) { ... }
+      '2xl': '1536px',
+      // => @media (min-width: 1536px) { ... }
     },
     container: {
       center: true,

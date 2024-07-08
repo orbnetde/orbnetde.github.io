@@ -1,0 +1,20 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Container extends SbBlokData {
+  classes?: string,
+  content?: SbBlokData[]
+}
+
+interface Props {
+  blok: Container;
+}
+
+const { blok } = Astro.props;
+---
+<div class=`container max-w-screen-xl ${blok?.classes || ''}` {...storyblokEditable(blok)}>
+  {blok?.content?.map((blok: SbBlokData) => (
+    <StoryblokComponent blok={blok} />
+  ))}
+</div>

@@ -1,0 +1,30 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+
+interface Url extends SbBlokData {
+  url: string,
+  cached_url: string,
+}
+
+interface Button extends SbBlokData {
+  text: string,
+  href: Url,
+  classes?: string,
+}
+
+interface Props {
+  blok: Button;
+}
+
+const { blok } = Astro.props;
+
+let useUrl = String(blok.href.cached_url);
+if (useUrl.at(0) !== '/' && !useUrl.includes('http')) {
+  useUrl = `/${useUrl}`;
+}
+---
+<a href={useUrl}
+   class=`py-3 px-7 rounded-md inline-block transition duration-500 ${blok?.classes || ''}` {...storyblokEditable(blok)}
+>
+  {blok.text}
+</a>
