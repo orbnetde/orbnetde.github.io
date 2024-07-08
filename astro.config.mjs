@@ -8,7 +8,6 @@ import sitemap from '@astrojs/sitemap';
 import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
 import icon from 'astro-icon';
 import storyblok from '@storyblok/astro';
-import node from '@astrojs/node';
 
 const env = loadEnv('', process.cwd(), ['STORYBLOK']);
 
@@ -30,10 +29,7 @@ export default defineConfig({
     // Allows Astro to download and optimize images from this source.
     domains: ['a.storyblok.com'],
   },
-  output: 'hybrid',
-  adapter: node({
-    mode: 'standalone',
-  }),
+  output: 'static',
   redirects: {
     '/angebot-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
     '/angebote-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
