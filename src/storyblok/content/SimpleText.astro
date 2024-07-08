@@ -1,0 +1,14 @@
+---
+import { type SbBlokData } from '@storyblok/astro';
+
+interface Text extends SbBlokData {
+  text: string
+}
+
+interface Props {
+  blok: Text;
+}
+
+const { blok } = Astro.props;
+---
+{blok.text}

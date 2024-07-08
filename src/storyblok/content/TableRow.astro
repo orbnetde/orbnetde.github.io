@@ -1,0 +1,20 @@
+---
+import { type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface TableRow extends SbBlokData {
+  content: SbBlokData[],
+}
+
+interface Props {
+  blok: TableRow;
+  number: number;
+}
+
+const { blok, number } = Astro.props;
+---
+<div class=`grid grid-cols-1 md:grid-cols-3 gap-4 items-center ${number === 0 ? 'bg-primary text-white font-semibold': 'even:bg-white even:text-dark even:dark:bg-dark-2 even:dark:text-white odd:bg-gray-100 odd:text-dark odd:dark:bg-gray-700 odd:dark:text-white'}`>
+  {blok.content?.map((item, k:number) =>
+    <StoryblokComponent number={k} blok={item} />
+  )}
+</div>

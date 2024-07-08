@@ -1,0 +1,28 @@
+---
+import { Image } from 'astro:assets';
+import { storyblokEditable } from '@storyblok/astro';
+import type { SbBlokData } from '@storyblok/astro';
+
+interface Image extends SbBlokData {
+  image: {
+    title: string,
+    alt: string,
+    filename: string,
+  },
+  width: number,
+  height: number,
+  alt: string,
+}
+
+interface Props {
+  blok: Image,
+}
+
+const { blok } = Astro.props;
+---
+<Image src={blok.image.filename}
+       alt={blok.alt}
+       width={blok.width}
+       height={blok.height}
+       {...storyblokEditable(blok)}
+/>

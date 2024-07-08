@@ -1,0 +1,19 @@
+---
+import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+
+interface Table extends SbBlokData {
+  content: SbBlokData[],
+}
+
+interface Props {
+  blok: Table;
+}
+
+const { blok } = Astro.props;
+---
+<div class="py-4" {...storyblokEditable(blok)}>
+  {blok.content?.map((blok: SbBlokData, k:number) => (
+    <StoryblokComponent number={k} blok={blok} />
+  ))}
+</div>

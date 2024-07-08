@@ -140,6 +140,11 @@ export default defineConfig({
         SectionText: 'storyblok/content/SectionText',
         SectionQuickText: 'storyblok/content/SectionQuickText',
         SectionQuickTextItem: 'storyblok/content/SectionQuickTextItem',
+        SimpleImage: 'storyblok/content/SimpleImage',
+        SimpleText: 'storyblok/content/SimpleText',
+        Table: 'storyblok/content/Table',
+        TableRow: 'storyblok/content/TableRow',
+        TableCol: 'storyblok/content/TableCol',
         // Static
         BlogSection: 'storyblok/static/BlogSection',
         Plans: 'storyblok/static/Plans',
