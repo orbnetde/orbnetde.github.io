@@ -1,0 +1,176 @@
+---
+import { Image } from 'astro:assets';
+
+import Layout from '../layouts/Layout.astro';
+import chris from '../assets/team/chris-team-orbnet-Medium.jpg';
+import gregor from '../assets/team/ueber-uns-gregor.jpg';
+---
+<Layout
+  title="Über uns"
+  description="Die Geschichte von orbnet"
+  breadcrumbs={[{ slug: '', title: 'Start' }, { slug: 'ueber-uns', title: 'Über uns' }]}
+>
+  <section class="pt-32 pb-24 text-dark dark:text-white">
+    <div class="container max-w-screen-xl text-center">
+      <h1 class="text-4xl font-bold mb-8">Über uns</h1>
+      <h2 class="text-2xl font-semibold mb-16">Unsere Reise bisher...</h2>
+      <div class="flow-root">
+        <ul role="list">
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">Gründung</p>
+                  <div class="whitespace-nowrap text-right">
+                    2015
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Christian und Gregor gründen "orbnet UG" mit der Vision eine einfache Abrechnungssoftware für Dienstleister zu schaffen.
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">Entwicklung</p>
+                  <div class="whitespace-nowrap text-right">
+                    2016
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Entwicklung einer ersten Version von orbnet, damals für die sehr spitze Positionierung "Unternehmer".
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">Erster Verkauf</p>
+                  <div class="whitespace-nowrap text-right">
+                    2017
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Verkauf der ersten Version von orbnet, damals noch an Kleinunternehmer und Solo-Selbstständige.
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">USP</p>
+                  <div class="whitespace-nowrap text-right">
+                    2018
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Die ersten 200 Kunden sind von den damaligen Funktionen von orbnet begeistert. Neuer USP: Online-Terminvereinbarung
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">Wachstum</p>
+                  <div class="whitespace-nowrap text-right">
+                    2019
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Über 1000 Coaches, Berater und Dienstleister nutzen orbnet aktiv. Das Netzwerk wird um zahlreiche Coaching-Verbände und Kooperationspartner erweitert.
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200 dark:bg-dark-3" aria-hidden="true"></span>
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 dark:bg-dark-3 ring-8 ring-white dark:ring-dark"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">Internationalisierung</p>
+                  <div class="whitespace-nowrap text-right">
+                    2020
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  Eine Tochtergesellschaft in Thailand / Bangkok wird gegründet für einen internationalen Ableger von "orbnet".
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="relative pb-16">
+            <!--<span class="absolute left-4 top-4 -ml-px h-full w-0.5 bg-gray-200" aria-hidden="true"></span>-->
+            <div class="relative flex space-x-4">
+              <span class="flex h-4 w-4 ml-2 items-center justify-center rounded-full bg-gray-200 ring-8 ring-white"></span>
+              <div class="flex flex-col flex-1 -mt-1.5">
+                <div class="flex min-w-0 flex-1 justify-between space-x-4 text-xl text-primary dark:text-primary-400">
+                  <p class="">ReDesign</p>
+                  <div class="whitespace-nowrap text-right">
+                    2021
+                  </div>
+                </div>
+                <div class="mt-4 pr-16 text-left">
+                  orbnet bekommt ein komplett neues UI/UX, neue Workflows und Funktionen spendiert.
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="py-24 bg-gray-100 dark:bg-dark text-dark dark:text-white">
+    <div class="container max-w-screen-xl">
+      <div class="mx-auto grid grid-cols-1 gap-x-8 gap-y-20 xl:grid-cols-5">
+        <div class="xl:col-span-2">
+          <h2 class="text-3xl font-bold tracking-tight sm:text-4xl">Über die Gründer</h2>
+          <p class="mt-6 text-lg leading-8">
+            Diese Menschen möchten Coaching-Software eine neue Bedeutung geben.
+          </p>
+        </div>
+        <ul role="list" class="-mt-12 space-y-12 divide-y divide-gray-200 xl:col-span-3">
+          <li class="flex flex-col gap-10 pt-12 sm:flex-row">
+            <Image src={chris} alt="Christian Schmidt" width="300" height="300" class="aspect-[4/5] w-52 object-cover rounded-2xl" />
+            <div class="max-w-xl flex-auto">
+              <h3 class="text-lg font-semibold leading-8 tracking-tight">Christian Schmidt</h3>
+              <p class="text-base leading-7 text-gray-600 dark:text-gray-500">Co-Founder / CTO</p>
+              <p class="mt-6 text-base leading-7 text-gray-600 dark:text-gray-500">
+                Entwickler aus Leidenschaft.
+              </p>
+            </div>
+          </li>
+          <li class="flex flex-col gap-10 pt-12 sm:flex-row">
+            <Image src={gregor} alt="Gregor Duda" width="300" height="300" class="aspect-[4/5] w-52 object-cover rounded-2xl" />
+            <div class="max-w-xl flex-auto">
+              <h3 class="text-lg font-semibold leading-8 tracking-tight">Gregor Duda</h3>
+              <p class="text-base leading-7 text-gray-600 dark:text-gray-500">Co-Founder / CEO</p>
+              <p class="mt-6 text-base leading-7 text-gray-600 dark:text-gray-500">
+                Marketing und UI/UX.
+              </p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</Layout>

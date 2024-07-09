@@ -1,12 +1,32 @@
 ---
 import Layout from '../layouts/Layout.astro';
-import ContactSection from '../components/Contactsection.astro';
 ---
-
 <Layout
   title="Kontakt"
   description="Kontaktdetails von orbnet"
-  breadcrumbs={[{ slug: '', title: "Start"}, {slug: "kontakt", title: "Kontakt"}]}
+  breadcrumbs={[{ slug: '', title: 'Start' }, { slug: 'kontakt', title: 'Kontakt' }]}
 >
-  <ContactSection />
+  <section class="pt-24 lg:pt-32 pb-12">
+    <div class="container max-w-screen-xl justify-center">
+      <h1 class="text-3xl font-semibold mb-8">Kontaktdetails</h1>
+      <div class="flex flex-wrap gap-12 text-dark dark:text-white">
+        <div>
+          <h2 class="text-2xl font-semibold mb-4">Kontakt</h2>
+          Tel: +49 821 / 570 89 79 0<br>
+          Keine Support-Hotline<br>
+          <br>
+          Mail: info@orbnet.de<br>
+          Keine Support-E-Mail
+        </div>
+        <div class="grow">
+          <h2 class="text-2xl font-semibold mb-4">Adresse</h2>
+          orbnet GmbH<br>
+          Meraner Straße 28<br>
+          <br>
+          86165 Augsburg<br>
+          DEUTSCHLAND
+        </div>
+      </div>
+    </div>
+  </section>
 </Layout>

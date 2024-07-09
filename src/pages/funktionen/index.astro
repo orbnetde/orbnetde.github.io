@@ -1,8 +1,8 @@
 ---
-import { getBreadcrumb, getPages } from '../utils/storyblok';
-import Layout from '../layouts/Layout.astro';
-import Card from '../storyblok/content/Card.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
+import { getBreadcrumb, getPages } from '../../utils/storyblok';
+import Layout from '../../layouts/Layout.astro';
+import Card from '../../storyblok/content/Card.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 const pages = await getPages('funktionen/*', 'name:asc');
 const breadcrumbs = await getBreadcrumb({full_slug: 'funktionen', name: "Funktionen"});

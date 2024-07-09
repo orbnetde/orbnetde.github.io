@@ -41,6 +41,9 @@ export default defineConfig({
     '/belege-erfassen': '/funktionen/buchhaltung/belege-erfassen',
     '/zeiterfassung-online': '/funktionen/buchhaltung/zeiterfassung',
     '/steuerberater-login': '/funktionen/buchhaltung/steuerberater-login',
+    '/finanz-dashboard': '/funktionen/buchhaltung/finanz-dashboard',
+    '/nutzerverwaltung': '/funktionen/nutzerverwaltung',
+    '/produkte-und-dienstleistungen': '/funktionen/produkte-und-dienstleistungen',
   },
   integrations: [
     tailwind(),
