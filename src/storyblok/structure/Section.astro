@@ -32,7 +32,7 @@ const optImage = await loadImage(blok?.image?.filename || '');
     (blok?.title || blok?.subtitle) &&
     <div class="container max-w-screen-xl mx-auto">
       {blok.title &&
-        <h3 class="max-w-2xl mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">{blok.title}</h3>
+        <h3 class="max-w-screen-lg mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">{blok.title}</h3>
       }
       {blok.subtitle &&
         <div class="pb-12 mx-auto text-center text-dark-3 dark:text-white max-w-screen-lg">{blok.subtitle}</div>

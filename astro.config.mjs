@@ -18,6 +18,8 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  // output: import.meta.env.DEV ? 'server' : 'static',
+  output: 'static',
   // https on local
   vite: {
     plugins: [basicSsl()],
@@ -169,11 +171,9 @@ export default defineConfig({
           type: 'memory',
         },
       },
+      // livePreview: import.meta.env.DEV,
       livePreview: false,
-      // Enable storyblok only in dev mode
-      bridge: {
-        resolveLinks: 'url',
-      },
+      bridge: false,
     }),
   ],
 });

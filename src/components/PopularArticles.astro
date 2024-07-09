@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import { getBlogPosts } from '../utils/storyblok';
 
-const posts = await getBlogPosts(1, 4);
+const posts = await getBlogPosts(1, 4, undefined, 'first_published_at:desc');
 ---
 
 <div class="-mx-4 mb-8 flex flex-wrap">

@@ -71,6 +71,13 @@ BlogSchema.marks.link = (node) => {
 
   attrs.class = 'text-primary underline dark:text-primary-400';
 
+  delete attrs.target;
+  delete attrs.linktype;
+  if (attrs.href?.includes("http") && !attrs.href?.includes("orbnet.de")) {
+    attrs.rel = 'nofollow noopener';
+    attrs.target = '_blank';
+  }
+
   return {
     tag: [
       {
