@@ -30,6 +30,10 @@ export default defineConfig({
     domains: ['a.storyblok.com'],
   },
   redirects: {
+    '/buchungssystem-online': '/online-buchungssystem',
+    '/praxissoftware-arzte-therapeuten': '/branchen/praxissoftware-arzte-therapeuten',
+    '/handwerker-software': '/branchen/handwerker-software',
+    '/coaching-software-fuer-berater': '/branchen/coaching-software-fuer-berater',
     '/angebot-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
     '/angebote-schreiben': '/funktionen/buchhaltung/angebot-schreiben',
     '/rechnung-schreiben': '/funktionen/buchhaltung/rechnung-schreiben',
@@ -44,6 +48,11 @@ export default defineConfig({
     '/finanz-dashboard': '/funktionen/buchhaltung/finanz-dashboard',
     '/nutzerverwaltung': '/funktionen/nutzerverwaltung',
     '/produkte-und-dienstleistungen': '/funktionen/produkte-und-dienstleistungen',
+    '/orbnet-integrationen': '/funktionen/integrationen',
+    '/landingpage-builder': '/funktionen/terminverwaltung/landingpage-builder',
+    '/online-kalender': '/funktionen/terminverwaltung/online-kalender',
+    // BLOG
+    '/rechnung-auf-englisch-schreiben': '/blog/rechnung-auf-englisch-schreiben',
   },
   integrations: [
     tailwind(),
@@ -163,7 +172,7 @@ export default defineConfig({
       livePreview: false,
       // Enable storyblok only in dev mode
       bridge: {
-        resolveLinks: 'url'
+        resolveLinks: 'url',
       },
     }),
   ],

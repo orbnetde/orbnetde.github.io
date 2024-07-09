@@ -1,6 +1,14 @@
 import { type ISbStoriesParams, type ISbStory, type ISbStoryData, useStoryblokApi } from '@storyblok/astro';
 import type { GetStaticPathsResult } from 'astro';
 
+interface GetPageResult extends GetStaticPathsResult {
+  props?: {
+    title?: string,
+    description?: string,
+    image?: string,
+  };
+}
+
 export async function getStaticBlogTags(version: any): Promise<GetStaticPathsResult | Response> {
   const storyblokApi = useStoryblokApi();
 
@@ -41,7 +49,7 @@ export async function getStaticBlogPaths(version: any): Promise<GetStaticPathsRe
   });
 }
 
-export async function getBlogPosts(page: number, itemsPerPage: number, byTag?: string):
+export async function getBlogPosts(page: number, itemsPerPage: number, byTag?: string, sortBy?: string):
   Promise<{ data: { cv: number, links: (ISbStoryData | any)[], rels: ISbStoryData[], stories: ISbStoryData[] }, total: number }> {
   let total: number = 0;
 
@@ -54,6 +62,9 @@ export async function getBlogPosts(page: number, itemsPerPage: number, byTag?: s
   };
   if (byTag) {
     options.with_tag = byTag;
+  }
+  if (sortBy) {
+    options.sort_by = sortBy;
   }
 
   const { data } = await useStoryblokApi()
@@ -71,10 +82,15 @@ export async function getPost(slug: string): Promise<ISbStory> {
   });
 }
 
-export async function getPages(bySlug?: string, sortBy?: string): Promise<GetStaticPathsResult> {
+export async function getPages(bySlug?: string, sortBy?: string): Promise<GetPageResult> {
+  let page = 1;
+  let pages = 1;
+  const perPage: number = 100;
   const pageOptions: ISbStoriesParams = {
     version: import.meta.env.DEV ? 'draft' : 'published',
     excluding_slugs: 'blog/*',
+    page: page,
+    per_page: perPage,
   };
   if (bySlug) {
     pageOptions.by_slugs = bySlug;
@@ -82,8 +98,21 @@ export async function getPages(bySlug?: string, sortBy?: string): Promise<GetSta
   if (sortBy) {
     pageOptions.sort_by = sortBy;
   }
-  const { data } = await useStoryblokApi()
+  const { data, headers } = await useStoryblokApi()
     .getStories(pageOptions);
+  if (headers.total > perPage) {
+    pages = Math.ceil(headers.total / perPage);
+  }
+
+  while (pages > page) {
+    pageOptions.page = ++page;
+    const result = await useStoryblokApi()
+      .getStories(pageOptions);
+
+    data.stories = { ...data.stories, ...result.data.stories };
+    data.links = { ...data.links, ...result.data.links };
+    data.rels = { ...data.rels, ...result.data.rels };
+  }
 
   const stories = Object.values(data.stories);
 
@@ -92,7 +121,8 @@ export async function getPages(bySlug?: string, sortBy?: string): Promise<GetSta
     return {
       params: {
         slug: fs,
-        path: fs,
+      },
+      props: {
         title: story.name,
         description: story?.content?.description || '',
         image: story?.content?.ogimage?.filename || '',

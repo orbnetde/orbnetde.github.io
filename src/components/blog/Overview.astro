@@ -41,7 +41,7 @@ const breadcrumbs = [{ slug: '', title: "Start"}, {slug: `/blog/page/${page}`, t
           stories.map((post) => (
             <Card
               src={{ src: post.content?.hero.filename }}
-              date={post.published_at || post.created_at}
+              date={post.first_published_at || post.created_at}
               title={post.content.title}
               classes="rounded-md"
               body={post.content.description}

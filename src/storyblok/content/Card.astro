@@ -25,7 +25,7 @@ const { blok } = Astro.props;
 
 const optImage = await loadImage(blok?.image?.filename || '');
 ---
-<div class={'relative group transition border border-white/[0.75] dark:border-black rounded-lg ' + (blok?.classes || '')} {...storyblokEditable(blok)}>
+<div class={'relative group transition border border-black/[0.05] dark:border-black rounded-lg ' + (blok?.classes || '')} {...storyblokEditable(blok)}>
   <div class="after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500"></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {optImage.src !== '' &&

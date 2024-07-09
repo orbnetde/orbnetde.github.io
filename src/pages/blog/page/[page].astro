@@ -12,7 +12,7 @@ interface Props {
 }
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
-  const { data, total } = await getBlogPosts(1, 100);
+  const { data, total } = await getBlogPosts(1, 100, undefined, 'first_published_at:desc');
 
   const perPage = parseInt(String(import.meta.env.BLOG_ITEMS_PER_PAGE));
 

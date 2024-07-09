@@ -166,19 +166,19 @@ export const menuItems: MenuItem[] = [
       {
         name: 'Coaching Software',
         description: 'Perfekt für Coaches und Berater.',
-        href: '/coaching-software-fuer-berater/',
+        href: '/branchen/coaching-software-fuer-berater/',
         icon: 'academic-cap-outline',
       },
       {
         name: 'Handwerker Software',
         description: 'Dein Handwerker Business in der Hosentasche.',
-        href: '/handwerker-software/',
+        href: '/branchen/handwerker-software/',
         icon: 'wrench-screwdriver-outline',
       },
       {
         name: 'Praxis Software',
         description: 'Geeignete Praxissoftware für Therapeuten & Co.',
-        href: '/praxissoftware-arzte-therapeuten/',
+        href: '/branchen/praxissoftware-arzte-therapeuten/',
         icon: 'heart-outline',
       },
     ],

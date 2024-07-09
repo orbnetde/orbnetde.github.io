@@ -2,10 +2,11 @@ import cloneDeep from 'clone-deep';
 import { RichTextSchema } from '@storyblok/astro';
 
 const BlogSchema = cloneDeep(RichTextSchema);
+const isEmailLinkType = (type: string) => type === 'email';
 
 // We don't want the p around our texts.
 BlogSchema.nodes.paragraph = () => {
-  return {  };
+  return {};
 };
 BlogSchema.nodes.list_item = () => {
   return {
@@ -54,7 +55,30 @@ BlogSchema.marks.bold = () => {
       },
     ],
   };
+};
+BlogSchema.marks.link = (node) => {
+  const attrs = { ...node.attrs };
+  const { linktype = 'url' } = node.attrs;
 
-}
+  if (isEmailLinkType(linktype)) {
+    attrs.href = `mailto:${attrs.href}`;
+  }
+
+  if (attrs.anchor) {
+    attrs.href = `${attrs.href}#${attrs.anchor}`;
+    delete attrs.anchor;
+  }
+
+  attrs.class = 'text-primary underline dark:text-primary-400';
+
+  return {
+    tag: [
+      {
+        tag: 'a',
+        attrs: attrs,
+      },
+    ],
+  };
+};
 
 export default BlogSchema;
