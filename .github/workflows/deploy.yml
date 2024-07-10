@@ -20,7 +20,7 @@ jobs:
         uses: withastro/action@v2
         env:
           STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
-          ITEMS_PER_PAGE: 9
+          BLOG_ITEMS_PER_PAGE: 9
           SITE: https://orbnetde.github.io/
   deploy:
     needs: build
