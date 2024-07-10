@@ -104,13 +104,20 @@ module.exports = {
     },
     keyframes: {
       floating: {
-        '0%': { transform: 'translate(0,  0px)' },
-        '50%': { transform: 'translate(35px, 0px)' },
-        '100%': { transform: 'translate(0, -0px)' },
+        '0%': { transform: 'translate(0,  0)' },
+        '50%': { transform: 'translate(35px, 0)' },
+        '100%': { transform: 'translate(0, 0)' },
+      },
+      rising: {
+        '0%': { transform: 'translate(0,  0)' },
+        '30%': { transform: 'translate(5px, 5px)' },
+        '60%': { transform: 'translate(5px, -5px)' },
+        '100%': { transform: 'translate(0, 0)' },
       },
     },
     animation: {
       floating: 'floating 5s ease-in-out infinite',
+      rising: 'rising 5s linear infinite',
     },
   },
   plugins: [],

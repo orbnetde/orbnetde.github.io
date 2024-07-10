@@ -13,7 +13,7 @@ interface Props {
 
 const { blok } = Astro.props;
 ---
-<main {...storyblokEditable(blok)}>
+<main class="bg-white dark:bg-dark"{...storyblokEditable(blok)}>
   {
     (blok.body || []).map((blok: SbBlokData) => (
       <StoryblokComponent blok={blok} />

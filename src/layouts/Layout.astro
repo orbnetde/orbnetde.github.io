@@ -58,13 +58,11 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
     <MyOrbnetJsonLd />
     <OrbnetGmbHJsonLd />
     <WebsiteJsonLd />
-    <BreadcrumbsJsonLd breadcrumbs={breadcrumbs}/>
+    <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
   </head>
   <body id="top">
     <Header />
-    <main class="bg-white dark:bg-dark">
-      <slot />
-    </main>
+    <slot />
     <Footer />
     <BackToTop />
     <style is:global>

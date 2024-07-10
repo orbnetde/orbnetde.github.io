@@ -25,8 +25,8 @@ interface Props {
 const { blok } = Astro.props;
 ---
 <section id="start" class=`relative` {...storyblokEditable(blok)}>
-  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3">
-    <div class="flex flex-col-reverse md:flex-row h-[100dvh] w-full -mt-[50px] pb-[50px] md:mt-[50px] px-6 lg:pt-0 text-white max-w-screen-xl items-center mx-auto gap-8">
+  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3 pt-14">
+    <div class=`flex ${blok?.image?.filename && 'flex-col-reverse md:flex-row'} h-[100dvh] w-full -mt-[50px] pb-[50px] md:mt-[50px] px-6 lg:pt-0 text-white max-w-screen-xl items-center mx-auto gap-8`>
       <div>
         <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold" {...storyblokEditable(blok)}>
           {blok.title}
@@ -45,7 +45,7 @@ const { blok } = Astro.props;
         {blok.cta_link && blok.cta_text &&
           <a
             href={blok.cta_link}
-            class="block w-full tracking-wide text-lg font-semibold text-dark items-center bg-white hover:bg-white/[0.95] dark:bg-primary dark:text-white justify-center px-7 py-4 rounded-lg shadow-md text-center transition duration-500 hover:shadow-xl"
+            class="block w-full tracking-wide text-lg font-semibold text-dark items-center bg-white hover:bg-white/[0.95] dark:bg-primary dark:text-white justify-center px-7 py-3 lg:py-4 rounded-lg shadow-md text-center transition duration-500 hover:shadow-xl"
             {...storyblokEditable(blok)}
           >
             {blok.cta_text}
@@ -56,12 +56,12 @@ const { blok } = Astro.props;
         <Picture
           loading="eager"
           src={blok.image.filename}
-          widths={[500, 400, 300]}
+          widths={[500, 400, 280]}
           inferSize={true}
           alt="orbnet dashboard"
           format="webp"
           quality="high"
-          class=`min-w-[300px] lg:min-w-[400px] xl:min-w-[500px] ${blok.image_classes || ''}`
+          class=`animate-rising min-w-[280px] max-w-[280px] lg:min-w-[400px] lg:max-w-[400px] xl:min-w-[500px] xl:max-w-[500px] ${blok.image_classes || ''}`
         />
       }
     </div>
