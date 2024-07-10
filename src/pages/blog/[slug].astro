@@ -12,6 +12,8 @@ import PopularArticles from '../../components/PopularArticles.astro';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
+export const prerender = true;
+
 export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
   return getStaticBlogPaths(import.meta.env.DEV ? 'draft' : 'published');
 }
@@ -27,7 +29,7 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog', title: 'Blog'
         image={entry.content?.hero?.filename || ''}
         breadcrumbs={breadcrumbs}
 >
-  <section id="start" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
+  <section id="start" class="pt-20 lg:pt-[120px] dark:bg-dark">
     <div class="container max-w-screen-xl">
       <div class="-mx-4 flex flex-wrap justify-center">
         <div class="w-full px-4">

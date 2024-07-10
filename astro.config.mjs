@@ -18,8 +18,8 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  // output: import.meta.env.DEV ? 'server' : 'static',
-  output: 'static',
+  output: import.meta.env.DEV ? 'server' : 'static',
+  // output: 'static',
   // https on local
   vite: {
     plugins: [basicSsl()],
@@ -55,6 +55,17 @@ export default defineConfig({
     '/online-kalender': '/funktionen/terminverwaltung/online-kalender',
     // BLOG
     '/rechnung-auf-englisch-schreiben': '/blog/rechnung-auf-englisch-schreiben',
+    '/rechnung-schreiben-welche-pflichtangaben/': '/blob/rechnung-schreiben-welche-pflichtangaben/',
+    '/die-umsatzsteuer-id-alle-facts/': '/blob/die-umsatzsteuer-id-alle-facts/',
+    '/rechnung-eu-ausland-diese-infos-brauchst-du/': '/blob/rechnung-eu-ausland-diese-infos-brauchst-du/',
+    '/kleinunternehmer-rechnung/': '/blob/kleinunternehmer-rechnung/',
+    '/gobd-leitfaden/': '/blob/gobd-leitfaden/',
+    '/buchhaltung-regeln/': '/blob/buchhaltung-regeln/',
+    '/vorteile-online-steuerberater/': '/blob/vorteile-online-steuerberater/',
+    '/der-jahresabschluss/': '/blob/der-jahresabschluss/',
+    '/euer-2021-selbst-erstellen/': '/blob/euer-2021-selbst-erstellen/',
+    '/einnahmenueberschussrechnung/': '/blob/einnahmenueberschussrechnung/',
+    '/kleinunternehmerregelung/': '/blob/kleinunternehmerregelung/',
   },
   integrations: [
     tailwind(),
@@ -126,7 +137,9 @@ export default defineConfig({
         // Blog
         h2: 'storyblok/blog/H2',
         h3: 'storyblok/blog/H3',
+        h4: 'storyblok/blog/H4',
         image: 'storyblok/blog/Image',
+        InfoBlock: 'storyblok/blog/InfoBlock',
         paragraph: 'storyblok/blog/Paragraph',
         quote: 'storyblok/blog/Quote',
         // Structure
@@ -172,8 +185,8 @@ export default defineConfig({
         },
       },
       // livePreview: import.meta.env.DEV,
-      livePreview: false,
-      bridge: false,
+      livePreview: import.meta.env.DEV,
+      bridge: import.meta.env.DEV,
     }),
   ],
 });

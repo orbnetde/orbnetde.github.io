@@ -1,5 +1,6 @@
 ---
-import { storyblokEditable, renderRichText, type ISbRichtext, type SbRichTextOptions } from '@storyblok/astro';
+import { storyblokEditable, type ISbRichtext, type SbRichTextOptions } from '@storyblok/astro';
+import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
 import type { SbBlokData } from '@storyblok/astro';
 import BlogSchema from '../../content/blog/Schema';
 
@@ -18,15 +19,5 @@ const options: SbRichTextOptions = {
 const { blok } = Astro.props;
 ---
 <div class="py-4 text-dark dark:text-white" {...storyblokEditable(blok)}>
-  <Fragment set:html={renderRichText(blok.Text, options)} />
+  <RichTextRenderer richTextData={blok.Text} richTextOptions={options}/>
 </div>
-<style>
-    li {
-        @apply bg-primary my-3;
-    }
-
-    a,
-    a:visited {
-        @apply text-primary dark:text-primary-400 underline;
-    }
-</style>

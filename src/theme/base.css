@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-5xl font-semibold leading-tight text-dark dark:text-white;
+    }
+
+    h2 {
+        @apply text-2xl font-semibold leading-tight text-dark dark:text-white;
+    }
+
+    h3 {
+        @apply text-xl font-semibold leading-tight text-dark dark:text-white;
+    }
+}

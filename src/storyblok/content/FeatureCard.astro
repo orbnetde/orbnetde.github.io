@@ -16,7 +16,7 @@ interface Props {
 const { blok } = Astro.props;
 ---
 <div class="relative group transition border border-white/[0.5] dark:border-black rounded-2xl" {...storyblokEditable(blok)}>
-  <div class="after:rounded-lg after:absolute after:blur-sm after:opacity-20 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500"></div>
+  <div class="card-over"></div>
   <div class="relative top-0 left-0 flex py-6 gap-4">
     <div class="w-1/6">
       <div class="flex bg-primary-100 dark:bg-dark items-center justify-center rounded-md w-8 h-8 ml-6">
@@ -40,6 +40,10 @@ const { blok } = Astro.props;
 </div>
 
 <style>
+    .card-over {
+        @apply after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500;
+    }
+
     .card-link::after {
         @apply absolute top-0 left-0 right-0 bottom-0 text-dark-4;
         content: '';

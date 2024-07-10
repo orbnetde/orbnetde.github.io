@@ -11,11 +11,12 @@ interface Props {
   stories: ISbStoryData[]
 }
 
+export const prerender = true;
+
 export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
   const { data, total } = await getBlogPosts(1, 100, undefined, 'first_published_at:desc');
 
   const perPage = parseInt(String(import.meta.env.BLOG_ITEMS_PER_PAGE));
-
   const pagePath: GetStaticPathsItem[] = [];
   let pages: number = Math.ceil(total / perPage);
   if (pages <= 0) {
@@ -40,4 +41,4 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult | Response>
 }
 const { page, total, stories } = Astro.props;
 ---
-<Overview page={page} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={stories} />
+<Overview page={page} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={stories || []} />

@@ -2,7 +2,6 @@ import cloneDeep from 'clone-deep';
 import { RichTextSchema } from '@storyblok/astro';
 
 const BlogSchema = cloneDeep(RichTextSchema);
-const isEmailLinkType = (type: string) => type === 'email';
 
 // We don't want the p around our texts.
 BlogSchema.nodes.paragraph = () => {
@@ -60,7 +59,7 @@ BlogSchema.marks.link = (node) => {
   const attrs = { ...node.attrs };
   const { linktype = 'url' } = node.attrs;
 
-  if (isEmailLinkType(linktype)) {
+  if (linktype === 'email') {
     attrs.href = `mailto:${attrs.href}`;
   }
 
@@ -76,6 +75,7 @@ BlogSchema.marks.link = (node) => {
   if (attrs.href?.includes("http") && !attrs.href?.includes("orbnet.de")) {
     attrs.rel = 'nofollow noopener';
     attrs.target = '_blank';
+    attrs.class += ' external-link';
   }
 
   return {

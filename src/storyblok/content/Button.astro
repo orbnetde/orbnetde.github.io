@@ -24,7 +24,7 @@ if (useUrl.at(0) !== '/' && !useUrl.includes('http')) {
 }
 ---
 <a href={useUrl}
-   class=`py-3 px-7 rounded-md inline-block transition duration-500 ${blok?.classes || ''}` {...storyblokEditable(blok)}
+   class=`py-3 px-7 rounded-md inline-block transition duration-500 ${(blok?.classes?.includes('bg-success') ? 'bg-success-700 text-white hover:bg-success-900' : 'bg-primary text-white hover:bg-secondary dark:bg-primary-400') || ''}` {...storyblokEditable(blok)}
 >
   {blok.text}
 </a>

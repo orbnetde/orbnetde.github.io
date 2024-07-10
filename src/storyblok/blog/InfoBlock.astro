@@ -1,0 +1,31 @@
+---
+import { type SbBlokData, type ISbRichtext, type SbRichTextOptions, storyblokEditable } from '@storyblok/astro';
+import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
+import BlogSchema from '../../content/blog/Schema';
+
+interface InfoBlok extends SbBlokData {
+  title?: string,
+  text: ISbRichtext
+}
+
+interface Props {
+  blok: InfoBlok,
+}
+
+const options: SbRichTextOptions = {
+  schema: BlogSchema,
+};
+
+const { blok } = Astro.props;
+---
+<div class="my-8 bg-primary text-white dark:bg-dark-3 dark:text-white py-6 px-4 rounded-xl info-box" {...storyblokEditable(blok)}>
+  {blok?.title && <strong class="block mb-2">{blok.title}</strong>}
+
+  <RichTextRenderer richTextData={blok.text} richTextOptions={options} />
+</div>
+<style is:global>
+  .info-box a,
+  .info-box a:visited {
+      @apply text-white;
+  }
+</style>
