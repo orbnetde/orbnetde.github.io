@@ -13,7 +13,7 @@ interface Props {
 
 const { page, total, stories } = Astro.props;
 const title: string = (page === 1 ? 'Blog' : `Blog | Seite ${page}`);
-const breadcrumbs = [{ slug: '', title: "Start"}, {slug: `/blog/page/${page}`, title: title}];
+const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: `blog/page/${page}`, title: title }];
 ---
 <Layout
   description=""
@@ -32,7 +32,7 @@ const breadcrumbs = [{ slug: '', title: "Start"}, {slug: `/blog/page/${page}`, t
             <p class="mb-5 text-base text-body-color dark:text-dark-6">
               Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business. Zusätzlich erfahren Sie die neuesten Updates rund um orbnet.de
             </p>
-            <Breadcrumbs breadcrumbs={breadcrumbs}/>
+            <Breadcrumbs breadcrumbs={breadcrumbs} />
           </div>
         </div>
       </div>
