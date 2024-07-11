@@ -54,7 +54,7 @@ jobs:
       - name: Deploy to Server
         id: deployment-server
         run: |
-          scp -v -r -p ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
+          scp -vr -P ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
             ~/dist/ \
             ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }}:${{ secrets.RELEASE_PATH }}
 
