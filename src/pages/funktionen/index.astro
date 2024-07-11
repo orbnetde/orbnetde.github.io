@@ -9,7 +9,7 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen', name: 'Funkti
 ---
 <Layout title="Funktionen"
         description="Alle Funktionen von orbnet auf einen Blick."
-        canonical={new URL('/funktionen', Astro.site)}
+        canonical={new URL('/funktionen/', Astro.site)}
         breadcrumbs={breadcrumbs}
 >
   <section class="relative py-12 lg:pb-16 pt-[120px] bg-white dark:bg-dark">
@@ -24,7 +24,7 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen', name: 'Funkti
             {
               title: (page?.props?.published === true ? '' : '(DRAFT) ') + String(page?.props?.title || ''),
               body: String(page?.props?.description || ''),
-              link: '/' + page.params.slug,
+              link: '/' + page.params.slug + '/',
               image: { filename: String(page?.props?.image || '') },
             }
           } />

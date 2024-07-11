@@ -9,7 +9,7 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltun
 ---
 <Layout title="Buchhaltung"
         description="Alle Funktionen der Terminverwaltung auf einen Blick."
-        canonical={new URL('/funktionen/terminverwaltung', Astro.site)}
+        canonical={new URL('/funktionen/terminverwaltung/', Astro.site)}
         breadcrumbs={breadcrumbs}
 >
   <section class="relative py-12 lg:pb-16 pt-[120px]">
@@ -25,7 +25,7 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltun
               {
                 title: String(page?.props?.title || ''),
                 body: String(page?.props?.description || ''),
-                link: '/' + page.params.slug,
+                link: '/' + page.params.slug + '/',
                 image: {filename: String(page?.props?.image || '')}
               }
             } />
