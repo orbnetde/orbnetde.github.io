@@ -13,7 +13,7 @@ const env = loadEnv('', process.cwd(), ['STORYBLOK']);
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://orbnetde.github.io/',
+  site: 'https://www.orbnet.de/',
   // Currently only works in chrome and safari.
   prefetch: {
     prefetchAll: true,
