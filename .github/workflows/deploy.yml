@@ -60,7 +60,7 @@ jobs:
 
           ssh -p ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
             ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }} \
-            "rm -rf ${{ secrets.RELEASE_PATH }} && tar -xvf /tmp/artifact.tar -C ${{ secrets.RELEASE_PATH }}"
+            "rm -rf ${{ secrets.RELEASE_PATH }} && mkdir -p ${{ secrets.RELEASE_PATH }} && tar -xvf /tmp/artifact.tar -C ${{ secrets.RELEASE_PATH }}"
 
       - name: Remove key
         run: |
