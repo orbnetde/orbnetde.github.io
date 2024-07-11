@@ -42,7 +42,7 @@ export const menuItems: MenuItem[] = [
       {
         name: 'Terminverwaltung',
         description: 'Kein lästiges E-Mail Ping-Pong oder hunderte Anrufe am Tag mehr.',
-        href: '/funktionen/terminvereinbarung/',
+        href: '/funktionen/terminverwaltung/',
         icon: 'calendar-days-outline',
         children: [
           {
@@ -169,7 +169,7 @@ export const menuItems: MenuItem[] = [
       },
       {
         name: 'On-Boarding buchen',
-        href: 'https://www.orbnet.de/p/click/onboarding',
+        href: 'https://www.orbnet.de/p/click/onboarding/',
         icon: 'chat-bubble-left-ellipsis-outline',
       },
     ],
@@ -205,7 +205,7 @@ export const menuItems: MenuItem[] = [
       },
       {
         name: 'On-Boarding buchen',
-        href: 'https://www.orbnet.de/p/click/onboarding',
+        href: 'https://www.orbnet.de/p/click/onboarding/',
         external: true,
         icon: 'chat-bubble-left-ellipsis-outline',
       },
