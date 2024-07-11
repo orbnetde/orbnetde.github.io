@@ -49,14 +49,17 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: ${{ steps.astro-build.outputs.artifact-id }}
-          path: ~/dist
+          path: ~/artifacts
 
       - name: Deploy to Server
         id: deployment-server
         run: |
+          mkdir -p ~/dist
+          tar -xvf ~/artifacts/github-pages/artifact.tar -C ~/dist
           scp -vr -P ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
             ~/dist/ \
             ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }}:${{ secrets.RELEASE_PATH }}
+          rm -rf ~/dist ~/artifacts
 
       - name: Remove key
         run: |
