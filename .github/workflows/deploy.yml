@@ -17,6 +17,7 @@ jobs:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
       - name: Install, build, and upload your site
+        id: astro-build
         uses: withastro/action@v2
         env:
           STORYBLOK_TOKEN: ${{ secrets.STORYBLOK_TOKEN }}
@@ -32,3 +33,25 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Setup Key
+        id: setup-key
+        run: |
+          env
+          mkdir -p ~/.ssh
+          echo "${{ secrets.RELEASE_KEY }}" > ~/.ssh/id_rsa
+          chmod 0600 ~/.ssh/id_rsa
+          ssh-keyscan -p {{ secrets.RELEASE_PORT }} ${{ secrets.RELEASE_HOST }} >> ~/.ssh/known_hosts
+      - name: Download Page Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ steps.astro-build.outputs.artifact-id }}
+          path: /dist
+      - name: Deploy to Server
+        id: deployment-server
+        run: |
+          scp -v -r -p ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
+            /dist/ \
+            ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }}:${{ secrets.RELEASE_PATH }}
+      - name: Remove key
+        run: |
+          rm -rf ~/.ssh
