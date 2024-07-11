@@ -17,6 +17,8 @@ const options: SbRichTextOptions = {
 };
 
 const { blok } = Astro.props;
+
+// console.dir(blok.Text, {depth: null});
 ---
 <div class="py-4 text-dark dark:text-white" {...storyblokEditable(blok)}>
   <RichTextRenderer richTextData={blok.Text} richTextOptions={options}/>
