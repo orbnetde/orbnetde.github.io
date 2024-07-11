@@ -54,12 +54,13 @@ jobs:
       - name: Deploy to Server
         id: deployment-server
         run: |
-          mkdir -p ~/dist
-          tar -xvf ~/artifacts/github-pages/artifact.tar -C ~/dist
-          scp -vr -P ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
-            ~/dist/ \
-            ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }}:${{ secrets.RELEASE_PATH }}
-          rm -rf ~/dist ~/artifacts
+          scp -C -P ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
+            ~/artifacts/github-pages/artifact.tar \
+            ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }}:/tmp
+
+          ssh -p ${{ secrets.RELEASE_PORT }} -o StrictHostKeyChecking=no \
+            ${{ secrets.RELEASE_USER }}@${{ secrets.RELEASE_HOST }} \
+            "tar -xvf /tmp/artifacts.tar -C ${{ secrets.RELEASE_PATH }}"
 
       - name: Remove key
         run: |
