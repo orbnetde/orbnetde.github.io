@@ -6,6 +6,7 @@ interface GetPageResult extends GetStaticPathsResult {
     title?: string,
     description?: string,
     image?: string,
+    published: boolean,
   };
 }
 
@@ -126,6 +127,7 @@ export async function getPages(bySlug?: string, sortBy?: string): Promise<GetPag
         title: story.name,
         description: story?.content?.description || '',
         image: story?.content?.ogimage?.filename || '',
+        published: story?.published_at !== null || false,
       },
     };
   });

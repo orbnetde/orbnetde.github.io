@@ -1,4 +1,5 @@
 ---
+import {Image} from 'astro:assets';
 import { storyblokEditable, type ISbRichtext, type SbBlokData } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
 import { loadImage } from '../../utils/get-image';
@@ -29,7 +30,9 @@ const optImage = await loadImage(blok?.image?.filename || '');
   <div class="card-over"></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {optImage.src !== '' &&
-      <div class="rounded-t-lg h-[280px] w-full bg-center bg-cover transition duration-500 group-hover:scale-105" style={`background-image: url(${optImage.src})`}></div>
+      <div class="rounded-t-lg h-[280px] w-full transition duration-500 group-hover:scale-105">
+        <Image src={optImage.src} height="280" width="400" alt=`${blok?.title || ''} image` class="object-cover max-h-[280px] w-full" />
+      </div>
     }
     <div class="p-4">
       {blok?.title && <h4 class={'text-xl text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + blok?.titleClasses}>{blok.title}</h4>}

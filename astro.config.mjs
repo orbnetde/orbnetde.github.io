@@ -18,8 +18,8 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
-  output: import.meta.env.DEV ? 'server' : 'static',
-  // output: 'static',
+  // output: import.meta.env.DEV ? 'server' : 'static',
+  output: 'static',
   // https on local
   vite: {
     plugins: [basicSsl()],
@@ -184,8 +184,7 @@ export default defineConfig({
           type: 'memory',
         },
       },
-      // livePreview: import.meta.env.DEV,
-      livePreview: import.meta.env.DEV,
+      livePreview: false,
       bridge: import.meta.env.DEV,
     }),
   ],

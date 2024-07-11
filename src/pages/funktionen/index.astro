@@ -23,7 +23,7 @@ const breadcrumbs = await getBreadcrumb({full_slug: 'funktionen', name: "Funktio
           {pages.map(page => (
             <Card blok={
               {
-                title: String(page?.props?.title || ''),
+                title: (page?.props?.published === true ? '' : '(DRAFT) ') + String(page?.props?.title || ''),
                 body: String(page?.props?.description || ''),
                 link: '/' + page.params.slug,
                 image: { filename: String(page?.props?.image || '') },

@@ -46,9 +46,9 @@ export const menuItems: MenuItem[] = [
         icon: 'calendar-days-outline',
         children: [
           {
-            name: 'Google, Outlook and iCal Integration',
+            name: 'Google, Office36, Apple und CalDAV Integration',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/terminverwaltung/google-outlook-office365-apple-und-ical-integration/',
+            href: '/funktionen/terminverwaltung/google-outlook-office36-apple-und-caldav-integration/',
             icon: 'ic--baseline-integration-instructions',
           },
           {
@@ -57,24 +57,24 @@ export const menuItems: MenuItem[] = [
             href: '/funktionen/terminverwaltung/website-integration/',
             icon: 'fluent--web-asset-24-filled',
           },
-          {
-            name: 'Buchungsmanagement',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/terminverwaltung/buchungsmanagement/',
-            icon: 'basil--book-check-solid',
-          },
+          // {
+          //   name: 'Buchungsmanagement',
+          //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+          //   href: '/funktionen/terminverwaltung/buchungsmanagement/',
+          //   icon: 'basil--book-check-solid',
+          // },
           {
             name: 'Zahlungsanbieter Integration',
             description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
             href: '/funktionen/terminverwaltung/zahlungsanbieter-integration/',
             icon: 'fluent--payment-24-filled',
           },
-          {
-            name: 'Online und Offline Workshops',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/terminverwaltung/online-und-offline-workshops/',
-            icon: 'mingcute--video-fill',
-          },
+          // {
+          //   name: 'Online und Offline Workshops',
+          //   description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+          //   href: '/funktionen/terminverwaltung/online-und-offline-workshops/',
+          //   icon: 'mingcute--video-fill',
+          // },
         ],
       },
       {
