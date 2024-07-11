@@ -25,8 +25,8 @@ interface Props {
 const { blok } = Astro.props;
 ---
 <section id="start" class=`relative` {...storyblokEditable(blok)}>
-  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3 pt-14">
-    <div class=`flex ${blok?.image?.filename && 'flex-col-reverse md:flex-row'} h-[100dvh] w-full -mt-[50px] pb-[50px] md:mt-[50px] px-6 lg:pt-0 text-white max-w-screen-xl items-center mx-auto gap-8`>
+  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3 pt-24 sm:pt-16">
+    <div class=`flex ${blok?.image?.filename && 'flex-col-reverse md:flex-row'} h-[100dvh] w-full pb-[50px] px-6 text-white max-w-screen-xl items-center mx-auto gap-8`>
       <div>
         <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold" {...storyblokEditable(blok)}>
           {blok.title}

@@ -47,15 +47,15 @@ const optLines = await getImage({ src: lines, format: 'svg' });
               <span class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
                 {price.users} Benutzer
               </span>
-              <span aria-label="Monatlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
-              <span aria-label="Jährlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</span>
+              <span class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
+              <span class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</span>
               <span class="inline-block border-b border-b-gray-300 w-full">&nbsp;</span>
               <span class="flex flex-col gap-2 my-6">
               {price.features.map((item) => (
-                <p class={`text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                <span class={`text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
                   {item.amount !== true && item.amount !== false && item.amount}
                   {item.title}
-                </p>
+                </span>
               ))}
               </span>
               <a href={price.purchaseLink}

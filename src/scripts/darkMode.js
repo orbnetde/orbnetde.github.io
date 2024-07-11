@@ -9,19 +9,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initial Theme Check
   const themeCheck = () => {
     if (userTheme === 'dark') {
-      document.documentElement.classList.add('dark');
-    } else if (userTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      if (systemTheme) {
-        document.documentElement.classList.add('dark');
-      } else {
-        document.documentElement.classList.remove('dark');
-      }
+      return document.documentElement.classList.add('dark');
     }
+    if (userTheme === 'light') {
+      return document.documentElement.classList.remove('dark');
+    }
+    if (systemTheme) {
+      return document.documentElement.classList.add('dark');
+    }
+    document.documentElement.classList.remove('dark');
   };
 
-  // Manual Theme Switch
+// Manual Theme Switch
   const themeSwitch = () => {
     if (document.documentElement.classList.contains('dark')) {
       document.documentElement.classList.remove('dark');
@@ -34,11 +33,12 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollBy({ top: -1 });
   };
 
-  // call theme switch on clicking buttons
+// call theme switch on clicking buttons
   themeSwitcher?.addEventListener('click', () => {
     themeSwitch();
   });
 
-  // invoke theme check on initial load
+// invoke theme check on initial load
   themeCheck();
-});
+})
+;

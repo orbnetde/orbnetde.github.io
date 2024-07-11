@@ -13,32 +13,32 @@ export const menuItems: MenuItem[] = [
   {
     name: 'Funktionen',
     children: [
-      {
-        name: 'Kundenverwaltung',
-        description: 'Immer deine Kundendaten im Blick, selbst wenn du unterwegs bist.',
-        href: '/funktionen/kundenverwaltung/',
-        icon: 'users-outline',
-        children: [
-          {
-            name: 'Lead Management',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/kundenverwaltung/lead-management/',
-            icon: 'fluent--arrow-growth-24-filled',
-          },
-          {
-            name: 'Notizen',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/kundenverwaltung/notizen/',
-            icon: 'fluent--note-16-filled',
-          },
-          {
-            name: 'Lead Tagging',
-            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
-            href: '/funktionen/kundenverwaltung/lead-tagging/',
-            icon: 'fluent--tag-24-filled',
-          },
-        ],
-      },
+      // {
+      //   name: 'Kundenverwaltung',
+      //   description: 'Immer deine Kundendaten im Blick, selbst wenn du unterwegs bist.',
+      //   href: '/funktionen/kundenverwaltung/',
+      //   icon: 'users-outline',
+      //   children: [
+      //     {
+      //       name: 'Lead Management',
+      //       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+      //       href: '/funktionen/kundenverwaltung/lead-management/',
+      //       icon: 'fluent--arrow-growth-24-filled',
+      //     },
+      //     {
+      //       name: 'Notizen',
+      //       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+      //       href: '/funktionen/kundenverwaltung/notizen/',
+      //       icon: 'fluent--note-16-filled',
+      //     },
+      //     {
+      //       name: 'Lead Tagging',
+      //       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+      //       href: '/funktionen/kundenverwaltung/lead-tagging/',
+      //       icon: 'fluent--tag-24-filled',
+      //     },
+      //   ],
+      // },
       {
         name: 'Terminverwaltung',
         description: 'Kein lästiges E-Mail Ping-Pong oder hunderte Anrufe am Tag mehr.',
@@ -138,6 +138,20 @@ export const menuItems: MenuItem[] = [
             icon: 'material-symbols--partner-exchange-outline-rounded',
           },
         ]
+      },
+      {
+        name: 'Alle Funktionen',
+        description: 'Immer deine Kundendaten im Blick, selbst wenn du unterwegs bist.',
+        href: '/funktionen/',
+        icon: 'users-outline',
+        children: [
+          {
+            name: 'Zur Übersicht',
+            description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut et massa mi.',
+            href: '/funktionen/',
+            icon: 'fluent--arrow-growth-24-filled',
+          },
+        ],
       },
     ],
     actions: [
