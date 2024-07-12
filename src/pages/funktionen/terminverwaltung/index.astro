@@ -7,7 +7,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 const pages = await getPages('funktionen/terminverwaltung/*', 'name:asc');
 const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltung', name: 'Terminverwaltung' });
 ---
-<Layout title="Buchhaltung"
+<Layout title="Terminverwaltung"
         description="Alle Funktionen der Terminverwaltung auf einen Blick."
         canonical={new URL('/funktionen/terminverwaltung/', Astro.site)}
         breadcrumbs={breadcrumbs}

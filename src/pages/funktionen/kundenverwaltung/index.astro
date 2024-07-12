@@ -7,7 +7,7 @@ import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 const pages = await getPages('funktionen/kundenverwaltung/*', 'name:asc');
 const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/kundenverwaltung', name: 'Kundenverwaltung' });
 ---
-<Layout title="Buchhaltung"
+<Layout title="Kundenverwaltung"
         description="Alle Funktionen der Kundenverwaltung auf einen Blick."
         canonical={new URL('/funktionen/kundenverwaltung/', Astro.site)}
         breadcrumbs={breadcrumbs}

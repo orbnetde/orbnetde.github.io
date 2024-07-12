@@ -3,6 +3,7 @@ import { loadEnv } from 'vite';
 import basicSsl from '@vitejs/plugin-basic-ssl';
 import alpinejs from '@astrojs/alpinejs';
 import compress from 'astro-compress';
+import compressor from 'astro-compressor';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
@@ -34,14 +35,6 @@ export default defineConfig({
   redirects: {},
   integrations: [
     tailwind(),
-    compress({
-      ext: '.br',
-      algorithm: 'brotliCompress',
-    }),
-    compress({
-      ext: '.gz',
-      algorithm: 'gzip',
-    }),
     sitemap(),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {
@@ -152,5 +145,16 @@ export default defineConfig({
       livePreview: false,
       bridge: import.meta.env.DEV,
     }),
+    // keep compress on the end
+    // compress({
+    //   ext: '.br',
+    //   algorithm: 'brotliCompress',
+    // }),
+    // compress({
+    //   ext: '.gz',
+    //   algorithm: 'gzip',
+    // }),
+    compress(),
+    compressor({ gzip: true, brotli: true }),
   ],
 });
