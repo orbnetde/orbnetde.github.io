@@ -12,7 +12,7 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
     <ul class="-mx-1 flex items-center">
       {current !== 1 && (
         <li class="px-1">
-          <a href="/blog/page/1/"
+          <a href="/blog/"
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
           <span>
             <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
@@ -26,13 +26,13 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
       )}
       {pages.map(page => (
         <li class="px-1">
-          <a href=`/blog/page/${page}/`
+          <a href={page === 1 ? '/blog/' : `/blog/page/${page}/`}
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             {page}
           </a>
         </li>
       ))}
-      {current !== total && (
+      {current !== total && total !== 1 && (
         <li class="px-1">
           <a href=`/blog/page/${total}/`
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
