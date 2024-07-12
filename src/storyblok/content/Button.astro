@@ -19,8 +19,11 @@ interface Props {
 const { blok } = Astro.props;
 
 let useUrl = String(blok.href.cached_url);
-if (useUrl.at(0) !== '/' && !useUrl.includes('http')) {
+if (!useUrl.startsWith('/') && !useUrl.includes('http')) {
   useUrl = `/${useUrl}`;
+}
+if (!useUrl.endsWith('/') && !useUrl.includes('http')) {
+  useUrl = `${useUrl}/`;
 }
 ---
 <a href={useUrl}
