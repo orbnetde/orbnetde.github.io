@@ -25,7 +25,7 @@ const posts = await getBlogPosts(1, 4, undefined, 'first_published_at:desc');
                class="h-20 w-full max-w-[80px] overflow-hidden rounded-full mr-5"
         />
         <div class="w-full">
-          <a href=`/${post.full_slug}`>
+          <a href=`/${post.full_slug}/`>
             <span class="mb-1 inline-block text-lg font-medium leading-snug text-dark dark:text-dark-6 hover:text-primary dark:hover:text-primary lg:text-base xl:text-lg">
               {post.content.title}
             </span>
