@@ -73,7 +73,7 @@ BlogSchema.marks.link = (node) => {
   delete attrs.target;
   delete attrs.linktype;
   if (attrs.href?.includes('http') && !attrs.href?.includes('orbnet.de')) {
-    attrs.rel = 'nofollow noopener';
+    attrs.rel = 'noopener noreferrer';
     attrs.target = '_blank';
     attrs.class += ' external-link';
   }
