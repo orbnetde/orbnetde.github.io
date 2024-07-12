@@ -20,10 +20,10 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult | Response>
   const pagePath: GetStaticPathsItem[] = [];
   let pages: number = Math.ceil(total / perPage);
   if (pages <= 0) {
-    pages = 1;
+    pages = 2;
   }
 
-  for (let i: number = 1; i <= pages; i++) {
+  for (let i: number = 2; i <= pages; i++) {
     pagePath.push({
       params: { page: String(i), path: String(i) },
       props: {
