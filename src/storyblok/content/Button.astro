@@ -22,7 +22,13 @@ let useUrl = String(blok.href.cached_url);
 if (!useUrl.startsWith('/') && !useUrl.includes('http')) {
   useUrl = `/${useUrl}`;
 }
-if (!useUrl.endsWith('/') && !useUrl.includes('http')) {
+
+if (
+  !useUrl.endsWith('/') &&
+  !useUrl.includes('http') &&
+  useUrl.slice(-4).at(0) !== '.' &&
+  useUrl.slice(-3).at(0) !== '.'
+) {
   useUrl = `${useUrl}/`;
 }
 ---
