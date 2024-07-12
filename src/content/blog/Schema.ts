@@ -80,6 +80,9 @@ BlogSchema.marks.link = (node) => {
   if (!attrs.href?.includes('http') && !attrs.href?.startsWith('/')) {
     attrs.href = '/' + attrs.href;
   }
+  if (!attrs.href?.includes('http') && !attrs.href?.endsWith('/')) {
+    attrs.href += '/';
+  }
 
   return {
     tag: [

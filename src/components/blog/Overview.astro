@@ -12,12 +12,12 @@ interface Props {
 }
 
 const { page, total, stories } = Astro.props;
-const title: string = (page === 1 ? 'Blog' : `Blog | Seite ${page}`);
+const title: string = (page === 1 ? 'Blog' : `Blog - Seite ${page}`);
 const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: `blog/page/${page}`, title: title }];
 ---
 <Layout
-  description=""
   title={title}
+  description=`Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business. Blog - Seite ${page}.`
   canonical={new URL(`/blog/page/${page}/`, Astro.site)}
   breadcrumbs={breadcrumbs}
 >
@@ -29,8 +29,11 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: `blog/page/${page}`, 
             <h1 class="mb-4 text-3xl font-semibold text-dark dark:text-white sm:text-4xl md:text-[40px] md:leading-[1.2]">
               {title}
             </h1>
+            <h2 class="mb-4 text-xl font-semibold text-dark dark:text-white">
+              Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business.
+            </h2>
             <p class="mb-5 text-base text-body-color dark:text-dark-6">
-              Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business. Zusätzlich erfahren Sie die neuesten Updates rund um orbnet.de
+              Zusätzlich erfahren Sie die neuesten Updates rund um orbnet.de
             </p>
             <Breadcrumbs breadcrumbs={breadcrumbs} />
           </div>

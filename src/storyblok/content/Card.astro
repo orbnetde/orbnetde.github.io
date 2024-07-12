@@ -1,7 +1,8 @@
 ---
-import { storyblokEditable, type ISbRichtext, type SbBlokData } from '@storyblok/astro';
+import { storyblokEditable, type ISbRichtext, type SbBlokData, type SbRichTextOptions } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
 import { loadImage } from '../../utils/get-image';
+import BlogSchema from '../../content/blog/Schema';
 
 interface Image extends SbBlokData {
   filename: string;
@@ -21,6 +22,10 @@ interface Props {
   blok: Card;
 }
 
+const options: SbRichTextOptions = {
+  schema: BlogSchema,
+};
+
 const { blok } = Astro.props;
 
 const optImage = await loadImage(blok?.image?.filename || '');
@@ -36,12 +41,12 @@ const optImage = await loadImage(blok?.image?.filename || '');
       <div class={'text-dark-3 dark:text-white ' + blok?.bodyClasses}>
         {blok.body &&
           (blok.body?.type ?
-            <RichTextRenderer richTextData={blok.body} /> : blok.body)
+            <RichTextRenderer richTextData={blok.body} richTextOptions={options} /> : blok.body)
         }
       </div>
     </div>
   </div>
-  {blok?.link && <a href={blok.link} aria-label="Link zu mehr Informationen zu diesem Thema" class="card-link" />}
+  {blok?.link && <a href={blok.link} aria-label="Link zu mehr Informationen zu diesem Thema" title="Link zu mehr Informationen zu diesem Thema" class="card-link" />}
 </div>
 
 <style>

@@ -1,9 +1,9 @@
 ---
 import { Image } from 'astro:assets';
 
-import { storyblokEditable } from '@storyblok/astro';
+import { type ISbRichtext, type SbBlokData, type SbRichTextOptions, storyblokEditable } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
-import type { ISbRichtext, SbBlokData } from '@storyblok/astro';
+import BlogSchema from '../../content/blog/Schema';
 
 interface MiniCardImage extends SbBlokData {
   filename: string;
@@ -27,6 +27,10 @@ interface Props {
   blok: MiniCard;
 }
 
+const options: SbRichTextOptions = {
+  schema: BlogSchema,
+};
+
 const { blok } = Astro.props;
 ---
 <div class=`flex flex-col ${(blok.classes || '')}` {...storyblokEditable(blok)}>
@@ -36,7 +40,7 @@ const { blok } = Astro.props;
   <div class="p-4">
     {blok.title && <h4 class={'text-xl text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + blok.titleClasses}>{blok.title}</h4>}
     <div class={'text-dark-3 dark:text-white ' + blok.bodyClasses}>
-      <RichTextRenderer richTextData={blok.body} />
+      <RichTextRenderer richTextData={blok.body} richTextOptions={options} />
     </div>
   </div>
 </div>
