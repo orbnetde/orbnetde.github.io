@@ -13,4 +13,8 @@ if (!tag) {
 }
 const {data, total} = await getBlogPosts(1, import.meta.env.BLOG_ITEMS_PER_PAGE, String(tag));
 ---
-<Overview page={1} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={data.stories} />
+<Overview page={1}
+          total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)}
+          stories={data.stories}
+          url=`tags/${tag}`
+/>

@@ -8,13 +8,13 @@ import Breadcrumbs from '../Breadcrumbs.astro';
 interface Props {
   page: number,
   total: number,
-  stories: ISbStoryData[]
+  stories: ISbStoryData[],
+  url: string,
 }
 
-const { page, total, stories } = Astro.props;
+const { page, total, stories, url } = Astro.props;
 const title: string = (page === 1 ? 'Blog' : `Blog - Seite ${page}`);
 // Set page 1 to blog only, because this is the url in the sitemap.
-const url: string = page === 1 ? 'blog' : `blog/page/${page}`;
 const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: url, title: title }];
 ---
 <Layout

@@ -8,7 +8,7 @@ import { getBlogPosts } from '../../../utils/storyblok';
 interface Props {
   page: number,
   total: number,
-  stories: ISbStoryData[]
+  stories: ISbStoryData[],
 }
 
 export const prerender = true;
@@ -41,4 +41,8 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult | Response>
 }
 const { page, total, stories } = Astro.props;
 ---
-<Overview page={page} total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)} stories={stories || []} />
+<Overview page={page}
+          total={Math.ceil(total / import.meta.env.BLOG_ITEMS_PER_PAGE)}
+          stories={stories || []}
+          url=`blog/page/${page}`
+/>
