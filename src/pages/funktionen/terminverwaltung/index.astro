@@ -5,7 +5,7 @@ import Card from '../../../storyblok/content/Card.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 const pages = await getPages('funktionen/terminverwaltung/*', 'name:asc');
-const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltung', name: 'Terminverwaltung' });
+const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltung/', name: 'Terminverwaltung' });
 ---
 <Layout title="Terminverwaltung"
         description="Alle Funktionen der Terminverwaltung auf einen Blick."

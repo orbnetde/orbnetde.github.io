@@ -5,7 +5,7 @@ import Card from '../../../storyblok/content/Card.astro';
 import Breadcrumbs from '../../../components/Breadcrumbs.astro';
 
 const pages = await getPages('funktionen/buchhaltung/*', 'name:asc');
-const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/buchhaltung', name: 'Buchhaltung' });
+const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/buchhaltung/', name: 'Buchhaltung' });
 ---
 <Layout title="Buchhaltung"
         description="Alle Buchhaltungsfunktionen auf einen Blick."

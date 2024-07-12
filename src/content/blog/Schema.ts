@@ -83,6 +83,10 @@ BlogSchema.marks.link = (node) => {
   if (!attrs.href?.includes('http') && !attrs.href?.endsWith('/')) {
     attrs.href += '/';
   }
+  if (!attrs?.title) {
+    attrs.title = "Mehr Informationen zu: " + attrs.href;
+    attrs.ariaLabel = attrs.title;
+  }
 
   return {
     tag: [

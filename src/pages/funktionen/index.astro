@@ -5,7 +5,7 @@ import Card from '../../storyblok/content/Card.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 
 const pages = await getPages('funktionen/*', 'name:asc');
-const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen', name: 'Funktionen' });
+const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/', name: 'Funktionen' });
 ---
 <Layout title="Funktionen"
         description="Alle Funktionen von orbnet auf einen Blick."

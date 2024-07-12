@@ -146,15 +146,21 @@ export default defineConfig({
       bridge: import.meta.env.DEV,
     }),
     // keep compress on the end
-    // compress({
-    //   ext: '.br',
-    //   algorithm: 'brotliCompress',
-    // }),
-    // compress({
-    //   ext: '.gz',
-    //   algorithm: 'gzip',
-    // }),
     compress(),
-    compressor({ gzip: true, brotli: true }),
+    compressor({
+      gzip: true,
+      brotli: true,
+      fileExtensions: [
+        '.cjs',
+        '.css',
+        '.html',
+        '.js',
+        '.mjs',
+        '.pdf',
+        '.svg',
+        '.txt',
+        '.xml',
+      ],
+    }),
   ],
 });
