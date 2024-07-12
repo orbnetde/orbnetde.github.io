@@ -13,12 +13,14 @@ interface Props {
 
 const { page, total, stories } = Astro.props;
 const title: string = (page === 1 ? 'Blog' : `Blog - Seite ${page}`);
-const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: `blog/page/${page}`, title: title }];
+// Set page 1 to blog only, because this is the url in the sitemap.
+const url: string = page === 1 ? 'blog' : `blog/page/${page}`;
+const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: url, title: title }];
 ---
 <Layout
   title={title}
   description=`Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business. Blog - Seite ${page}.`
-  canonical={new URL(`/blog/page/${page}/`, Astro.site)}
+  canonical={new URL(`/${url}/`, Astro.site)}
   breadcrumbs={breadcrumbs}
 >
   <section class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
