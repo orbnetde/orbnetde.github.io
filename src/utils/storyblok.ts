@@ -140,7 +140,7 @@ export async function getPage(slug: string): Promise<ISbStory> {
 }
 
 export async function getBreadcrumb(story: ISbStoryData | { full_slug: string, name: string }): Promise<Array<{ title: string, slug: string }>> {
-  const parts = story.full_slug.split('/');
+  const parts = story.full_slug.endsWith('/') ? String(story.full_slug).slice(0, -1).split('/') : story.full_slug.split('/');
   const breadcrumb = [];
   breadcrumb.push({ title: story.name, slug: story.full_slug });
 
@@ -151,7 +151,7 @@ export async function getBreadcrumb(story: ISbStoryData | { full_slug: string, n
 
     Object.entries(result.data.links).map((link: any) => {
       if (link[1].is_folder && link[1].slug === bs) {
-        breadcrumb.push({ title: link[1].name, slug: String(link[1].slug) + '/' });
+        breadcrumb.push({ title: link[1].name, slug: link[1].slug });
       }
       return true;
     });

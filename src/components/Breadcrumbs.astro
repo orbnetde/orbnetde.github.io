@@ -6,13 +6,15 @@ interface Props {
 }
 const { breadcrumbs } = Astro.props;
 const length: number = (breadcrumbs?.length || 1) - 1;
+
 ---
 <nav aria-label="Breadcrumb" class="text-gray-700 dark:text-gray-200 pb-4">
   <ol role="list" class="flex items-center">
-    {(breadcrumbs || []).map((bc: Breadcrumb, k: number) => (
-      length === k ?
-        <li class="mr-3 "><a href=`/${bc.slug}` aria-current="page">{bc.title}</a></li> :
-        <li class="mr-3 after:content-['>'] after:ml-3"><a href=`/${bc.slug}`>{bc.title}</a></li>
-    ))}
+    {(breadcrumbs || []).map((bc: Breadcrumb, k: number) => {
+      const useSlug = bc.slug.endsWith('/') ? bc.slug : bc.slug + '/';
+      return length === k ?
+        <li class="mr-3 "><a href=`/${useSlug}` aria-current="page">{bc.title}</a></li> :
+        <li class="mr-3 after:content-['>'] after:ml-3"><a href=`/${useSlug}`>{bc.title}</a></li>
+    })}
   </ol>
 </nav>
