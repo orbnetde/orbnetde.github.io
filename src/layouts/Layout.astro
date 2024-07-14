@@ -60,7 +60,7 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
     <WebsiteJsonLd />
     <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
   </head>
-  <body id="top">
+  <body id="top" class="bg-white dark:bg-dark">
     <Header />
     <slot />
     <Footer />
