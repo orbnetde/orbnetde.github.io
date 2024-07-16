@@ -31,7 +31,7 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog/', title: 'Blog
 >
   <section id="start" class="pt-20 lg:pt-[120px] dark:bg-dark">
     <div class="container max-w-screen-xl">
-      <div class="-mx-4 flex flex-wrap justify-center">
+      <div class="flex flex-wrap justify-center">
         <div class="w-full px-4">
           <div class="relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]">
             {entry.content.hero && entry.content.hero.filename &&
@@ -64,7 +64,7 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog/', title: 'Blog
               </div>
             </div>
           </div>
-          <div class="-mx-4 flex flex-wrap">
+          <div class="flex flex-wrap">
             <div id="blog-entry" {...storyblokEditable(entry.content)}>
               <h1 class="mb-8 text-3xl font-semibold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]">
                 {entry.content.title}
@@ -109,7 +109,7 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog/', title: 'Blog
       </div>
     </div>
   </section>
-  <BlogSection blok={{ title: 'Weiteres aus unserem Blog', subtitle: '', classes: 'bg-primary-100 dark:bg-dark-3 text-dark dark:text-white' }} />
+  <BlogSection blok={{ title: 'Weiteres aus unserem Blog', subtitle: '', classes: 'bg-primary-100 dark:bg-dark-2 text-dark dark:text-white' }} />
 </Layout>
 <style is:inline>
   .simple-image {
