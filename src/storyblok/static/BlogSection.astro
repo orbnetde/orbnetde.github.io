@@ -25,7 +25,7 @@ const { blok } = Astro.props;
   subLine={blok.subtitle || ''}
   bgColor={blok.classes || ''}
 >
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto" {...storyblokEditable(blok)}>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto px-4" {...storyblokEditable(blok)}>
     {
       posts.data.stories.map((post) => (
         <Card

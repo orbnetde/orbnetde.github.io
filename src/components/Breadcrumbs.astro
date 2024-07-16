@@ -9,7 +9,7 @@ const length: number = (breadcrumbs?.length || 1) - 1;
 
 ---
 <nav aria-label="Breadcrumb" class="text-gray-700 dark:text-gray-200 pb-4">
-  <ol role="list" class="flex items-center">
+  <ol role="list" class="flex items-start">
     {(breadcrumbs || []).map((bc: Breadcrumb, k: number) => {
       const useSlug = bc.slug.endsWith('/') ? bc.slug : bc.slug + '/';
       return length === k ?

@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 
 import logo from '../../assets/logo/logo.svg';
+import logoWhite from '../../assets/logo/logo-white.svg';
 import { type MenuItem } from '../../content/menuItems';
 
 interface Props {
@@ -12,7 +13,7 @@ const { menuItems } = Astro.props;
 ---
 
 <div x-show="mobOpen"
-     class="lg:hidden absolute h-dvh max-h-dvh overflow-y-scroll w-dvw inset-0 bg-white"
+     class="lg:hidden absolute h-dvh max-h-dvh overflow-y-scroll w-dvw inset-0 bg-white dark:bg-dark"
      role="dialog"
      aria-modal="true"
      style="display: none"
@@ -21,12 +22,25 @@ const { menuItems } = Astro.props;
     <div class="flex items-center justify-between">
       <a href="/" class="-m-1.5 p-1.5">
         <span class="sr-only">orbnet</span>
-        <Image class="h-8 w-auto" src={logo} alt="orbnet logo" width="125" height="32" loading="lazy" />
+        <Image class="h-8 w-auto inline-block dark:hidden"
+               src={logo}
+               alt="orbnet logo"
+               width="125"
+               height="32"
+               loading="lazy"
+        />
+        <Image class="h-8 w-auto hidden dark:inline-block"
+               src={logoWhite}
+               alt="orbnet logo"
+               width="125"
+               height="32"
+               loading="lazy"
+        />
       </a>
       <button
         type="button"
         @click="mobOpen = false"
-        class="-m-2.5 rounded-md p-2.5 text-gray-700"
+        class="-m-2.5 rounded-md p-2.5 text-gray-700 dark:text-white"
       >
         <span class="sr-only">Close menu</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
@@ -43,7 +57,7 @@ const { menuItems } = Astro.props;
             if (!men.children || men.children.length === 0) {
               return (
                 <a href={men.href}
-                   class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50"
+                   class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
                 >
                   {men.name}
                 </a>
@@ -57,7 +71,7 @@ const { menuItems } = Astro.props;
               >
                 <button type="button"
                         @click="open = !open"
-                        class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base leading-7 text-gray-900 hover:bg-gray-50"
+                        class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
                 >
                   {men.name}
                   <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -70,13 +84,13 @@ const { menuItems } = Astro.props;
                   {[...(men.children || []), ...(men.actions || [])].map((item) => (
                     <>
                     <a href={item.href}
-                       class="block py-1 pl-6 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50"
+                       class="block py-1 pl-6 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
                     >
                       {item.name}
                     </a>
                     {item.children && item.children.map((subItem: MenuItem) => (
                       <a href={subItem.href}
-                         class="block py-1 pl-12 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50"
+                         class="block py-1 pl-12 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
                       >
                         {subItem.name}
                       </a>
@@ -90,12 +104,12 @@ const { menuItems } = Astro.props;
         </div>
         <div class="pt-4">
           <a href="https://my.orbnet.de/account/login/"
-             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50"
+             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
           >
             Log in
           </a>
           <a href="https://my.orbnet.de/account/register/"
-             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50"
+             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
           >
             Jetzt testen
           </a>
