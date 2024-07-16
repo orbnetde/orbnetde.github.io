@@ -26,6 +26,6 @@ const { blok } = Astro.props;
        title={blok.alt}
        width={blok.width}
        height={blok.height}
-       class={blok?.bordered ? "border-4 rounded-xl border-gray-200" : ""}
+       class=`simple-image ${blok?.bordered ? "border-4 rounded-xl border-gray-200" : ""}`
        {...storyblokEditable(blok)}
 />

@@ -7,10 +7,9 @@ import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 import { getPost, getStaticBlogPaths } from '../../utils/storyblok';
 import { getFormattedDate } from '../../utils/all';
 
-import NewsletterBox from '../../components/Newsletterbox.astro';
-import PopularArticles from '../../components/PopularArticles.astro';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import BlogSection from '../../storyblok/static/BlogSection.astro';
 
 export const prerender = true;
 
@@ -66,57 +65,57 @@ const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog/', title: 'Blog
             </div>
           </div>
           <div class="-mx-4 flex flex-wrap">
-            <div class="w-full px-4 lg:w-8/12">
-              <div id="blog-entry" {...storyblokEditable(entry.content)}>
-                <h1 class="mb-8 text-3xl font-semibold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]">
-                  {entry.content.title}
-                </h1>
-                <Breadcrumbs breadcrumbs={breadcrumbs} />
-                <!-- TOC //-->
-                <div class="bg-primary-100 dark:bg-dark-3 text-dark dark:text-white rounded-md p-5">
-                  <strong>Inhalt</strong>
-                  <ol class="list-inside list-none mt-3">
-                    {entry.content.items && entry.content.items.map((item: SbBlokData) => {
-                      return (
-                        <>
-                        {item.component === 'h2' ?
-                          <li class="mb-1"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
-                        {item.component === 'h3' ?
-                          <li class="mb-1 ml-4"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
-                        </>
-                      );
-                    })}
-                  </ol>
-                </div>
-                <!-- BLOG TEXT //-->
-                {entry.content.items && entry.content.items.map((item: SbBlokData) => (
-                  <StoryblokComponent blok={item} />
-                ))}
-                <div class="my-12 flex flex-wrap items-center gap-2">
-                  {
-                    entry.tag_list.map((tag: string) => (
-                      <a
-                        href=`/blog/tags/${tag}`
-                        class="block rounded-md bg-primary dark:bg-dark-3 py-1 px-2 text-base text-white dark:text-white"
-                      >
-                        {tag}
-                      </a>
-                    ))
-                  }
-                </div>
+            <div id="blog-entry" {...storyblokEditable(entry.content)}>
+              <h1 class="mb-8 text-3xl font-semibold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]">
+                {entry.content.title}
+              </h1>
+              <Breadcrumbs breadcrumbs={breadcrumbs} />
+              <!-- TOC //-->
+              <div class="bg-primary-100 dark:bg-dark-3 text-dark dark:text-white rounded-md p-5">
+                <strong>Inhalt</strong>
+                <ol class="list-inside list-none mt-3">
+                  {entry.content.items && entry.content.items.map((item: SbBlokData) => {
+                    return (
+                      <>
+                      {item.component === 'h2' ?
+                        <li class="mb-1"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                      {item.component === 'h3' ?
+                        <li class="mb-1 ml-4"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                      </>
+                    );
+                  })}
+                </ol>
               </div>
-              <div id="blog-finish"></div>
+              <!-- BLOG TEXT //-->
+              {entry.content.items && entry.content.items.map((item: SbBlokData) => (
+                <StoryblokComponent blok={item} />
+              ))}
+              <div class="my-12 flex flex-wrap items-center gap-2">
+                {
+                  entry.tag_list.map((tag: string) => (
+                    <a
+                      href=`/blog/tags/${tag}`
+                      class="block rounded-md bg-primary dark:bg-dark-3 py-1 px-2 text-base text-white dark:text-white"
+                    >
+                      {tag}
+                    </a>
+                  ))
+                }
+              </div>
             </div>
-            <div class="w-full px-4 lg:w-4/12">
-              <NewsletterBox />
-              <PopularArticles />
-            </div>
+            <div id="blog-finish"></div>
           </div>
         </div>
       </div>
     </div>
   </section>
+  <BlogSection blok={{ title: 'Weiteres aus unserem Blog', subtitle: '', classes: 'bg-primary-100' }} />
 </Layout>
+<style is:inline>
+  .simple-image {
+      margin: 1rem auto;
+  }
+</style>
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
     const blogEntry = document.getElementById('blog-entry');

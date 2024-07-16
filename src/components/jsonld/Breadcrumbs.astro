@@ -23,4 +23,4 @@ const schema = {
   'itemListElement': items,
 };
 ---
-<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />
+{items.length > 0 && <script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
