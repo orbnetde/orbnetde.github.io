@@ -6,7 +6,7 @@ import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', './src/theme/base.css'],
-  darkMode: 'class',
+  darkMode: 'selector',
   safelist: [
     'sticky-header',
   ],

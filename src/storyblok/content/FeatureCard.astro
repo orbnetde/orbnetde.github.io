@@ -18,8 +18,7 @@ const { blok } = Astro.props;
 <div class="relative group transition border border-white/[0.5] dark:border-black rounded-2xl" {...storyblokEditable(blok)}>
   <div class="card-over"></div>
   <div class="relative top-0 left-0 flex py-6 gap-4">
-    <div class="w-1/6">
-      <div class="flex bg-primary-100 dark:bg-dark items-center justify-center rounded-md w-8 h-8 ml-6">
+    <div class="w-8 flex bg-primary-100 dark:bg-dark items-center justify-center rounded-md h-8 ml-6">
         <svg class="text-primary h-4"
              xmlns="http://www.w3.org/2000/svg"
              viewBox="0 0 20 20"
@@ -28,7 +27,6 @@ const { blok } = Astro.props;
         >
           <path fill-rule="evenodd" d="M16.704 4.153a.75.75 0 01.143 1.052l-8 10.5a.75.75 0 01-1.127.075l-4.5-4.5a.75.75 0 011.06-1.06l3.894 3.893 7.48-9.817a.75.75 0 011.05-.143z" clip-rule="evenodd" />
         </svg>
-      </div>
     </div>
     <div class="w-5/6 text-dark-4 dark:text-white pr-6">
       <strong class="block mb-6 text-xl font-semibold text-dark dark:text-white">{blok.title}</strong>

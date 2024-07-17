@@ -3,6 +3,25 @@ import { RichTextSchema } from '@storyblok/astro';
 
 const BlogSchema = cloneDeep(RichTextSchema);
 
+BlogSchema.nodes.heading = (node) => {
+  return {
+    tag: `h${node.attrs.level}`,
+    attrs: {
+      class: () => {
+        if (node.attrs.level === 2) {
+          return 'dark:text-white text-dark font-semibold pb-0 target:before:block target:before:content-[\'\'] target:before:h-[120px] pt-8 target:before:-mt-[50px] text-2xl';
+        }
+        if (node.attrs.level === 3) {
+          return 'dark:text-white text-dark font-semibold pb-0 target:before:block target:before:content-[\'\'] target:before:h-[120px] pt-4 target:before:-mt-[40px] text-xl';
+        }
+        if (node.attrs.level === 4) {
+          return 'dark:text-white text-dar…fore:-mt-[40px] text-lg';
+        }
+        return '';
+      },
+    },
+  };
+};
 // We don't want the p around our texts.
 BlogSchema.nodes.paragraph = () => {
   return {};
@@ -84,7 +103,7 @@ BlogSchema.marks.link = (node) => {
     attrs.href += '/';
   }
   if (!attrs?.title) {
-    attrs.title = "Mehr Informationen zu: " + attrs.href;
+    attrs.title = 'Mehr Informationen zu: ' + attrs.href;
     attrs.ariaLabel = attrs.title;
   }
 

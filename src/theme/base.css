@@ -8,7 +8,7 @@
 
 @layer base {
     h1 {
-        @apply text-5xl font-semibold leading-tight text-dark dark:text-white;
+        @apply text-3xl font-semibold leading-tight text-dark dark:text-white;
     }
 
     h2 {
@@ -96,5 +96,10 @@
     .card-link::after {
         @apply absolute top-0 left-0 right-0 bottom-0 z-20;
         content: '';
+    }
+
+    .info-box a,
+    .info-box a:visited {
+        @apply text-white;
     }
 }
