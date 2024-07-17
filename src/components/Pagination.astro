@@ -8,11 +8,12 @@ const { current, total } = Astro.props;
 const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
 ---
 <div class="text-center mt-8">
-  <div class="inline-flex p-3 bg-white dark:bg-dark-2 border rounded-[10px] border-stroke dark:border-dark-3">
-    <ul class="-mx-1 flex items-center">
+  <nav role="navigation" aria-label="Pagination Navigation" class="inline-flex p-3 bg-white dark:bg-dark-2 border rounded-[10px] border-stroke dark:border-dark-3">
+    <ul class="flex items-center">
       {current !== 1 && (
         <li class="px-1">
           <a href="/blog/"
+             aria-label="Erste Seite"
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             <span class="flex flex-row">
               <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
@@ -32,6 +33,7 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
       {current !== 1 && (
         <li class="px-1">
           <a href=`${current - 1 === 1 ? '/blog/' : '/blog/page/' + (current - 1) + '/'}`
+             aria-label=`Seite ${current - 1}`
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             <span class="flex flex-row">
               <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
@@ -46,6 +48,7 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
       {pages.map(page => (
         <li class="px-1">
           <a href={page === 1 ? '/blog/' : `/blog/page/${page}/`}
+             aria-label=`Seite ${page}`
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             {page}
           </a>
@@ -54,6 +57,7 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
       {current !== total && (
         <li class="px-1">
           <a href=`/blog/page/${current + 1}/`
+             aria-label=`Seite ${current + 1}`
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             <span class="flex flex-row">
               <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
@@ -68,6 +72,7 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
       {current !== total && total !== 1 && (
         <li class="px-1">
           <a href=`/blog/page/${total}/`
+             aria-label="Letzte Seite"
              class="flex items-center justify-center text-base bg-transparent border rounded-md hover:border-primary hover:bg-primary h-[34px] w-[34px] border-stroke dark:border-dark-3 text-body-color dark:text-dark-6 hover:text-white dark:hover:border-primary dark:hover:text-white">
             <span class="flex flex-row">
               <svg width="8" height="15" viewBox="0 0 8 15" class="fill-current stroke-current">
@@ -85,5 +90,5 @@ const pages: number[] = Array.from({ length: total }, (_, i) => i + 1);
         </li>
       )}
     </ul>
-  </div>
+  </nav>
 </div>
