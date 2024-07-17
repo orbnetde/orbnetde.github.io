@@ -41,7 +41,7 @@ if (src?.src && !String(src.src).includes("storyblok")) {
     }
     <div class="p-4">
       {title && <h4 class={'text-xl text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + titleClasses}>{title}</h4>}
-      {date && <span class="text-sm bg-primary-200 text-dark dark:bg-dark dark:text-white px-2 py-1 rounded-md">{getFormattedDate(date)}</span>}
+      {date && <span class="text-sm bg-primary-200 text-dark dark:bg-dark-3 dark:text-white px-2 py-1 rounded-md">{getFormattedDate(date)}</span>}
       <div class={'text-dark-3 dark:text-white ' + bodyClasses}>
         {body}
         <slot />
@@ -50,10 +50,3 @@ if (src?.src && !String(src.src).includes("storyblok")) {
   </div>
   {link && <a href={link} aria-label="Link zu mehr Informationen zu diesem Thema" title="Link zu mehr Informationen zu diesem Thema" class="card-link" />}
 </div>
-
-<style>
-    .card-link::after {
-        @apply absolute top-0 left-0 right-0 bottom-0 z-20;
-        content: '';
-    }
-</style>

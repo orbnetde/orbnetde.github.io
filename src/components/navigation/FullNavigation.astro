@@ -160,29 +160,3 @@ import ThemeSwitch from './ThemeSwitch.astro';
   <MobileNavigation menuItems={menuItems} />
   <div id="reading-indicator" class="bg-gradient-to-l from-primary h-1 max-w-full" style="width: 0"></div>
 </header>
-<style>
-    .open-menu .menu-btn {
-        @apply text-dark dark:text-white;
-    }
-
-    .main-page .menu-btn-test  {
-        @apply bg-white text-dark;
-    }
-
-    .open-menu .menu-btn-test,
-    .sticky-header .menu-btn-test {
-        @apply text-white bg-primary;
-    }
-
-    .dark .open-menu .menu-btn {
-        @apply text-white;
-    }
-
-    .dark .open-menu .header-logo {
-        display: none;
-    }
-
-    .dark .open-menu .header-logo-dark {
-        display: inline !important;
-    }
-</style>

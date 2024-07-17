@@ -14,6 +14,7 @@ interface Price {
   subtitle: string,
   btn: string,
   purchaseLink: string,
+  top: Array<Features>,
   features: Array<Features>,
 }
 
@@ -26,6 +27,11 @@ export const prices: Array<Price> = [
     subtitle: 'Features',
     btn: 'Registrieren',
     purchaseLink: 'https://my.orbnet.de/account/register/',
+    top: [
+      { title: 'Benutzer', amount: 1 },
+      { title: 'Rechnungen schreiben', amount: 5 },
+      { title: 'Angebote schreiben', amount: true },
+    ],
     features: [
       { title: 'Benutzer', amount: 1 },
       { title: 'Rechnungen schreiben', amount: 5 },
@@ -40,6 +46,11 @@ export const prices: Array<Price> = [
     subtitle: 'Features',
     btn: 'Auswählen',
     purchaseLink: 'https://my.orbnet.de/account/register/',
+    top: [
+      { title: 'Benutzer', amount: 1 },
+      { title: 'Rechnungen schreiben', amount: true },
+      { title: 'Angebote schreiben', amount: true },
+    ],
     features: [
       { title: 'Benutzer', amount: 1 },
       { title: 'Rechnungen schreiben', amount: true },
@@ -54,6 +65,11 @@ export const prices: Array<Price> = [
     subtitle: 'Features',
     btn: 'Abheben',
     purchaseLink: 'https://my.orbnet.de/account/register/',
+    top: [
+      { title: 'Benutzer', amount: 10 },
+      { title: 'Rechnungen schreiben', amount: true },
+      { title: 'Angebote schreiben', amount: true },
+    ],
     features: [
       { title: 'Benutzer', amount: 10 },
       { title: 'Rechnungen schreiben', amount: true },

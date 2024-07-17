@@ -1,9 +1,5 @@
 ---
-import '@fontsource/poppins/400.css';
-import '@fontsource/poppins/600.css';
-import '@fontsource/poppins/700.css';
-
-// import '../theme/base.css';
+import '../theme/base.css';
 
 import { type Breadcrumb } from '../types/Breadcrumb';
 
@@ -65,52 +61,9 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
     <slot />
     <Footer />
     <BackToTop />
-    <style is:global>
+    <style is:inline>
         @view-transition {
             navigation: auto; /* enabled! */
-        }
-
-        body {
-            @apply text-body-color antialiased w-full overflow-y-auto overflow-x-hidden;
-            font-family: Poppins, system-ui, sans-serif;
-        }
-
-        .sticky-header {
-            @apply fixed z-[9999] bg-white/80 dark:bg-dark/80 transition w-full text-dark;
-            backdrop-filter: blur(5px);
-            box-shadow: inset 0 -1px 0 0 rgba(0, 0, 0, 0.1);
-        }
-
-        .main-page .header-logo,
-        .main-page.open-menu .header-logo-dark {
-            display: none !important;
-        }
-
-        .main-page .header-logo-dark {
-            display: inline-block !important;
-        }
-
-        .main-page.open-menu .header-logo,
-        .main-page.sticky-header .header-logo {
-            display: inline-block !important;
-        }
-
-        .main-page.sticky-header .header-logo-dark {
-            display: none !important;
-        }
-
-        .dark .main-page.sticky-header .header-logo,
-        .dark .main-page.open-menu .header-logo {
-            display: none !important;
-        }
-
-        .dark .main-page.sticky-header .header-logo-dark,
-        .dark .main-page.open-menu .header-logo-dark {
-            display: inline-block !important;
-        }
-
-        .dark .sticky-header {
-            @apply text-white;
         }
     </style>
     <script>

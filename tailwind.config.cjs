@@ -5,8 +5,11 @@ require('tailwindcss/colors');
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', './src/theme/base.css'],
   darkMode: 'class',
+  safelist: [
+    'sticky-header',
+  ],
   theme: {
     screens: {
       sm: '640px',

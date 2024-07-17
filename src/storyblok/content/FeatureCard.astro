@@ -38,14 +38,3 @@ const { blok } = Astro.props;
     </div>
   </div>
 </div>
-
-<style>
-    .card-over {
-        @apply after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500;
-    }
-
-    .card-link::after {
-        @apply absolute top-0 left-0 right-0 bottom-0 text-dark-4;
-        content: '';
-    }
-</style>

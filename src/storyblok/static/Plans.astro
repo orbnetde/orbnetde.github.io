@@ -50,17 +50,13 @@ const { blok } = Astro.props;
           <div
             class={`relative z-10 mb-10 overflow-hidden rounded-xl ${price.popular ? 'bg-primary dark:bg-primary ' : 'bg-primary-100 dark:bg-dark-2'} py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-14`}
           >
-              <span class="block text-2xl font-semibold">
-                {price.packageName}
-              </span>
-            <span class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
-                {price.users} Benutzer
-              </span>
+            <span class="block text-2xl font-semibold">{price.packageName}</span>
+            <span class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>{price.users} Benutzer</span>
             <span aria-label="Monatlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
             <span aria-label="Jährlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</span>
             <span class="inline-block border-b border-b-gray-300 w-full">&nbsp;</span>
             <span class="flex flex-col gap-2 my-6">
-              {price.features.map((item) => (
+              {price.top.map((item) => (
                 <p class={`text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
                   {item.amount !== true && item.amount !== false && item.amount}
                   {item.title}

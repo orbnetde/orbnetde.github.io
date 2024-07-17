@@ -34,7 +34,7 @@ export default defineConfig({
   },
   redirects: {},
   integrations: [
-    tailwind(),
+    tailwind({applyBaseStyles: false}),
     sitemap(),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {
