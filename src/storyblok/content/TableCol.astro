@@ -3,7 +3,8 @@ import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
 interface TableCol extends SbBlokData {
-  content: SbBlokData[],
+  text?:string,
+  content?: SbBlokData[],
 }
 
 interface Props {
@@ -13,8 +14,9 @@ interface Props {
 
 const { blok, number } = Astro.props;
 ---
-<div class=`flex items-center gap-2 p-3 ${number === 0 ? 'text-left' : 'justify-center'}` {...storyblokEditable(blok)}>
-  {blok.content?.map((blok: SbBlokData) => (
+<div class=`flex items-center gap-2 p-3 ${number === 0 ? 'text-left' : 'justify-center text-center'}` {...storyblokEditable(blok)}>
+  {blok?.text && blok.text}
+  {blok?.content && blok.content?.map((blok: SbBlokData) => (
     <StoryblokComponent blok={blok} />
   ))}
 </div>

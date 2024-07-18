@@ -32,9 +32,11 @@ const { blok } = Astro.props;
           {blok.title}
         </h1>
 
-        <h2 class="lg:text-xl py-6 lg:py-9 text-white" {...storyblokEditable(blok)}>
-          {blok.subtitle}
-        </h2>
+        {blok.subtitle &&
+          <h2 class="lg:text-xl py-6 lg:py-9 text-white" {...storyblokEditable(blok)}>
+            {blok.subtitle}
+          </h2>
+        }
 
         <div class="lg:text-xl pb-6 lg:pb-9 text-white">
           {blok.content?.map((blok: SbBlokData) => (
