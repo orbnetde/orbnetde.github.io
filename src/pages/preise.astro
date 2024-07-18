@@ -1,24 +1,56 @@
 ---
-import { getImage } from 'astro:assets';
+import { getImage, Image } from 'astro:assets';
 
 import { prices } from '../content/prices';
 import { Icon } from 'astro-icon/components';
 
 import Layout from '../layouts/Layout.astro';
 import lines from '../assets/svg/lines.svg';
+import ok from '../assets/svg/greencheck.svg';
+import no from '../assets/svg/red-x.svg';
 
 const optLines = await getImage({ src: lines, format: 'svg' });
 ---
 <Layout
-  title="Unsere Preise"
+  title="Unsere Preise, übersichtlich und Transparent"
   description="Dank einfachster Preis-Bundles auf monatlicher Basis passen sich unsere Funktionen deinem Business an!"
   canonical={new URL('preise/', Astro.site)}
   breadcrumbs={[{ slug: '', title: 'Start' }, { slug: 'preise/', title: 'Unsere Preise' }]}
 >
   <section class="bg-white dark:bg-dark text-dark dark:text-white pt-32">
-    <div class="container text-center">
+    <div class="container max-w-screen-xl text-center">
       <h1 class="text-3xl font-semibold mb-8">Unsere Preise</h1>
       <h2 class="text-2xl font-semibold mb-12">Dank einfachster Preis-Bundles auf monatlicher Basis passen sich unsere Funktionen deinem Business an!</h2>
+
+      <p class="mb-4 text-justify">
+        Willkommen auf unserer Preisseite! Hier bringen wir Transparenz und Einfachheit in die Preisgestaltung für
+        unsere Dienstleistungen. Unser Hauptziel ist es, Ihnen hochwertige, maßgeschneiderte Lösungen zu bieten, die
+        sowohl Ihren Anforderungen als auch Ihrem Budget gerecht werden. Wir wissen, dass jedes Unternehmen einzigartig
+        ist und unterschiedliche Bedürfnisse hat. Deshalb haben wir ein flexibles Preismodell entwickelt, das sich
+        an die spezifischen Bedürfnisse Ihres Coaching-Business anpasst.
+      </p>
+
+      <p class="mb-4 text-justify">
+        Dank unserer einfachsten Preis-Bundles auf monatlicher Basis können Sie die Funktionen auswählen, die am besten
+        zu Ihrem Unternehmen passen. Diese Flexibilität stellt sicher, dass Sie genau die Dienste erhalten, die Sie
+        benötigen, ohne für unnötige Extras zu zahlen. Egal, ob Sie nur grundlegende Funktionen wünschen oder ein
+        umfassendes Paket benötigen – wir haben die passende Lösung für Sie.
+      </p>
+
+      <p class="mb-4 text-justify">
+        Unsere Preis-Bundles sind darauf ausgelegt, maximale Kosteneffizienz zu bieten. Durch die monatliche Abrechnung
+        (30 Tage) haben Sie stets die Kontrolle über Ihre Ausgaben und können Ihre Investitionen flexibel anpassen.
+        Dies ist insbesondere für kleine und mittelständische Unternehmen von Vorteil, die ihre Kosten genau im
+        Auge behalten müssen.
+      </p>
+
+      <p class="mb-4 text-justify">
+        Zusätzlich bieten wir regelmäßige Updates und Erweiterungen unserer Dienste. Dies bedeutet, dass Sie immer
+        auf dem neuesten Stand der Technik sind und von neuesten Funktionen profitieren können, ohne zusätzliche
+        Gebühren zahlen zu müssen. Unsere Kundenbetreuung steht Ihnen ebenfalls jederzeit zur Verfügung, um Fragen
+        zu beantworten und Unterstützung zu bieten.
+      </p>
+
       <div x-data="{monthly: true}" class={` background-image:url(${optLines.src})`}>
         <div class="mb-6 flex justify-center">
           <fieldset aria-label="Payment frequency">
@@ -34,29 +66,77 @@ const optLines = await getImage({ src: lines, format: 'svg' });
             </div>
           </fieldset>
         </div>
-        <div class="flex flex-wrap justify-center max-w-screen-xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center max-w-screen-xl mx-auto">
           {prices.map((price) => (
-            <div class={`w-full px-4 md:w-1/2 lg:w-1/3 text-center ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
+            <div class={`w-full ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
               <div
                 class={`relative z-10 mb-10 overflow-hidden rounded-xl ${price.popular ? 'bg-primary dark:bg-primary ' : 'bg-primary-100 dark:bg-dark-2'} py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-14`}
               >
-              <span class="block text-2xl font-semibold">
-                {price.packageName}
-              </span>
-                <span class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
-                {price.users} Benutzer
-              </span>
-                <span class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
-                <span class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</span>
-                <span class="inline-block border-b border-b-gray-300 w-full">&nbsp;</span>
-                <span class="flex flex-col gap-2 my-6">
-              {price.features.map((item) => (
-                <span class={`text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
-                  {item.amount !== true && item.amount !== false && item.amount}
-                  {item.title}
-                </span>
-              ))}
-              </span>
+                <div class="block text-2xl font-semibold">
+                  {price.packageName}
+                </div>
+                <div class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
+                  {price.users} Benutzer
+                </div>
+                <div class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</div>
+                <div class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</div>
+                <div class="inline-block border-b border-b-gray-300 w-full">&nbsp;</div>
+
+                <strong class="block mt-8 mb-4 font-semibold text-lg">Funktionen</strong>
+                <div class="flex flex-col gap-2 my-6 text-left">
+                  {price.features.functions.map((item) => (
+                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                      {item.amount !== true && item.amount !== false && item.amount}
+                      {item.amount === true &&
+                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.amount === false &&
+                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.title}
+                    </div>
+                  ))}
+                </div>
+
+                <strong class="block mt-8 mb-4 font-semibold text-lg">Integrationen</strong>
+                <div class="flex flex-col gap-2 my-6 text-left">
+                  {price.features.integrations.map((item) => (
+                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                      {item.amount !== true && item.amount !== false && item.amount}
+                      {item.amount === true &&
+                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.amount === false &&
+                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.title}
+                    </div>
+                  ))}
+                </div>
+
+                <strong class="block mt-8 mb-4 font-semibold text-lg">Customizing</strong>
+                <div class="flex flex-col gap-2 my-6 text-left">
+                  {price.features.customizing.map((item) => (
+                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                      {item.amount !== true && item.amount !== false && item.amount}
+                      {item.amount === true &&
+                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.amount === false &&
+                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.title}
+                    </div>
+                  ))}
+                </div>
+
+                <strong class="block mt-8 mb-4 font-semibold text-lg">Support</strong>
+                <div class="flex flex-col gap-2 my-6 text-left">
+                  {price.features.support.map((item) => (
+                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
+                      {item.amount !== true && item.amount !== false && item.amount}
+                      {item.amount === true &&
+                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.amount === false &&
+                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
+                      {item.title}
+                    </div>
+                  ))}
+                </div>
                 <a href={price.purchaseLink}
                    class={`group flex flex-row justify-center mt-10 font-semibold text-center ${price.popular ? 'text-white' : 'text-primary dark:text-primary-400'}`}
                 >

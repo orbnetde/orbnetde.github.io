@@ -7,20 +7,24 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 const pages = await getPages('funktionen/*', 'name:asc');
 const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/', name: 'Funktionen' });
 ---
-<Layout title="Funktionen"
-        description="Alle Funktionen von orbnet auf einen Blick."
+<Layout title="Alle Funktionen von orbnet in der Übersicht"
+        description="Hier findest du alle Funktionen von orbnet auf einen Blick, klar und übersichtlich dargestellt."
         canonical={new URL('/funktionen/', Astro.site)}
         breadcrumbs={breadcrumbs}
 >
   <section class="relative py-12 lg:pb-16 pt-[120px] bg-white dark:bg-dark">
+    <h1 class="mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">
+      Alle Funktionen von orbnet auf einen Blick.
+    </h1>
+    <h2 class="mx-auto text-center text-2xl text-dark dark:text-primary-400 font-semibold pb-12">
+      Hier findest du eine Liste aller Funktionen von orbnet.
+    </h2>
     <div class="container max-w-screen-xl mx-auto">
-      <h1 class="mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">
-        Alle Funktionen von orbnet auf einen Blick.
-      </h1>
-      <h2 class="mx-auto text-center text-2xl text-dark dark:text-primary-400 font-semibold pb-12">
-        Hier findest du eine Liste aller Funktionen von orbnet.
-      </h2>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <p class="mt-8 mb-12">
+        orbnet ist eine umfassende Software, die zahlreiche Integrationen und Funktionen bietet, um den
+        allgemeinen Arbeitsalltag effizienter zu gestalten. Hier ist eine Übersicht der Hauptfunktionen:
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
         {pages.map(page => (
           <Card blok={
@@ -33,6 +37,11 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/', name: 'Funkt
           } />
         ))}
       </div>
+      <p class="mt-12">
+        Zusammengefasst bietet orbnet eine robuste und benutzerfreundliche Plattform für dein Business.
+        Die umfangreichen Integrationsmöglichkeiten und vielseitigen Funktionen machen es zu einer idealen
+        Wahl für Unternehmen, die ihren Arbeitsalltag optimieren möchten.
+      </p>
     </div>
   </section>
 </Layout>

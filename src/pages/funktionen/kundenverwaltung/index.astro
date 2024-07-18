@@ -13,14 +13,18 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/kundenverwaltun
         breadcrumbs={breadcrumbs}
 >
   <section class="relative py-12 lg:pb-16 pt-[120px] bg-white dark:bg-dark">
+    <h1 class="mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">
+      Alle Funktionen der Kundenverwaltung auf einen Blick.
+    </h1>
+    <h2 class="mx-auto text-center text-2xl text-dark dark:text-primary-400 font-semibold pb-12">
+      Hier findest du eine Liste aller Funktionen für die Kundenverwaltung von orbnet.
+    </h2>
     <div class="container max-w-screen-xl mx-auto">
-      <h1 class="mx-auto text-center text-4xl text-dark dark:text-primary-400 font-semibold pb-12">
-        Alle Funktionen der Kundenverwaltung auf einen Blick.
-      </h1>
-      <h2 class="mx-auto text-center text-2xl text-dark dark:text-primary-400 font-semibold pb-12">
-        Hier findest du eine Liste aller Funktionen für die Kundenverwaltung von orbnet.
-      </h2>
       <Breadcrumbs breadcrumbs={breadcrumbs} />
+      <p class="mt-8 mb-12">
+        orbnet ist eine umfassende Kundenverwaltungssoftware, die zahlreiche Integrationen und Funktionen bietet, um den
+        Kundenmanagementprozess effizienter zu gestalten. Hier ist eine Übersicht der Hauptfunktionen:
+      </p>
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
         {pages.map(page => (
           <Card blok={
@@ -33,6 +37,12 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/kundenverwaltun
           } />
         ))}
       </div>
+      <p class="mt-12">
+        Zusammengefasst bietet orbnet eine robuste und benutzerfreundliche Plattform für die Kundenverwaltung.
+        Die umfangreichen Integrationsmöglichkeiten und vielseitigen Funktionen machen es zu einer idealen
+        Wahl für Unternehmen, die ihre Kundenverwaltung optimieren möchten.
+      </p>
+      <a href="/funktionen/" class="block w-full py-6 text-center bg-dark text-white rounded-md mt-12 font-semibold transition duration-500 hover:bg-dark-4">Alle Funktionen</a>
     </div>
   </section>
 </Layout>

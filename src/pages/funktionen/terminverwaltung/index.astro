@@ -20,8 +20,12 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltun
       <h2 class="mx-auto text-center text-2xl text-dark dark:text-primary-400 font-semibold pb-12">
         Hier findest du eine Liste aller Funktionen für die Terminverwaltung von orbnet.
       </h2>
-      <div class="container">
-        <Breadcrumbs breadcrumbs={breadcrumbs}/>
+      <div class="container max-w-screen-xl mx-auto">
+        <Breadcrumbs breadcrumbs={breadcrumbs} />
+        <p class="mt-8 mb-12">
+          orbnet ist eine umfassende Terminverwaltungssoftware, die zahlreiche Integrationen und
+          Funktionen bietet, um den Planungsprozess effizienter zu gestalten. Hier ist eine Übersicht der Hauptfunktionen:
+        </p>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-screen-xl mx-auto">
           {pages.map(page => (
             <Card blok={
@@ -29,11 +33,17 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/terminverwaltun
                 title: String(page?.props?.title || ''),
                 body: String(page?.props?.description || ''),
                 link: '/' + page.params.slug + '/',
-                image: {filename: String(page?.props?.image || '')}
+                image: { filename: String(page?.props?.image || '') },
               }
             } />
           ))}
         </div>
+        <p class="mt-12">
+          Zusammengefasst bietet orbnet eine robuste und benutzerfreundliche Plattform für die Terminverwaltung.
+          Die umfangreichen Integrationsmöglichkeiten und vielseitigen Funktionen machen es zu einer idealen
+          Wahl für Unternehmen, die ihre Terminbuchungen optimieren möchten.
+        </p>
+        <a href="/funktionen/" class="block w-full py-6 text-center bg-dark text-white rounded-md mt-12 font-semibold transition duration-500 hover:bg-dark-4">Alle Funktionen</a>
       </div>
     </div>
   </section>
