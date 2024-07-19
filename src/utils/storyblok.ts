@@ -158,7 +158,7 @@ export async function getBreadcrumb(story: ISbStoryData | { full_slug: string, n
     parts.pop();
   }
 
-  breadcrumb.push({ title: 'Start', slug: '' });
+  breadcrumb.push({ title: 'Startseite', slug: '' });
 
   return breadcrumb.reverse();
 }
