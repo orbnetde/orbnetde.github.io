@@ -91,11 +91,11 @@ import ThemeSwitch from './ThemeSwitch.astro';
                       <strong class="text-dark dark:text-white font-semibold">{item.name}</strong>
                       :
                       <>
-                        <a href={item.href} class="text-dark dark:text-white dark:hover:text-primary-300 font-semibold">
-                          {item.name}
-                          <span class="absolute inset-0"></span>
-                        </a>
-                        <p class="mt-1 text-gray-600 dark:text-gray-300">{item.description}</p>
+                      <a href={item.href} class="text-dark dark:text-white dark:hover:text-primary-300 font-semibold">
+                        {item.name}
+                        <span class="absolute inset-0"></span>
+                      </a>
+                      <p class="mt-1 text-gray-600 dark:text-gray-300">{item.description}</p>
                       </>
                     }
                     {item.children && item.children.length > 0 &&
@@ -122,11 +122,12 @@ import ThemeSwitch from './ThemeSwitch.astro';
                     {men.actions && men.actions.map((action: MenuItem) => (
                       <a href={action.href}
                          class=`group flex items-center justify-center gap-x-2.5 p-3 text-sm leading-6 text-gray-900 ${action?.highlight ? 'bg-primary text-white hover:bg-primary hover:text-white' : ''} dark:text-white hover:bg-gray-100 dark:hover:bg-gray-600`
-                         target={action?.external ? '_blank' : '_self'}
+                         { ...(action?.external && {target: '_blank'})}
+                         { ...(action?.robots && {rel: action.robots})}
                       >
                         {action.icon &&
                           <Icon name={action.icon}
-                                class=`h-5 w-5 flex-none text-dark dark:text-white ${action?.highlight ? 'text-white group-hover:text-white' : '' } group-hover:text-primary dark:group-hover:text-white`
+                                class=`h-5 w-5 flex-none text-dark dark:text-white ${action?.highlight ? 'text-white group-hover:text-white' : ''} group-hover:text-primary dark:group-hover:text-white`
                                 width={20}
                                 height={20}
                                 aria-hidden="true"
