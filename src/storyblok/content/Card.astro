@@ -1,10 +1,11 @@
 ---
+import {Image} from 'astro:assets';
 import { storyblokEditable, type ISbRichtext, type SbBlokData, type SbRichTextOptions } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
 import { loadImage } from '../../utils/get-image';
 import BlogSchema from '../../content/blog/Schema';
 
-interface Image extends SbBlokData {
+interface SbImage extends SbBlokData {
   filename: string;
 }
 
@@ -12,7 +13,7 @@ interface Card extends SbBlokData {
   title: string,
   body: any | ISbRichtext,
   link?: string,
-  image?: Image,
+  image?: SbImage,
   classes?: string
   titleClasses?: string
   bodyClasses?: string
@@ -34,10 +35,13 @@ const optImage = await loadImage(blok?.image?.filename || '');
   <div class="card-over"></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {optImage.src !== '' &&
-      <div class="rounded-t-lg h-[280px] w-full bg-center bg-cover transition duration-500 group-hover:scale-105" style={`background-image: url(${optImage.src})`}></div>
+      <div class="flex h-64 w-full">
+        <Image src={optImage.src} width="600" height="256" alt={blok?.title || 'Bild'} class="rounded-t-lg object-cover transition duration-500 group-hover:scale-105" />
+      </div>
     }
     <div class="p-4">
-      {blok?.title && <h4 class={'text-xl text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + blok?.titleClasses}>{blok.title}</h4>}
+      {blok?.title && blok?.link && <a href={blok.link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white card-link ' + blok?.titleClasses}>{blok.title}</a>}
+      {blok?.title && !blok?.link && <strong class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + blok?.titleClasses}>{blok.title}</strong>}
       <div class={'text-dark-3 dark:text-white ' + blok?.bodyClasses}>
         {blok.body &&
           (blok.body?.type ?
@@ -46,5 +50,4 @@ const optImage = await loadImage(blok?.image?.filename || '');
       </div>
     </div>
   </div>
-  {blok?.link && <a href={blok.link} aria-label="Link zu mehr Informationen zu diesem Thema" title="Link zu mehr Informationen zu diesem Thema" class="card-link" />}
 </div>
