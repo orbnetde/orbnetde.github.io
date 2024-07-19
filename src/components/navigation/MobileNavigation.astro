@@ -85,7 +85,7 @@ const { menuItems } = Astro.props;
                     <>
                     <a href={item.href}
                        class="block py-1 pl-6 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
-                       { ...(item?.external && {rel: item.external})}
+                       { ...(item?.external && {target: '_blank'})}
                        { ...(item?.robots && {rel: item.robots})}
                     >
                       {item.name}
@@ -93,7 +93,7 @@ const { menuItems } = Astro.props;
                     {item.children && item.children.map((subItem: MenuItem) => (
                       <a href={subItem.href}
                          class="block py-1 pl-12 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
-                         { ...(subItem?.external && {rel: subItem.external})}
+                         { ...(subItem?.external && {target: '_blank'})}
                          { ...(subItem?.robots && {rel: subItem.robots})}
                       >
                         {subItem.name}
