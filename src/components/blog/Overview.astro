@@ -15,7 +15,7 @@ interface Props {
 const { page, total, stories, url } = Astro.props;
 const title: string = (page === 1 ? 'Blog' : `Blog - Seite ${page}`);
 // Set page 1 to blog only, because this is the url in the sitemap.
-const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: url, title: title }];
+const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: url, title: title }];
 ---
 <Layout
   title={title}

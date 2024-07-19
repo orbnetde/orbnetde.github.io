@@ -21,7 +21,7 @@ const { slug } = Astro.params;
 const { data } = await getPost(String(slug));
 const entry = data.story;
 
-const breadcrumbs = [{ slug: '', title: 'Start' }, { slug: 'blog/', title: 'Blog' }, { slug: String(entry.full_slug) + '/', title: entry.content.title }];
+const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 'Blog' }, { slug: String(entry.full_slug) + '/', title: entry.content.title }];
 ---
 <Layout title={entry.content.title}
         description={entry.content.description}
