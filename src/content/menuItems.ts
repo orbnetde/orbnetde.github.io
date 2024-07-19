@@ -171,7 +171,6 @@ export const menuItems: MenuItem[] = [
       {
         name: 'On-Boarding buchen',
         href: 'https://www.orbnet.de/p/click/onboarding/',
-        robots: 'nofollow',
         icon: 'chat-bubble-left-ellipsis-outline',
       },
     ],
@@ -208,7 +207,6 @@ export const menuItems: MenuItem[] = [
       {
         name: 'On-Boarding buchen',
         href: 'https://www.orbnet.de/p/click/onboarding/',
-        robots: 'nofollow',
         external: true,
         icon: 'chat-bubble-left-ellipsis-outline',
       },
