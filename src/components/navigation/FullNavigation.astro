@@ -13,7 +13,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
 ---
 <header
   x-data="{mobOpen: false, megaOpen: false}"
-  class={'absolute top-0 w-full isolate z-50' + (Astro.url.pathname === '/' ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
+  class={'absolute top-0 w-full isolate z-50' + (!Astro.url.pathname.startsWith('/blog/') ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
   @click.away="megaOpen = false"
   :class="megaOpen && 'open-menu'"
 >

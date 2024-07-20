@@ -24,56 +24,46 @@ interface Props {
 
 const { blok } = Astro.props;
 ---
-<section id="start" class=`relative` {...storyblokEditable(blok)}>
-  <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3 pt-24 sm:pt-16">
-    <div class=`flex ${blok?.image?.filename && 'flex-col-reverse md:flex-row min-h-[280px] lg:min-h-[400px] xl:min-h-[500px]'} h-[100dvh] w-full pb-[50px] px-6 text-white max-w-screen-xl items-center mx-auto gap-8`>
-      <div>
-        <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold text-white" {...storyblokEditable(blok)}>
-          {blok.title}
-        </h1>
+<section id="start" class="relative w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3 pt-24 lg:pt-8 hero-bg" {...storyblokEditable(blok)}>
+  <div class=`flex ${blok?.image?.filename && 'flex-col-reverse md:flex-row min-h-[280px] lg:min-h-[400px] xl:min-h-[500px]'} min-h-[100dvh] lg:h-[100dvh] w-full pb-[50px] px-6 text-white max-w-screen-xl lg:items-center mx-auto gap-8`>
+    <div>
+      <h1 class="text-2xl md:text-3xl lg:text-5xl lg:leading-tight font-semibold text-white" {...storyblokEditable(blok)}>
+        {blok.title}
+      </h1>
 
-        {blok.subtitle &&
-          <h2 class="lg:text-xl py-6 lg:py-9 text-white" {...storyblokEditable(blok)}>
-            {blok.subtitle}
-          </h2>
-        }
+      {blok.subtitle &&
+        <h2 class="lg:text-xl py-6 lg:py-9 text-white" {...storyblokEditable(blok)}>
+          {blok.subtitle}
+        </h2>
+      }
 
-        <div class="lg:text-xl pb-6 lg:pb-9 text-white">
-          {blok.content?.map((blok: SbBlokData) => (
-            <StoryblokComponent blok={blok} />
-          ))}
-        </div>
-
-        {blok.cta_link && blok.cta_text &&
-          <a
-            href={blok.cta_link}
-            class="block w-full tracking-wide text-lg font-semibold text-dark items-center bg-white hover:bg-white/[0.95] dark:bg-primary dark:text-white justify-center px-7 py-3 lg:py-4 rounded-lg shadow-md text-center transition duration-500 hover:shadow-xl"
-            {...storyblokEditable(blok)}
-          >
-            {blok.cta_text}
-          </a>
-        }
+      <div class="lg:text-xl pb-6 lg:pb-9 text-white">
+        {blok.content?.map((blok: SbBlokData) => (
+          <StoryblokComponent blok={blok} />
+        ))}
       </div>
-      {blok?.image?.filename &&
-        <Picture
-          loading="eager"
-          src={blok.image.filename}
-          widths={[500, 400, 280]}
-          inferSize={true}
-          alt="orbnet dashboard"
-          format="webp"
-          quality="high"
-          class=`motion-safe:animate-rising min-w-[280px] max-w-[280px] lg:min-w-[400px] lg:max-w-[400px] xl:min-w-[500px] xl:max-w-[500px] ${blok.image_classes || ''}`
-        />
+
+      {blok.cta_link && blok.cta_text &&
+        <a
+          href={blok.cta_link}
+          class="block w-full tracking-wide text-lg font-semibold text-dark items-center bg-white hover:bg-white/[0.95] dark:bg-primary dark:text-white justify-center px-7 py-3 lg:py-4 rounded-lg shadow-md text-center transition duration-500 hover:shadow-xl"
+          {...storyblokEditable(blok)}
+        >
+          {blok.cta_text}
+        </a>
       }
     </div>
+    {blok?.image?.filename &&
+      <Picture
+        loading="eager"
+        src={blok.image.filename}
+        widths={[500, 400, 280]}
+        inferSize={true}
+        alt="orbnet dashboard"
+        format="webp"
+        quality="high"
+        pictureAttributes={{ class: `motion-safe:animate-rising min-w-[280px] max-w-[280px] lg:min-w-[400px] lg:max-w-[400px] xl:min-w-[500px] xl:max-w-[500px] self-center ${blok.image_classes || ''}` }}
+      />
+    }
   </div>
 </section>
-<!--<style is:global>-->
-<!--    .bg-honeycomb {-->
-<!--        @apply bg-repeat bg-center;-->
-<!--        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='currentColor' viewBox='0 0 100 169.5'%3E%3Cpolygon points='50,34.75 93.5,59.75 93.5,109.75 50,134.75 6.5,109.75 6.5,59.75'%3E%3C/polygon%3E%3Cpolygon points='0,-50 43.5,-25 43.5,25 0,50 -43.5,25 -43.5,-25'%3E%3C/polygon%3E%3Cpolygon points='100,-50 143.5,-25 143.5,25 100,50 56.5,25 56.5,-25'%3E%3C/polygon%3E%3Cpolygon points='0,119.5 43.5,144.5 43.5,194.5 0,219.5 -43.5,194.5 -43.5,144.5'%3E%3C/polygon%3E%3Cpolygon points='100,119.5 143.5,144.5 143.5,194.5 100,219.5 56.5,194.5 56.5,144.5'%3E%3C/polygon%3E%3C/svg%3E");-->
-<!--        background-size: 1rem;-->
-<!--        background-blend-mode: multiply;-->
-<!--    }-->
-<!--</style>-->
