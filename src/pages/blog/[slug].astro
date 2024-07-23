@@ -5,7 +5,7 @@ import type { GetStaticPathsResult } from 'astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
 import { getPost, getStaticBlogPaths } from '../../utils/storyblok';
-import { getFormattedDate } from '../../utils/all';
+import { getFormattedDate, getAnchorFromText } from '../../utils/all';
 
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
@@ -78,9 +78,9 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 
                     return (
                       <>
                       {item.component === 'h2' ?
-                        <li class="mb-1"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                        <li class="mb-1"><a href=`#${getAnchorFromText(item.Text)}` class="hover:underline">{item.Text}</a></li> : ''}
                       {item.component === 'h3' ?
-                        <li class="mb-1 ml-4"><a href=`#${item._uid}` class="hover:underline">{item.Text}</a></li> : ''}
+                        <li class="mb-1 ml-4"><a href=`#${getAnchorFromText(item.Text)}` class="hover:underline">{item.Text}</a></li> : ''}
                       </>
                     );
                   })}
@@ -112,9 +112,9 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 
   <BlogSection blok={{ title: 'Weiteres aus unserem Blog', subtitle: '', classes: 'bg-primary-100 dark:bg-dark-2 text-dark dark:text-white' }} />
 </Layout>
 <style is:inline>
-  .simple-image {
-      margin: 1rem auto;
-  }
+    .simple-image {
+        margin: 1rem auto;
+    }
 </style>
 <script is:inline>
   document.addEventListener('DOMContentLoaded', () => {
