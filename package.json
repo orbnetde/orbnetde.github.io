@@ -33,6 +33,7 @@
     "vite": "^5.3.1"
   },
   "devDependencies": {
+    "@astrojs/web-vitals": "^1.0.0",
     "@iconify-json/bi": "^1.1.23",
     "@types/clone-deep": "^4.0.4",
     "clone-deep": "^4.0.1",

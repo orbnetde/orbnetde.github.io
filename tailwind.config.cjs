@@ -35,6 +35,18 @@ module.exports = {
       fontFamily: {
         sans: ['Poppins', ...defaultTheme.fontFamily.sans],
       },
+      fontSize: {
+        'xs': 'clamp(12px, 4vw, 14px)', // 14px
+        'sm': 'clamp(14px, 4vw, 16px)', // 16px
+        'base': 'clamp(16px, 4vw, 18px)', // 18px
+        'lg': 'clamp(18px, 4vw, 20px)', // 20px
+        'xl': 'clamp(20px, 4vw, 24px)', // 24px
+        '2xl': 'clamp(24px, 4vw, 30px)', // 30px
+        '3xl': 'clamp(30px, 4vw, 36px)', // 36px
+        '4xl': 'clamp(36px, 4vw, 48px)', // 48px
+        '5xl': 'clamp(48px, 4vw, 64px)', // 64px
+        '6xl': 'clamp(64px, 4vw, 80px)', // 80px
+      },
       colors: {
         'black': '#212b36',
         'dark': {

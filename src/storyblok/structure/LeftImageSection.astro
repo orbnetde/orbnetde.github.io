@@ -1,10 +1,10 @@
 ---
+import { Image } from 'astro:assets';
 import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
-import { loadImage } from '../../utils/get-image';
 
 interface Image extends SbBlokData {
-  filename: string
+  filename: string;
 }
 
 interface LeftImageSection extends SbBlokData {
@@ -18,16 +18,21 @@ interface Props {
 }
 
 const { blok } = Astro.props;
-
-const optImage = await loadImage(blok?.image?.filename || '');
 ---
 <section class=`${blok.classes}`>
-  <div class=`container py-0 md:py-12 max-w-screen-xl mx-auto` {...storyblokEditable(blok)}>
-    <div class="flex flex-wrap items-stretch">
-      <div class="w-full flex md:w-5/12 lg:w-3/6 items-stretch">
-        <div class="w-full min-h-96 p-6 justify-end bg-center bg-contain bg-no-repeat -rotate-6" style={`background-image: url(${optImage.src})`}></div>
+  <div class=`container py-0 max-w-screen-xl mx-auto` {...storyblokEditable(blok)}>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div class="w-full h-[500px]">
+        {blok?.image && blok.image?.filename && blok.image.filename !== '' &&
+          <Image src={blok.image.filename}
+                 width="500"
+                 height="500"
+                 alt="bla"
+                 class="object-contain mx-auto"
+          />
+        }
       </div>
-      <div class="w-full md:pl-6 md:w-7/12 lg:w-3/6">
+      <div class="w-full">
         {blok.content?.map((blok: SbBlokData) => (
           <StoryblokComponent blok={blok} />
         ))}

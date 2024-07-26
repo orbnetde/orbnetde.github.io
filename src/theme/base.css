@@ -20,7 +20,7 @@
     }
 
     body {
-        @apply text-body-color antialiased w-full overflow-y-auto overflow-x-hidden;
+        @apply text-body-color antialiased w-full overflow-y-auto overflow-x-hidden text-base;
         font-family: Poppins, system-ui, sans-serif;
     }
 }
@@ -90,6 +90,9 @@
 
     .card-over {
         @apply after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500;
+    }
+    .card-over.card-full {
+        @apply after:opacity-100 after:shadow-md !important;
     }
 
     .card-link::after {

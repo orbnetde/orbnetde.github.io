@@ -2,8 +2,8 @@
 import Section from '../../components/Section.astro';
 import { type SbBlokData, storyblokEditable } from '@storyblok/astro';
 
-interface CTA extends SbBlokData {
-  headline?: string,
+interface CTABig extends SbBlokData {
+  headline: string,
   text: string,
   href: string,
   button: string,
@@ -12,19 +12,17 @@ interface CTA extends SbBlokData {
 }
 
 interface Props {
-  blok: CTA;
+  blok: CTABig;
 }
 
 const { blok } = Astro.props;
-
-const buttonClass = String(blok?.classes).includes("bg-primary") ? "bg-secondary" : "bg-primary";
 ---
 <Section bgColor={blok.classes || ''} {...storyblokEditable(blok)}>
   <div class="flex flex-col mx-auto px-6 items-center max-w-screen-xl">
-    {blok?.headline &&<span class="uppercase">{blok.headline}</span>}
+    <span class="uppercase">{blok.headline}</span>
     <strong class="text-2xl font-normal my-6">{blok.text}</strong>
     <a href={blok.href}
-       class=`${buttonClass} px-24 py-4 text-white rounded-md text-center font-semibold hover:bg-secondary hover:shadow-md transition duration-500 mb-4`
+       class="bg-primary px-24 py-4 text-white rounded-md text-center font-semibold hover:bg-secondary hover:shadow-md transition duration-500 mb-4"
     >
       {blok.button}
     </a>

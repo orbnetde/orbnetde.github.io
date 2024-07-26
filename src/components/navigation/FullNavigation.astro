@@ -13,13 +13,13 @@ import ThemeSwitch from './ThemeSwitch.astro';
 ---
 <header
   x-data="{mobOpen: false, megaOpen: false}"
-  class={'absolute top-0 w-full isolate z-50' + (!Astro.url.pathname.startsWith('/blog/') ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
+  class={'absolute top-0 text-sm w-full isolate z-50 px-6' + (!Astro.url.pathname.startsWith('/blog/') ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
   @click.away="megaOpen = false"
   :class="megaOpen && 'open-menu'"
 >
-  <nav class="mx-auto flex max-w-screen-xl items-center justify-between p-6" aria-label="Global">
+  <nav class="mx-auto flex max-w-screen-xl items-center justify-between py-3 md:py-6" aria-label="Global">
     <div class="flex lg:flex-1">
-      <a href="/" class="-m-1.5 p-1.5">
+      <a href="/">
         <span class="sr-only">orbnet</span>
         <Image class="h-8 w-auto header-logo inline-block dark:hidden"
                src={logo}
@@ -40,7 +40,7 @@ import ThemeSwitch from './ThemeSwitch.astro';
     <div class="flex lg:hidden">
       <button type="button"
               @click="mobOpen = true"
-              class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5"
+              class="inline-flex items-center justify-center rounded-md"
       >
         <span class="sr-only">Menü öffnen</span>
         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">

@@ -104,6 +104,7 @@ export default defineConfig({
         CardTower: 'storyblok/structure/CardTower',
         Container: 'storyblok/structure/Container',
         CTA: 'storyblok/structure/CTA',
+        CTABig: 'storyblok/structure/CTABig',
         CTAPill: 'storyblok/structure/CTAPill',
         Grid2: 'storyblok/structure/Grid2',
         Grid3: 'storyblok/structure/Grid3',
@@ -114,6 +115,8 @@ export default defineConfig({
         // Content
         Button: 'storyblok/content/Button',
         Card: 'storyblok/content/Card',
+        FAQList: 'storyblok/content/FAQList',
+        FAQListItem: 'storyblok/content/FAQListItem',
         FeatureCard: 'storyblok/content/FeatureCard',
         FeatureList: 'storyblok/content/FeatureList',
         FeatureListItem: 'storyblok/content/FeatureListItem',

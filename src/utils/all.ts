@@ -1,6 +1,6 @@
 /** */
-export const getFormattedDate = (date: string): string =>
-  date ?
+export const getFormattedDate = (date: string): string => {
+  return date ?
     new Date(date).toLocaleDateString(
       'de-de', {
         year: 'numeric',
@@ -9,7 +9,7 @@ export const getFormattedDate = (date: string): string =>
       },
     ) :
     '';
-
+};
 
 export const getAnchorFromText = (text: string): string => {
   return String(text)

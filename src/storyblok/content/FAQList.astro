@@ -1,0 +1,42 @@
+---
+import BlogSchema from '../../content/blog/Schema';
+import { renderRichText, storyblokEditable, type SbBlokData, type  SbRichTextOptions, type ISbRichtext } from '@storyblok/astro';
+import FAQs from '../../components/jsonld/FAQs.astro';
+
+interface FAQListItem extends SbBlokData {
+  question: string;
+  answer: ISbRichtext;
+}
+
+interface FAQList extends SbBlokData {
+  faqs: FAQListItem[];
+}
+
+interface Props {
+  blok: FAQList;
+}
+
+const { blok } = Astro.props;
+
+const options: SbRichTextOptions = {
+  schema: BlogSchema,
+};
+
+const items = blok.faqs.map((faq: FAQListItem): { question: string, answer: string } => {
+  return {
+    question: faq.question,
+    answer: renderRichText(faq.answer, options),
+  };
+});
+---
+<div class="flex flex-col mx-auto max-w-screen-md text-dark dark:text-white px-4" {...storyblokEditable(blok)}>
+  {items.map(faq => (
+    <details class="w-full bg-white dark:bg-dark-3 border border-gray-3 dark:border-dark-5 shadow-sm rounded-md mb-8 marker:text-primary dark:marker:text-primary-400 open:ring-1 open:ring-primary dark:open:ring-primary-400">
+      <summary class="text-lg font-semibold cursor-pointer p-8">{faq.question}</summary>
+      <p class="p-8 pt-0">
+        {faq.answer}
+      </p>
+    </details>
+  ))}
+</div>
+<FAQs faqs={items} />

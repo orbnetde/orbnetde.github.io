@@ -1,8 +1,7 @@
 ---
-import {Image} from 'astro:assets';
+import { Image } from 'astro:assets';
 import { storyblokEditable, type ISbRichtext, type SbBlokData, type SbRichTextOptions } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
-import { loadImage } from '../../utils/get-image';
 import BlogSchema from '../../content/blog/Schema';
 
 interface SbImage extends SbBlokData {
@@ -14,9 +13,11 @@ interface Card extends SbBlokData {
   body: any | ISbRichtext,
   link?: string,
   image?: SbImage,
+  image_full_size?: boolean,
   classes?: string
   titleClasses?: string
-  bodyClasses?: string
+  bodyClasses?: string,
+  withoutOpacity?: boolean,
 }
 
 interface Props {
@@ -28,21 +29,24 @@ const options: SbRichTextOptions = {
 };
 
 const { blok } = Astro.props;
-
-const optImage = await loadImage(blok?.image?.filename || '');
 ---
 <div class={'relative group transition border border-black/[0.05] dark:border-black rounded-lg ' + (blok?.classes || '')} {...storyblokEditable(blok)}>
-  <div class="card-over"></div>
+  <div class=`card-over ${blok?.withoutOpacity && 'card-full'}`></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
-    {optImage.src !== '' &&
-      <div class="flex h-64 w-full">
-        <Image src={optImage.src} width="600" height="256" alt={blok?.title || 'Bild'} class="rounded-t-lg object-cover transition duration-500 group-hover:scale-105" />
+    {blok?.image && blok.image?.filename !== '' &&
+      <div class=`flex h-64 w-full`>
+        <Image src={blok.image.filename}
+               width="640"
+               height="256"
+               alt={blok?.title || 'Bild'}
+               class=`${blok?.image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
+        />
       </div>
     }
-    <div class="p-4">
-      {blok?.title && blok?.link && <a href={blok.link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white card-link ' + blok?.titleClasses}>{blok.title}</a>}
-      {blok?.title && !blok?.link && <strong class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + blok?.titleClasses}>{blok.title}</strong>}
-      <div class={'text-dark-3 dark:text-white ' + blok?.bodyClasses}>
+    <div class="py-4 px-8">
+      {blok?.title && blok?.link && <a href={blok.link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-primary dark:text-primary-400 card-link ' + blok?.titleClasses}>{blok.title}</a>}
+      {blok?.title && !blok?.link && <strong class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-primary dark:text-primary-400 ' + blok?.titleClasses}>{blok.title}</strong>}
+      <div class={'text-dark-3 dark:text-white pb-6 ' + blok?.bodyClasses}>
         {blok.body &&
           (blok.body?.type ?
             <RichTextRenderer richTextData={blok.body} richTextOptions={options} /> : blok.body)

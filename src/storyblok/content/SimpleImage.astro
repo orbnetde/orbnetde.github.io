@@ -12,7 +12,8 @@ interface Image extends SbBlokData {
   width: number,
   height: number,
   alt: string,
-  bordered?: boolean
+  bordered?: boolean,
+  centered?: boolean,
 }
 
 interface Props {
@@ -26,6 +27,6 @@ const { blok } = Astro.props;
        title={blok.alt}
        width={blok.width}
        height={blok.height}
-       class=`simple-image ${blok?.bordered ? "border-4 rounded-xl border-gray-200" : ""}`
+       class=`simple-image ${blok?.bordered ? "border-4 rounded-xl border-gray-200" : ""} ${blok?.centered ? "mx-auto" : ""}`
        {...storyblokEditable(blok)}
 />

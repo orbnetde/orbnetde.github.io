@@ -1,0 +1,34 @@
+---
+interface Faq {
+  question: string,
+  answer: string,
+}
+
+interface Props {
+  faqs?: Faq[] | undefined;
+}
+const { faqs } = Astro.props;
+
+const items: Array<{}> = [];
+(faqs || []).map((faq: Faq) => {
+  items.push({
+    '@type': 'Question',
+    name: faq.question,
+    acceptedAnswer: [
+      {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    ],
+  });
+});
+
+const schema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  'name': 'FAQs',
+  'mainEntity': items,
+};
+---
+{items.length > 0 &&
+<script type="application/ld+json" set:html={JSON.stringify(schema)} is:inline />}
