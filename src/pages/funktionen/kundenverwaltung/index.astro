@@ -33,6 +33,7 @@ const breadcrumbs = await getBreadcrumb({ full_slug: 'funktionen/kundenverwaltun
               body: String(page?.props?.description || ''),
               link: '/' + page.params.slug + '/',
               image: { filename: String(page?.props?.image || '') },
+              image_full_size: true,
             }
           } />
         ))}
