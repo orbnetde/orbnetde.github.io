@@ -51,6 +51,7 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
     <meta property="twitter:creator" content="@orbnetde" />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
+    <link rel="preload" href="/cookieconsent.css" as="style" onload="this.onload=null;this.rel='stylesheet';" />
     <MyOrbnetJsonLd />
     <OrbnetGmbHJsonLd />
     <WebsiteJsonLd />
@@ -67,8 +68,6 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
         }
     </style>
     <script>
-      import '../scripts/stickymenu.js';
-      import '../scripts/scrolltop.js';
       import '../scripts/darkMode.js';
     </script>
     <script is:raw is:inline type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-Y1PV48Q98S"></script>
@@ -80,5 +79,8 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
       gtag("consent", "default", {"ad_storage": "granted", "analytics_storage": "granted"});
       gtag("config", "G-Y1PV48Q98S", {"anonymize_ip": true, cookie_flags: "SameSite=Strict;Secure" });
     </script>
+    <script is:inline src="/scripts/cc.js" type="module" defer></script>
+    <script is:inline src="/scripts/stickymenu.js" defer></script>
+    <script is:inline src="/scripts/scrolltop.js" defer></script>
   </body>
 </html>

@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { storyblokEditable, type ISbRichtext, type SbBlokData, type SbRichTextOptions } from '@storyblok/astro';
 import RichTextRenderer from '@storyblok/astro/RichTextRenderer.astro';
 import BlogSchema from '../../content/blog/Schema';
@@ -34,14 +34,14 @@ const { blok } = Astro.props;
   <div class=`card-over ${blok?.withoutOpacity && 'card-full'}`></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {blok?.image && blok.image?.filename !== '' &&
-      <div class=`flex h-64 w-full`>
-        <Image src={blok.image.filename}
+      <Picture src={blok.image.filename}
+               widths={[640, 250]}
                width="640"
                height="256"
                alt={blok?.title || 'Bild'}
+               pictureAttributes={{ class: 'flex h-64 w-full' }}
                class=`${blok?.image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
-        />
-      </div>
+      />
     }
     <div class="py-4 px-8">
       {blok?.title && blok?.link && <a href={blok.link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-primary dark:text-primary-400 card-link ' + blok?.titleClasses}>{blok.title}</a>}

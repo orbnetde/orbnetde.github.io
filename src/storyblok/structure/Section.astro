@@ -1,9 +1,9 @@
 ---
-import { loadImage } from '../../utils/get-image';
+import { Image } from 'astro:assets';
 import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
-interface Image extends SbBlokData {
+interface SbImage extends SbBlokData {
   filename: string;
 }
 
@@ -12,7 +12,7 @@ interface Section extends SbBlokData {
   subtitle?: string,
   sectionTitle?: string,
   classes?: string,
-  image?: Image
+  image?: SbImage
   content?: SbBlokData[]
 }
 
@@ -21,10 +21,11 @@ interface Props {
 }
 
 const { blok } = Astro.props;
-
-const optImage = await loadImage(blok?.image?.filename || '');
 ---
-<section class={'relative py-12 lg:pb-16 ' + (blok?.classes || '')} style={`background-image: url(${optImage.src})`} {...storyblokEditable(blok)}>
+<section class={'relative py-12 lg:pb-16 ' + (blok?.classes || '')} {...storyblokEditable(blok)}>
+  {blok?.image && blok.image?.filename && blok.image.filename !== '' &&
+    <Image src={blok.image.filename} width="1080" height="1080" alt="background image" aria-hidden="true" class="absolute inset-0 w-full h-full" />
+  }
   {blok?.sectionTitle &&
     <div class="container text-base text-center mx-auto text-primary dark:text-warning uppercase font-semibold tracking-wide pb-12">{blok.sectionTitle}</div>
   }

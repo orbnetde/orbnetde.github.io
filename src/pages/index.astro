@@ -1,6 +1,5 @@
 ---
-import { getImage, Image } from 'astro:assets';
-// import { Icon } from 'astro-icon/components';
+import { Image } from 'astro:assets';
 
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
@@ -15,8 +14,6 @@ import FeatureCard from '../components/FeatureCard.astro';
 import girlWithCoffee from '../assets/landing/girl-with-coffee.webp';
 import guyInChair from '../assets/landing/guy-in-chair.webp';
 import stuff from '../assets/general/background-stuff.svg';
-// import ellipsis from '../assets/svg/ellipse-14.svg';
-// import lines from '../assets/svg/lines.svg';
 
 import useCaseBeratung from '../assets/landing/orbnet-all-in-one-home-usecase-beratung-800x800.webp';
 import useCaseHandwerker from '../assets/landing/orbnet-all-in-one-home-usecase-handwerker-800x800.webp';
@@ -30,15 +27,9 @@ import gobd from '../assets/landing/orbnet-gobd.webp';
 import datenschutz from '../assets/landing/orbnet-datenschutz.webp';
 import SectionText from '../components/SectionText.astro';
 
-const optStuff = await getImage({ src: stuff, format: 'svg' });
-// const optEllipsis = await getImage({ src: ellipsis, format: 'svg' });
-// const optLines = await getImage({ src: lines, format: 'svg' });
-//
-// import { prices } from '../content/prices';
 import Testimonials from '../storyblok/static/Testimonials.astro';
 import FeatureList from '../components/FeatureList.astro';
 ---
-
 <Layout
   title="Die Software für Coaches und Berater"
   description="orbnet ist ein neues Tool mit einfacher Benutzeroberfläche und den besten Funktionen für dein Coaching-Business. Jetzt KOSTENLOS testen!"
@@ -182,7 +173,8 @@ import FeatureList from '../components/FeatureList.astro';
         title="Unsere besten Skills und Features für dein Business!"
         subLine="Buchhaltung, Kundenverwaltung und Terminvereinbarung - können wir! Unser All-in-One Paket ergänzen wir mit zahlreichen weiteren Funktionen, die dein Businessalltag erleichtern."
       >
-        <div class="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-12 bg-top bg-repeat-y bg-cover lg:bg-contain lg:bg-no-repeat max-w-screen-xl mx-auto" style={`background-image: url(${optStuff.src})`}>
+        <div class="container relative z-10 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-3 gap-y-12 max-w-screen-xl mx-auto">
+          <Image src={stuff} width="1080" height="1080" alt="background image" class="absolute inset-0 w-full h-full"/>
           <FeatureCard
             title="Landingpage"
             body="Landingpages sind die ideale Ergänzung zur Online Terminvereinbarung. Bewirb gezielte Aktionen, Seminare, Kurse oder Workshops und lass dich buchen!"

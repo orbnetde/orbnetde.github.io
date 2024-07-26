@@ -104,4 +104,12 @@
     .info-box a:visited {
         @apply text-white;
     }
+
+    #blog .simple-image {
+        margin: 1rem auto;
+    }
+
+    .typewrite {
+        @apply text-warning;
+    }
 }
