@@ -12,10 +12,14 @@
     }
 
     h2 {
-        @apply text-xl leading-tight text-dark dark:text-white;
+        @apply text-2xl leading-tight text-dark dark:text-white;
     }
 
     h3 {
+        @apply text-xl leading-tight text-dark dark:text-white;
+    }
+
+    h4 {
         @apply text-lg leading-tight text-dark dark:text-white;
     }
 
@@ -91,6 +95,7 @@
     .card-over {
         @apply after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500;
     }
+
     .card-over.card-full {
         @apply after:opacity-100 after:shadow-md !important;
     }
@@ -105,7 +110,7 @@
         @apply text-white;
     }
 
-    #blog .simple-image {
+    #blog-entry .simple-image {
         margin: 1rem auto;
     }
 

@@ -35,7 +35,7 @@ const { blok } = Astro.props;
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {blok?.image && blok.image?.filename !== '' &&
       <Picture src={blok.image.filename}
-               widths={[640, 250]}
+               widths={[640, 420, 250]}
                width="640"
                height="256"
                alt={blok?.title || 'Bild'}

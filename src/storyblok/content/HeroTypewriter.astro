@@ -22,7 +22,7 @@ interface Props {
 
 const { blok } = Astro.props;
 ---
-<section id="start" class=`relative ${blok?.images && blok.images.length > 0 ? " pb-12" :""}` {...storyblokEditable(blok)}>
+<section id="start" class=`relative ${blok?.images && blok.images.length > 0 ? " pb-12" : ""}` {...storyblokEditable(blok)}>
   <div class="w-full bg-gradient-to-t from-primary-900 from-10% to-80% bg-primary dark:from-dark dark:bg-dark-3">
     <div class="flex flex-wrap items-center text-center h-[100lvh] w-full">
       <div class=`pt-[120px] px-6 lg:pt-0 w-full text-white ${blok?.images && blok.images.length > 0 ? " -mt-[200px] md:-mt-[100px] lg:-mt-[140px]" : ""}`>

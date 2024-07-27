@@ -168,11 +168,11 @@ export const menuItems: MenuItem[] = [
         highlight: true,
         icon: 'list-bullet-outline',
       },
-      {
-        name: 'On-Boarding buchen',
-        href: 'https://www.orbnet.de/p/click/onboarding/',
-        icon: 'chat-bubble-left-ellipsis-outline',
-      },
+      // {
+      //   name: 'On-Boarding buchen',
+      //   href: 'https://www.orbnet.de/p/click/onboarding/',
+      //   icon: 'chat-bubble-left-ellipsis-outline',
+      // },
     ],
   },
   {
@@ -204,12 +204,12 @@ export const menuItems: MenuItem[] = [
         external: true,
         icon: 'eye-outline',
       },
-      {
-        name: 'On-Boarding buchen',
-        href: 'https://www.orbnet.de/p/click/onboarding/',
-        external: true,
-        icon: 'chat-bubble-left-ellipsis-outline',
-      },
+      // {
+      //   name: 'On-Boarding buchen',
+      //   href: 'https://www.orbnet.de/p/click/onboarding/',
+      //   external: true,
+      //   icon: 'chat-bubble-left-ellipsis-outline',
+      // },
     ],
   },
   {

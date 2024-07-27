@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Image, Picture } from 'astro:assets';
 
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
@@ -110,28 +110,26 @@ import FeatureList from '../components/FeatureList.astro';
       </CTAPill>
       <div class="container">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-screen-xl mx-auto">
-          <!--<div class="card bg-gray-200">-->
-          <!--  <div class="card-body">-->
-          <!--    test-->
-          <!--  </div>-->
-          <!--</div>-->
           <Card
             src={useCaseBeratung}
             classes="rounded-lg hover:-translate-y-2.5 duration-500"
             title="Coaching & Berater"
             body="Webinare, Seminare oder Online-Kurse organisieren, eine automatisierte Terminvereinbarung und Kunden verwalten. Mit orbnet die perfekte Zeitplanung kreieren, anstehende Termine sofort und direkt zur Hand haben und alles unter einen Hut bekommen."
+            image_full_size={true}
           />
           <Card
             src={useCaseHandwerker}
             classes="rounded-md hover:-translate-y-2.5 duration-500"
             title="Handwerker"
             body="Belege verwalten, Rechnungen schreiben und am Ende alles an den Steuerberater übergeben - es war nie einfacher seine gesamte Buchhaltung so zu organisieren, um sich wieder komplett auf sein Handwerk konzentrieren zu können."
+            image_full_size={true}
           />
           <Card
             src={useCaseArzt}
             classes="rounded-md hover:-translate-y-2.5 duration-500"
             title="Ärzte & Therapeuten"
             body="Termine koordinieren und dennoch ausreichend Zeit für Therapiestunden oder persönliche Sitzungen haben. Orbnet koordiniert all das automatisch unter Einhaltung aller gesetzlicher Vorschriften."
+            image_full_size={true}
           />
         </div>
       </div>
@@ -148,7 +146,6 @@ import FeatureList from '../components/FeatureList.astro';
           <p class="mb-6">Du schreibst Rechnungen, verknüpfst alles mit deinem Online-Banking und gibst deinem Steuerberater Zugriff auf deine Unterlagen zur Erstellung deiner Steuererklärung.</p>
           <a href="/funktionen/buchhaltung/" class="text-primary dark:text-primary-400 font-semibold">Buchhaltung</a>
         </div>
-        <Image slot="image" src={buchhaltung} alt="orbnet buchhaltung" width={520} height={520} />
       </LeftImageTextRight>
       <RightImageTextLeft src={onlineTermin}>
         <div slot="text" class="text-dark dark:text-white">
@@ -275,40 +272,6 @@ import FeatureList from '../components/FeatureList.astro';
         </div>
       </div>
     </Section>
-    <!--<section class="py-12">-->
-    <!--  <div class="flex flex-col lg:flex-row mx-auto w-full max-w-screen-xl items-center gap-12 pb-12">-->
-    <!--    <div class="w-full px-6 lg:w-2/6">-->
-    <!--      <SectionText start="Work"-->
-    <!--                   headline="Wir arbeiten zusammen und angepasst auf"-->
-    <!--                   headlineHighlight="deine Bedürfnisse!"-->
-    <!--      >-->
-    <!--        <div class="mt-12">-->
-    <!--          Unsere All-in-one Software für Dienstleister fokussiert sich auf einfache Vorgänge in Sachen perfekte Zusammenarbeit.-->
-    <!--        </div>-->
-    <!--      </SectionText>-->
-    <!--    </div>-->
-    <!--    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-14 items-center px-6 w-full lg:w-4/6 bg-contain bg-center bg-no-repeat" style={`background-image: url(${optEllipsis.src})`}>-->
-    <!--      <Card-->
-    <!--        classes="w-full rounded-xl shadow-xl"-->
-    <!--        title="Steuerberater"-->
-    <!--        body="Spare dir stundenlanges Vorbereiten auf deinen Termin mit deinem Steuerberater. Mit der orbnet Komplettlösung stellst du deinem Steuerberater sämtliche Informationen per einfachem Zugriff auf deine Unterlagen zur Verfügung. Und dieser erstellt dir dann Jahresabschlüsse, die EÜR oder zieht Bilanz."-->
-    <!--        bodyClasses="pb-6"-->
-    <!--      />-->
-    <!--      <Card-->
-    <!--        classes="rounded-xl shadow-xl lg:even:mt-80"-->
-    <!--        title="Finanzamt"-->
-    <!--        body="Du bist zur Umsatzsteuervoranmeldung (USt-VA) verpflichtet? Dann nutze unsere praktische Schnittstelle zum Finanzamt und übermittle sämtliche Voranmeldungen schnell und einfach direkt aus dem System. Beinahe automatisch."-->
-    <!--        bodyClasses="pb-6"-->
-    <!--      />-->
-    <!--      <Card-->
-    <!--        classes="rounded-xl shadow-xl lg:odd:-mt-40"-->
-    <!--        title="Jede Unternehmensgröße"-->
-    <!--        body="Egal, ob einfache oder doppelte Buchführung - die vorbereitende Buchführung läuft in der orbnet Software einfach im Hintergrund. So brauchst du dich am Stichtag nicht mehr um eine rechtzeitige Abgabe zu sorgen."-->
-    <!--        bodyClasses="pb-6"-->
-    <!--      />-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--</section>-->
     <Testimonials blok={{ classes: '' }} />
     <BlogSection blok={{ sectionTitle: 'Blog', subtitle: '', title: 'Unsere neuesten News', classes: 'bg-primary-100 dark:bg-dark-2' }} />
   </main>

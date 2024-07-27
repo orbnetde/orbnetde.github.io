@@ -1,5 +1,5 @@
 ---
-import { Image } from 'astro:assets';
+import { Picture } from 'astro:assets';
 import { getFormattedDate } from '../utils/all';
 import { loadImage } from '../utils/get-image';
 
@@ -8,6 +8,7 @@ interface Props {
   date?: string,
   title?: string,
   src?: any,
+  image_full_size?: boolean,
   classes?: string,
   titleClasses?: string,
   bodyClasses?: string,
@@ -19,6 +20,7 @@ const {
   date,
   title,
   src,
+  image_full_size,
   classes,
   titleClasses,
   bodyClasses,
@@ -38,9 +40,14 @@ if (src?.src && !String(src.src).includes('storyblok')) {
   <div class="after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500"></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
     {optImage.src !== '' &&
-      <div class="flex h-64 w-full">
-        <Image src={optImage.src} width="600" height="256" alt={title || 'Bild'} class="object-cover transition duration-500 group-hover:scale-105" />
-      </div>
+      <Picture src={optImage.src}
+               widths={[640, 420, 250]}
+               width="640"
+               height="256"
+               alt={title || 'Bild'}
+               pictureAttributes={{ class: 'flex h-64 w-full' }}
+               class=`${image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
+      />
     }
     <div class="p-4">
       {title && link && <a href={link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white card-link ' + titleClasses}>{title}</a>}
