@@ -1,5 +1,5 @@
 ---
-import { Picture } from 'astro:assets';
+import SmartImage from './SmartImage.astro';
 
 interface Props {
   src?: any;
@@ -10,13 +10,12 @@ const { src } = Astro.props;
 <div class=`container py-0 max-w-screen-xl mx-auto`>
   <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
     {src &&
-      <Picture src={src}
-               widths={[500, 330]}
-               width="500"
-               height="500"
-               alt="orbnet"
-               pictureAttributes={{ class: 'w-full flex h-[330px] lg:h-[500px]' }}
-               class="object-contain mx-auto"
+      <SmartImage src={src}
+                  alt="orbnet"
+                  widths={[500, 330]}
+                  sizes="(max-width: 1024px) 330px, 500px"
+                  pictureAttributes={{ class: 'w-full flex h-[330px] lg:h-[500px]' }}
+                  class="object-contain mx-auto"
       />
     }
     <div class="w-full text-dark dark:text-white">

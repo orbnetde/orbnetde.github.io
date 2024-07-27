@@ -31,10 +31,11 @@ export default defineConfig({
   image: {
     // Allows Astro to download and optimize images from this source.
     domains: ['a.storyblok.com'],
+    remotePatterns: [{ protocol: 'https' }],
   },
   redirects: {},
   integrations: [
-    tailwind({applyBaseStyles: false}),
+    tailwind({ applyBaseStyles: false }),
     sitemap(),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {

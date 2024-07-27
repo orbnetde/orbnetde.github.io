@@ -72,7 +72,8 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: url, title: titl
         {
           stories.map((post) => (
             <Card
-              src={{ src: post.content?.hero.filename }}
+              src={post.content?.hero.filename}
+              image_full_size={true}
               date={post.first_published_at || post.created_at}
               title={post.content.title}
               classes="rounded-md"

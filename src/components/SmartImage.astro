@@ -1,0 +1,54 @@
+---
+import { Picture } from 'astro:assets';
+import { loadImage } from '../utils/get-image';
+
+interface Props {
+  src: string,
+  alt: string,
+  title?: string,
+  widths?: Array<number>,
+  sizes?: string,
+  width?: number,
+  height?: number,
+  pictureAttributes?: {
+    class: string
+  },
+  class?: string,
+  loading?: 'eager' | 'lazy' | null | undefined,
+  'data-blok-c'?: any,
+  'data-blok-uuid'?: any,
+}
+
+const {
+  src,
+  width,
+  widths,
+  height,
+  sizes,
+  alt,
+  title,
+  pictureAttributes
+  ,
+  loading,
+} = Astro.props;
+
+if (!src) {
+  return;
+}
+
+const image = await loadImage(src, width, height);
+---
+{image &&
+<Picture
+  src={src}
+  inferSize
+  formats={['avif', 'webp']}
+  quality="high"
+  widths={widths || [800, 640, 420, 250]}
+  sizes={sizes || '(min-width: 1280px) 800px, (min-width: 1024px) 640px, (min-width: 768px) 420px, 250px'}
+  alt={alt}
+  title={title || alt}
+  pictureAttributes={pictureAttributes}
+  class={Astro.props?.class}
+  loading={loading || 'lazy'}
+/>}

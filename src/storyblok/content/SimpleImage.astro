@@ -1,7 +1,7 @@
 ---
-import { Image } from 'astro:assets';
 import { storyblokEditable } from '@storyblok/astro';
 import type { SbBlokData } from '@storyblok/astro';
+import SmartImage from '../../components/SmartImage.astro';
 
 interface Image extends SbBlokData {
   image: {
@@ -22,11 +22,9 @@ interface Props {
 
 const { blok } = Astro.props;
 ---
-<Image src={blok.image.filename}
-       alt={blok.alt}
-       title={blok.alt}
-       width={blok.width}
-       height={blok.height}
-       class=`simple-image ${blok?.bordered ? "border-4 rounded-xl border-gray-200" : ""} ${blok?.centered ? "mx-auto" : ""}`
-       {...storyblokEditable(blok)}
+<SmartImage src={blok.image.filename}
+            alt={blok.alt}
+            title={blok.alt}
+            class=`simple-image ${blok?.bordered ? 'border-4 rounded-xl border-gray-200' : ''} ${blok?.centered ? 'mx-auto' : ''}`
+            {...storyblokEditable(blok)}
 />

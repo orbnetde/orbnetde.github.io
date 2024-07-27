@@ -1,5 +1,5 @@
 ---
-import { Image, Picture } from 'astro:assets';
+import { Image } from 'astro:assets';
 
 import Hero from '../components/Hero.astro';
 import Layout from '../layouts/Layout.astro';
@@ -259,12 +259,14 @@ import FeatureList from '../components/FeatureList.astro';
         <div class="grid grid-cols-1 gap-12 md:grid-cols-2">
           <Card
             src={datenschutz}
+            image_full_size={true}
             classes="rounded-md"
             body="Wir wissen um die Sensibilität von Unternehmensdaten und entwickeln unsere Datenschutzprozesse stetig weiter. Als deutscher Serverstandort sind wir - die orbnet GmbH - an strenge deutsche Datenschutzgesetze gebunden."
             bodyClasses="py-6"
           />
           <Card
             src={gobd}
+            image_full_size={true}
             classes="rounded-md"
             body="Sämtliche Unternehmensformen sind an die GoBD gebunden, deren Umsetzung oft eine Herausforderung darstellt. Wir konzentrieren uns auf eine durchsichtige Einbindung sämtlicher GoBD-Richtlinien."
             bodyClasses="py-6"

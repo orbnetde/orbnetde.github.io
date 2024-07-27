@@ -1,8 +1,7 @@
 ---
-import { Picture } from 'astro:assets';
-
 import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
+import SmartImage from '../../components/SmartImage.astro';
 
 interface ImageHeroImage extends SbBlokData {
   filename: string;
@@ -55,14 +54,12 @@ const { blok } = Astro.props;
     </div>
     {blok?.image?.filename &&
       <div class=`motion-safe:animate-rising w-full xl:w-5/12 self-center ${blok.image_classes || ''}`>
-        <Picture
+        <SmartImage
           loading="eager"
           src={blok.image.filename}
-          widths={[500, 400, 280]}
-          inferSize={true}
+          widths={[500, 350]}
+          sizes="(max-width: 450px) 350px, 500px"
           alt=`Bild zu ${blok.title}`
-          format="webp"
-          quality="high"
           pictureAttributes={{class: "w-full"}}
         />
       </div>

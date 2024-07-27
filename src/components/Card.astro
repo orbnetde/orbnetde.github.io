@@ -1,7 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
 import { getFormattedDate } from '../utils/all';
-import { loadImage } from '../utils/get-image';
+import SmartImage from './SmartImage.astro';
 
 interface Props {
   body: string,
@@ -26,27 +25,17 @@ const {
   bodyClasses,
   link,
 } = Astro.props;
-
-let optImage = { src: '' };
-if (src?.src && !String(src.src).includes('storyblok')) {
-  optImage = await loadImage(src);
-} else if (src?.src) {
-  optImage = await loadImage(src.src);
-} else if (src) {
-  optImage = await loadImage(src);
-}
 ---
 <div class={'relative group transition border border-white/[0.75] dark:border-black rounded-lg ' + classes}>
   <div class="after:rounded-lg after:absolute after:opacity-30 group-hover:after:opacity-60 after:z-0 after:top-0 after:bottom-0 after:left-0 after:right-0 after:content-[''] after:bg-white dark:after:bg-dark after:transition after:duration-500"></div>
   <div class="relative top-0 left-0 flex flex-col rounded-t-lg overflow-hidden">
-    {optImage.src !== '' &&
-      <Picture src={optImage.src}
-               widths={[640, 420, 250]}
-               width="640"
-               height="256"
-               alt={title || 'Bild'}
-               pictureAttributes={{ class: 'flex h-64 w-full' }}
-               class=`${image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
+    {src !== '' &&
+      <SmartImage src={src}
+                  alt="orbnet"
+                  widths={[500, 330]}
+                  sizes="(max-width: 1024px) 330px, 500px"
+                  pictureAttributes={{ class: 'flex h-64 w-full' }}
+                  class=`${image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
       />
     }
     <div class="p-4">
