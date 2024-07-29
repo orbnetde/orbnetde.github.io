@@ -9,8 +9,11 @@ import sitemap from '@astrojs/sitemap';
 import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
 import icon from 'astro-icon';
 import storyblok from '@storyblok/astro';
+import mdx from '@astrojs/mdx';
+import betterImageService from 'astro-better-image-service';
 
 const env = loadEnv('', process.cwd(), ['STORYBLOK']);
+
 
 // https://astro.build/config
 export default defineConfig({
@@ -31,19 +34,17 @@ export default defineConfig({
   image: {
     // Allows Astro to download and optimize images from this source.
     domains: ['a.storyblok.com'],
-    remotePatterns: [{ protocol: 'https' }],
+    remotePatterns: [{
+      protocol: 'https',
+    }],
   },
   redirects: {},
   integrations: [
-    tailwind({ applyBaseStyles: false }),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     sitemap({
-      filter: (page) =>
-        page !== 'https://www.orbnet.de/404/' &&
-        page !== 'https://www.orbnet.de/404' &&
-        page !== 'https://www.orbnet.de/404/index.html' &&
-        page !== 'https://www.orbnet.de/410/' &&
-        page !== 'https://www.orbnet.de/410' &&
-        page !== 'https://www.orbnet.de/410/index.html',
+      filter: page => page !== 'https://www.orbnet.de/404/' && page !== 'https://www.orbnet.de/404' && page !== 'https://www.orbnet.de/404/index.html' && page !== 'https://www.orbnet.de/410/' && page !== 'https://www.orbnet.de/410' && page !== 'https://www.orbnet.de/410/index.html',
     }),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {
@@ -157,22 +158,27 @@ export default defineConfig({
       livePreview: false,
       bridge: import.meta.env.DEV,
     }),
+    mdx(),
+    betterImageService({
+      sharp: {
+        avif: {
+          quality: 50,
+          lossless: true,
+          effort: 9
+        }
+      }
+    }),
     // keep compress on the end
-    compress(),
+    compress({
+      Logger: 1,
+      Image: false,
+      SVG: false,
+    }),
+    // Keep this as last, to use the compressed results to create gz and br
     compressor({
       gzip: true,
       brotli: true,
-      fileExtensions: [
-        '.cjs',
-        '.css',
-        '.html',
-        '.js',
-        '.mjs',
-        '.pdf',
-        '.svg',
-        '.txt',
-        '.xml',
-      ],
+      fileExtensions: ['.cjs', '.css', '.html', '.js', '.mjs', '.pdf', '.svg', '.txt', '.xml'],
     }),
   ],
 });

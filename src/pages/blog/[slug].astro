@@ -1,6 +1,5 @@
 ---
 import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
-import { Picture } from 'astro:assets';
 import type { GetStaticPathsResult } from 'astro';
 import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro';
 
@@ -10,6 +9,7 @@ import { getFormattedDate, getAnchorFromText } from '../../utils/all';
 import Layout from '../../layouts/Layout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import BlogSection from '../../storyblok/static/BlogSection.astro';
+import SmartImage from '../../components/SmartImage.astro';
 
 export const prerender = true;
 
@@ -35,13 +35,10 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 
         <div class="w-full">
           <div class="relative z-20 mb-[50px] h-[300px] overflow-hidden rounded-[5px] md:h-[400px] lg:h-[500px]">
             {entry.content.hero && entry.content.hero.filename &&
-              <Picture
+              <SmartImage
                 loading="eager"
                 src={entry.content.hero.filename}
                 alt={entry.content.hero.alt || ''}
-                width={1250}
-                height={500}
-                widths={[1250, 800, 600, 400]}
                 class="h-full w-full object-cover object-center"
               />}
             <div class="absolute top-0 left-0 z-10 flex h-full w-full items-end bg-gradient-to-t from-dark-700 to-transparent">

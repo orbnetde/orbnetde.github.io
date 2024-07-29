@@ -1,7 +1,6 @@
 ---
-import { Picture } from 'astro:assets';
-
 import { storyblokEditable, type SbBlokData } from '@storyblok/astro';
+import SmartImage from '../../components/SmartImage.astro';
 
 interface Image extends SbBlokData {
   filename: string;
@@ -44,38 +43,32 @@ const { blok } = Astro.props;
   {blok?.images && blok.images.length > 0 &&
     <div class="container px-6 relative mb-[90px] md:mb-[190px] lg:mb-[290px]">
       {blok?.images && blok.images[0] &&
-        <Picture
+        <SmartImage
           loading="eager"
           src={blok.images[0].filename}
-          widths={[1000, 600, 300]}
-          width={1000}
-          height={480}
+          widths={[1000, 600]}
+          sizes="(max-width: 1024px) 600px, 1000px"
           alt="orbnet dashboard"
-          format="webp"
           class="rounded-2xl shadow-2xl absolute z-30 left-[50%] w-[300px] md:w-[600px] lg:w-[800px] xl:w-[1000px] -ml-[150px] md:-ml-[300px] lg:-ml-[400px] xl:-ml-[500px] -mt-[120px] md:landscape:-mt-[40px] md:portrait:-mt-[120px] lg:landscape:-mt-[200px] transition duration-500 hover:-translate-y-1.5"
         />
       }
       {blok?.images && blok.images[1] &&
-        <Picture
+        <SmartImage
           loading="eager"
           src={blok.images[1].filename}
-          widths={[800, 420, 209]}
-          width={800}
-          height={465}
+          widths={[800, 420]}
+          sizes="(max-width: 1024px) 420px, 800px"
           alt="orbnet dashboard"
-          format="webp"
           class="rounded-2xl shadow-lg absolute z-20 left-0 w-[200px] md:w-[400px] lg:w-[600px} xl:w-[800px] -mt-[90px] md:portrait:-mt-[80px] md:landscape:-mt-[20px] lg:landscape:-mt-[130px] -rotate-6 transition duration-500 hover:-translate-y-1.5"
         />
       }
       {blok?.images && blok.images[2] &&
-        <Picture
+        <SmartImage
           loading="eager"
           src={blok.images[2].filename}
-          widths={[800, 420, 209]}
-          width={800}
-          height={465}
+          widths={[800, 420]}
+          sizes="(max-width: 1024px) 420px, 800px"
           alt="orbnet dashboard"
-          format="webp"
           class="rounded-2xl shadow-lg absolute z-10 right-0 w-[200px] md:w-[400px] lg:w-[600px} xl:w-[800px] -mt-[90px] md:portrait:-mt-[80px] md:landscape:-mt-[20px] lg:landscape:-mt-[130px] rotate-6 transition duration-500 hover:-translate-y-1.5"
         />
       }

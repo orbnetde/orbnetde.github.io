@@ -36,8 +36,6 @@ const { blok } = Astro.props;
     {blok?.image && blok.image?.filename !== '' &&
       <SmartImage src={blok.image.filename}
                   alt={blok?.title || 'Bild'}
-                  widths={[500, 330]}
-                  sizes="(max-width: 1024px) 330px, 500px"
                   pictureAttributes={{ class: 'flex h-64 w-full' }}
                   class=`${blok?.image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
       />

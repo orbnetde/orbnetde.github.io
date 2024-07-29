@@ -1,9 +1,8 @@
 ---
-import { Picture } from 'astro:assets';
-import { loadImage } from '../utils/get-image';
+import { Image } from 'astro:assets';
 
 interface Props {
-  src: string,
+  src: any,
   alt: string,
   title?: string,
   widths?: Array<number>,
@@ -21,34 +20,27 @@ interface Props {
 
 const {
   src,
-  width,
   widths,
-  height,
   sizes,
   alt,
   title,
-  pictureAttributes
-  ,
+  pictureAttributes,
   loading,
 } = Astro.props;
 
 if (!src) {
   return;
 }
-
-const image = await loadImage(src, width, height);
 ---
-{image &&
-<Picture
+<Image
   src={src}
   inferSize
-  formats={['avif', 'webp']}
+  format="avif"
   quality="high"
-  widths={widths || [1593, 1080, 800, 640, 420, 250]}
-  sizes={sizes || '(max-width: 540px) 250px, (max-width: 650px) 420px, (max-width: 768px) 640px, (max-width: 1024px) 800px, (max-width: 1280px) 1080px, 1593px'}
+  widths={widths || [1593, 1080, 800, 420]}
+  sizes={sizes || '(max-width: 650px) 420px, (max-width: 1024px) 800px, (max-width: 1280px) 1080px, 1593px'}
   alt={alt}
   title={title || alt}
-  pictureAttributes={pictureAttributes}
-  class={Astro.props?.class}
+  class={(pictureAttributes?.class || '') + ' ' + (Astro.props?.class || '')}
   loading={loading || 'lazy'}
-/>}
+/>
