@@ -44,8 +44,8 @@ const image = await loadImage(src, width, height);
   inferSize
   formats={['avif', 'webp']}
   quality="high"
-  widths={widths || [800, 640, 420, 250]}
-  sizes={sizes || '(min-width: 1280px) 800px, (min-width: 1024px) 640px, (min-width: 768px) 420px, 250px'}
+  widths={widths || [1593, 1080, 800, 640, 420, 250]}
+  sizes={sizes || '(max-width: 540px) 250px, (max-width: 650px) 420px, (max-width: 768px) 640px, (max-width: 1024px) 800px, (max-width: 1280px) 1080px, 1593px'}
   alt={alt}
   title={title || alt}
   pictureAttributes={pictureAttributes}

@@ -36,7 +36,15 @@ export default defineConfig({
   redirects: {},
   integrations: [
     tailwind({ applyBaseStyles: false }),
-    sitemap(),
+    sitemap({
+      filter: (page) =>
+        page !== 'https://www.orbnet.de/404/' &&
+        page !== 'https://www.orbnet.de/404' &&
+        page !== 'https://www.orbnet.de/404/index.html' &&
+        page !== 'https://www.orbnet.de/410/' &&
+        page !== 'https://www.orbnet.de/410' &&
+        page !== 'https://www.orbnet.de/410/index.html',
+    }),
     import.meta.env.PROD && jopSoftwareCookieConsent({
       categories: {
         analytics: {},

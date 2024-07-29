@@ -17,10 +17,11 @@ interface Props {
   canonical?: URL | string,
   robots?: string,
   image?: string,
-  breadcrumbs?: Breadcrumb[] | undefined
+  breadcrumbs?: Breadcrumb[] | undefined,
+  footerDark?: boolean,
 }
 
-const { title, description, canonical, robots, image, breadcrumbs } = Astro.props;
+const { title, description, canonical, robots, image, breadcrumbs, footerDark } = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
@@ -59,7 +60,7 @@ const { title, description, canonical, robots, image, breadcrumbs } = Astro.prop
   <body id="top" class="bg-white dark:bg-dark">
     <Header />
     <slot />
-    <Footer />
+    <Footer dark={footerDark || false} />
     <BackToTop />
     <script>
       import '../scripts/darkMode.js';
