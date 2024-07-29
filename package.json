@@ -23,7 +23,6 @@
     "@vitejs/plugin-basic-ssl": "^1.1.0",
     "alpinejs": "^3.14.0",
     "astro": "^4.12.2",
-    "astro-better-image-service": "^2.0.11",
     "astro-compress": "^2.0.15",
     "astro-compressor": "^0.4.1",
     "astro-heroicons": "^2.1.1",

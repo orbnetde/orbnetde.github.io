@@ -12,6 +12,8 @@ interface Props {
   titleClasses?: string,
   bodyClasses?: string,
   link?: string,
+  widths?: number[],
+  sizes?: string,
 }
 
 const {
@@ -24,6 +26,8 @@ const {
   titleClasses,
   bodyClasses,
   link,
+  widths,
+  sizes,
 } = Astro.props;
 ---
 <div class={'relative group transition border border-white/[0.75] dark:border-black rounded-lg ' + classes}>
@@ -32,13 +36,15 @@ const {
     {src !== '' &&
       <SmartImage src={src}
                   alt="orbnet"
+                  {...{widths: widths}}
+                  {...{sizes: sizes}}
                   pictureAttributes={{ class: 'flex h-64 w-full' }}
                   class=`${image_full_size ? 'rounded-t-lg object-cover' : 'object-contain object-center'} transition duration-500 group-hover:scale-105`
       />
     }
     <div class="p-4">
-      {title && link && <a href={link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white card-link ' + titleClasses}>{title}</a>}
-      {title && !link && <strong class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + titleClasses}>{title}</strong>}
+      {title && link && <a href={link} class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white card-link ' + (titleClasses || '')}>{title}</a>}
+      {title && !link && <strong class={'text-xl font-normal text-pretty break-words block pt-4 pb-6 text-dark dark:text-white ' + (titleClasses || '')}>{title}</strong>}
       {date && <span class="text-sm bg-primary-200 text-dark dark:bg-dark-3 dark:text-white px-2 py-1 rounded-md">{getFormattedDate(date)}</span>}
       <div class={'text-dark-3 dark:text-white ' + bodyClasses}>
         {body}

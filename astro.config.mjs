@@ -10,7 +10,6 @@ import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
 import icon from 'astro-icon';
 import storyblok from '@storyblok/astro';
 import mdx from '@astrojs/mdx';
-import betterImageService from 'astro-better-image-service';
 
 const env = loadEnv('', process.cwd(), ['STORYBLOK']);
 
@@ -159,20 +158,10 @@ export default defineConfig({
       bridge: import.meta.env.DEV,
     }),
     mdx(),
-    betterImageService({
-      sharp: {
-        avif: {
-          quality: 50,
-          lossless: true,
-          effort: 9
-        }
-      }
-    }),
     // keep compress on the end
     compress({
-      Logger: 1,
+      Logger: 2,
       Image: false,
-      SVG: false,
     }),
     // Keep this as last, to use the compressed results to create gz and br
     compressor({

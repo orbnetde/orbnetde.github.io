@@ -30,6 +30,8 @@ const { blok } = Astro.props;
       posts.data.stories.map((post) => (
         <Card
           src={post.content?.hero.filename}
+          widths={[600]}
+          sizes="600px"
           image_full_size={true}
           title={post.content.title}
           classes="rounded-md"
