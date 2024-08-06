@@ -30,6 +30,10 @@
 }
 
 @layer components {
+    @view-transition {
+        navigation: auto;
+    }
+
     .open-menu .menu-btn {
         @apply text-dark dark:text-white;
     }

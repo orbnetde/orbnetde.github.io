@@ -21,6 +21,9 @@ export default defineConfig({
   prefetch: {
     prefetchAll: true,
   },
+  build: {
+    inlineStylesheets: 'always',
+  },
   // output: import.meta.env.DEV ? 'server' : 'static',
   output: 'static',
   // https on local
@@ -37,7 +40,6 @@ export default defineConfig({
       protocol: 'https',
     }],
   },
-  redirects: {},
   integrations: [
     tailwind({
       applyBaseStyles: false,
