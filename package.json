@@ -17,7 +17,6 @@
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/poppins": "^5.0.14",
-    "@jop-software/astro-cookieconsent": "^3.0.0",
     "@storyblok/astro": "^4.1.0",
     "@types/alpinejs": "^3.13.10",
     "@vitejs/plugin-basic-ssl": "^1.1.0",

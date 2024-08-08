@@ -6,7 +6,6 @@ import compress from 'astro-compress';
 import compressor from 'astro-compressor';
 import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
-import jopSoftwareCookieConsent from '@jop-software/astro-cookieconsent';
 import icon from 'astro-icon';
 import storyblok from '@storyblok/astro';
 import mdx from '@astrojs/mdx';
@@ -40,57 +39,59 @@ export default defineConfig({
     }],
   },
   integrations: [
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false,
+    }),
     sitemap({
       filter: page => page !== 'https://www.orbnet.de/404/' && page !== 'https://www.orbnet.de/404' && page !== 'https://www.orbnet.de/404/index.html' && page !== 'https://www.orbnet.de/410/' && page !== 'https://www.orbnet.de/410' && page !== 'https://www.orbnet.de/410/index.html',
     }),
     alpinejs(),
     icon(),
-    import.meta.env.PROD && jopSoftwareCookieConsent({
-      categories: {
-        analytics: {},
-      },
-      language: {
-        default: 'de',
-        translations: {
-          de: {
-            consentModal: {
-              title: 'Wir nutzen Cookies',
-              description: 'Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind essenziell, während andere uns helfen, diese Webseite und Ihre Erfahrung zu verbessern. Weitere Informationen über die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerklärung.',
-              acceptAllBtn: 'Alle akzeptieren',
-              acceptNecessaryBtn: 'Alle ablehnen',
-              showPreferencesBtn: 'Individuelle Einstellungen',
-            },
-            preferencesModal: {
-              title: 'Cookie Einstellungen bearbeiten',
-              acceptAllBtn: 'Alle akzeptieren',
-              acceptNecessaryBtn: 'Alle ablehnen',
-              savePreferencesBtn: 'Aktuelle Auswahl akzeptieren',
-              closeIconLabel: 'Schließen',
-              sections: [{
-                title: 'Google Analytics',
-                description: 'Cookie von Google für Website-Analysen. Erzeugt statistische Daten darüber, wie der Besucher die Website nutzt.',
-                linkedCategory: 'analytics',
-              }],
-            },
-          },
-        },
-      },
-      guiOptions: {
-        consentModal: {
-          layout: 'bar inline',
-          position: 'bottom',
-          equalWeightButtons: true,
-          flipButtons: false,
-        },
-        preferencesModal: {
-          layout: 'bar wide',
-          position: 'right',
-          equalWeightButtons: true,
-          flipButtons: false,
-        },
-      },
-    }),
+    // import.meta.env.PROD && jopSoftwareCookieConsent({
+    //   categories: {
+    //     analytics: {},
+    //   },
+    //   language: {
+    //     default: 'de',
+    //     translations: {
+    //       de: {
+    //         consentModal: {
+    //           title: 'Wir nutzen Cookies',
+    //           description: 'Wir verwenden Cookies und andere Technologien auf unserer Webseite. Einige von ihnen sind essenziell, während andere uns helfen, diese Webseite und Ihre Erfahrung zu verbessern. Weitere Informationen über die Verwendung Ihrer Daten finden Sie in unserer Datenschutzerklärung.',
+    //           acceptAllBtn: 'Alle akzeptieren',
+    //           acceptNecessaryBtn: 'Alle ablehnen',
+    //           showPreferencesBtn: 'Individuelle Einstellungen',
+    //         },
+    //         preferencesModal: {
+    //           title: 'Cookie Einstellungen bearbeiten',
+    //           acceptAllBtn: 'Alle akzeptieren',
+    //           acceptNecessaryBtn: 'Alle ablehnen',
+    //           savePreferencesBtn: 'Aktuelle Auswahl akzeptieren',
+    //           closeIconLabel: 'Schließen',
+    //           sections: [{
+    //             title: 'Google Analytics',
+    //             description: 'Cookie von Google für Website-Analysen. Erzeugt statistische Daten darüber, wie der Besucher die Website nutzt.',
+    //             linkedCategory: 'analytics',
+    //           }],
+    //         },
+    //       },
+    //     },
+    //   },
+    //   guiOptions: {
+    //     consentModal: {
+    //       layout: 'bar inline',
+    //       position: 'bottom',
+    //       equalWeightButtons: true,
+    //       flipButtons: false,
+    //     },
+    //     preferencesModal: {
+    //       layout: 'bar wide',
+    //       position: 'right',
+    //       equalWeightButtons: true,
+    //       flipButtons: false,
+    //     },
+    //   },
+    // }),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       components: {

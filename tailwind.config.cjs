@@ -5,7 +5,9 @@ require('tailwindcss/colors');
 import defaultTheme from 'tailwindcss/defaultTheme';
 
 module.exports = {
-  content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}', './src/theme/base.css'],
+  content: [
+    './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
+  ],
   darkMode: 'selector',
   safelist: [
     'sticky-header',
