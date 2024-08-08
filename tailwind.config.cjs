@@ -135,10 +135,4 @@ module.exports = {
       rising: 'rising 5s linear infinite',
     },
   },
-  daisyui: {
-    themes: false,
-  },
-  plugins: [
-    require('daisyui'),
-  ],
 };
