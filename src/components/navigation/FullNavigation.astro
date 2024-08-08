@@ -10,10 +10,16 @@ import { type MenuItem, menuItems } from '../../content/menuItems';
 
 import MobileNavigation from './MobileNavigation.astro';
 import ThemeSwitch from './ThemeSwitch.astro';
+
+interface Props {
+  hasHero?: boolean,
+}
+
+const { hasHero } = Astro.props;
 ---
 <header
   x-data="{mobOpen: false, megaOpen: false}"
-  class={'absolute top-0 text-sm w-full isolate z-50 px-6' + (!Astro.url.pathname.startsWith('/blog/') ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
+  class={'absolute top-0 text-sm w-full isolate z-50 px-6' + (hasHero ? ' bg-primary text-white main-page dark:bg-dark-3' : ' bg-white text-dark dark:bg-dark dark:text-white')}
   @click.away="megaOpen = false"
   :class="megaOpen && 'open-menu'"
 >

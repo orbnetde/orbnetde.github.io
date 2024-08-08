@@ -93,11 +93,7 @@ export default defineConfig({
       },
     }),
     alpinejs(),
-    icon({
-      include: {
-        bi: ['arrow-up-square'],
-      },
-    }),
+    icon(),
     storyblok({
       accessToken: env.STORYBLOK_TOKEN,
       components: {

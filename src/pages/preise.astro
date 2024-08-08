@@ -52,7 +52,7 @@ const optLines = await getImage({ src: lines, format: 'svg' });
       </p>
 
       <div x-data="{monthly: true}" class={` background-image:url(${optLines.src})`}>
-        <div class="mb-6 flex justify-center">
+        <div class="my-12 flex justify-center">
           <fieldset aria-label="Payment frequency">
             <div class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200">
               <label class="cursor-pointer rounded-full px-2.5 py-1 dark:text-white" @click="monthly = true" :class="monthly ? 'bg-primary text-white' : ''">

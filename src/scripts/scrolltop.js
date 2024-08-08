@@ -9,4 +9,9 @@ window.addEventListener('DOMContentLoaded', () => {
     backToTop.classList.add('opacity-0');
     return backToTop.classList.remove('opacity-100');
   });
+
+  backToTop.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.getElementById("top").scrollIntoView({behavior: "smooth"});
+  });
 });

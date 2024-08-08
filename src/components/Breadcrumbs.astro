@@ -9,13 +9,13 @@ const length: number = (breadcrumbs?.length || 1) - 1;
 
 ---
 <nav aria-label="Breadcrumb" class="text-gray-700 dark:text-gray-200 pb-4">
-  <ol role="list" class="flex items-start">
+  <ol role="list" class="flex items-start flex-col lg:flex-row">
     {(breadcrumbs || []).map((bc: Breadcrumb, k: number) => {
       let useSlug = (bc.slug.endsWith('/') ? bc.slug : bc.slug + '/');
       useSlug = useSlug.startsWith('/') ? useSlug : '/' + useSlug;
       return length === k ?
-        <li class="mr-3 "><a href={useSlug} aria-current="page">{bc.title}</a></li> :
-        <li class="mr-3 after:content-['>'] after:ml-3"><a href={useSlug}>{bc.title}</a></li>
+        <li class="mr-3 mb-2"><a href={useSlug} aria-current="page">{bc.title}</a></li> :
+        <li class="mr-3 mb-2 after:content-['>'] after:ml-3"><a href={useSlug}>{bc.title}</a></li>
     })}
   </ol>
 </nav>

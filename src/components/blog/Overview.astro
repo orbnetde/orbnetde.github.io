@@ -22,6 +22,7 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: url, title: titl
   description=`Hier sprechen wir über alle relevanten Themen rund um Buchhaltung und Automatisierung in Coaching-Business. Blog - Seite ${page}.`
   canonical={new URL(`/${url}/`, Astro.site)}
   breadcrumbs={breadcrumbs}
+  hasHero={false}
 >
   <section id="blog" class="pt-20 pb-10 lg:pt-[120px] lg:pb-20 dark:bg-dark">
     <div class="container max-w-screen-xl">
@@ -73,8 +74,8 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: url, title: titl
           stories.map((post) => (
             <Card
               src={post.content?.hero.filename}
-              widths={[600]}
-              sizes="600px"
+              widths={[800]}
+              sizes="800px"
               image_full_size={true}
               date={post.first_published_at || post.created_at}
               title={post.content.title}

@@ -19,9 +19,10 @@ interface Props {
   image?: string,
   breadcrumbs?: Breadcrumb[] | undefined,
   footerDark?: boolean,
+  hasHero?: boolean;
 }
 
-const { title, description, canonical, robots, image, breadcrumbs, footerDark } = Astro.props;
+const { title, description, canonical, robots, image, breadcrumbs, footerDark ,hasHero} = Astro.props;
 ---
 <!DOCTYPE html>
 <html lang="de" class="scroll-smooth">
@@ -37,6 +38,7 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark } 
     {robots &&
       <meta name="robots" content={robots} />
     }
+    <meta name="publisher" content="orbnet GmbH" />
     <meta name="description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
@@ -58,7 +60,7 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark } 
     <BreadcrumbsJsonLd breadcrumbs={breadcrumbs} />
   </head>
   <body id="top" class="bg-white dark:bg-dark">
-    <Header />
+    <Header hasHero={hasHero} />
     <slot />
     <Footer dark={footerDark || false} />
     <BackToTop />

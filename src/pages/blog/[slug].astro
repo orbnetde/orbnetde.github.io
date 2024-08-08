@@ -26,7 +26,9 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 
 <Layout title={entry.content.title}
         description={entry.content.description}
         canonical={new URL(entry.full_slug + '/', Astro.site)}
+        robots="index,follow"
         image={entry.content?.hero?.filename || ''}
+        hasHero={false}
         breadcrumbs={breadcrumbs}
 >
   <section id="start" class="pt-20 lg:pt-[120px] dark:bg-dark">
@@ -62,8 +64,8 @@ const breadcrumbs = [{ slug: '', title: 'Startseite' }, { slug: 'blog/', title: 
             </div>
           </div>
           <div class="flex flex-wrap">
-            <div id="blog-entry" {...storyblokEditable(entry.content)}>
-              <h1 class="mb-8 text-3xl font-semibold text-dark dark:text-white sm:text-3xl md:text-[35px] md:leading-[1.28]">
+            <div id="blog-entry" class="leading-8" {...storyblokEditable(entry.content)}>
+              <h1 class="mb-8 text-dark dark:text-white">
                 {entry.content.title}
               </h1>
               <Breadcrumbs breadcrumbs={breadcrumbs} />

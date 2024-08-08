@@ -32,7 +32,6 @@
     "vite": "^5.3.1"
   },
   "devDependencies": {
-    "@iconify-json/bi": "^1.1.23",
     "@types/clone-deep": "^4.0.4",
     "clone-deep": "^4.0.1",
     "daisyui": "^4.12.10",

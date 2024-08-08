@@ -1,4 +1,10 @@
 ---
 import FullNavigation from '../navigation/FullNavigation.astro';
+
+interface Props {
+  hasHero?: boolean,
+}
+
+const { hasHero } = Astro.props;
 ---
-<FullNavigation />
+<FullNavigation hasHero={hasHero || false} />
