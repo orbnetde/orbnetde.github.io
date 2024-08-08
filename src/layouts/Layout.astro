@@ -35,7 +35,6 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark, h
     {canonical &&
       <link rel="canonical" href={canonical} />
     }
-    <link rel="preload" href="/css/cookieconsent.css" as="style" onload="this.rel='stylesheet';" />
     {robots &&
       <meta name="robots" content={robots} />
     }
@@ -79,6 +78,5 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark, h
       gtag("consent", "default", {"ad_storage": "granted", "analytics_storage": "granted"});
       gtag("config", "G-Y1PV48Q98S", {"anonymize_ip": true, cookie_flags: "SameSite=Strict;Secure" });
     </script>
-    <script is:inline src="/js/cc.js" type="module" defer></script>
   </body>
 </html>
