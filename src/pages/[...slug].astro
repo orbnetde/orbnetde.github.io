@@ -14,7 +14,7 @@ export async function getStaticPaths(): Promise<GetStaticPathsResult> {
 const { slug } = Astro.params;
 const { data } = await getPage(String(slug));
 const breadcrumbs = await getBreadcrumb(data.story);
-const hasHero = Array.from(data.story.content?.body).filter(item => String(item.component).includes('Hero')).length !== 0;
+const hasHero = Array.from(data.story.content?.body).filter((item: any) => String(item.component).includes('Hero')).length !== 0;
 ---
 <Layout
   title={data.story.content.title}
