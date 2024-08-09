@@ -2,8 +2,6 @@
 
 require('tailwindcss/colors');
 
-import defaultTheme from 'tailwindcss/defaultTheme';
-
 module.exports = {
   content: [
     './src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'
@@ -34,9 +32,6 @@ module.exports = {
       padding: '16px',
     },
     extend: {
-      fontFamily: {
-        sans: ['Poppins', ...defaultTheme.fontFamily.sans],
-      },
       fontSize: {
         'xs': 'clamp(12px, 4vw, 14px)', // 14px
         'sm': 'clamp(14px, 4vw, 16px)', // 16px

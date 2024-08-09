@@ -10,6 +10,6 @@ interface Props {
 
 const { blok } = Astro.props;
 ---
-<h2 id={getAnchorFromText(String(blok.Text))} class="text-2xl font-semibold text-dark dark:text-white pt-8 pb-0 target:before:content-[''] target:before:block target:before:h-[120px] target:before:-mt-[50px]" {...storyblokEditable(blok)}>
+<h2 id={getAnchorFromText(String(blok.Text))} {...storyblokEditable(blok)}>
   {blok.Text}
 </h2>

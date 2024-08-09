@@ -11,6 +11,8 @@ import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import BlogSection from '../../storyblok/static/BlogSection.astro';
 import SmartImage from '../../components/SmartImage.astro';
 
+import '../../theme/blog.css';
+
 export const prerender = true;
 
 export async function getStaticPaths(): Promise<GetStaticPathsResult | Response> {
