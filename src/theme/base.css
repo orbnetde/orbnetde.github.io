@@ -1,3 +1,7 @@
+@import '@fontsource/poppins/400.css';
+@import '@fontsource/poppins/600.css';
+@import '@fontsource/poppins/700.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -25,6 +29,7 @@
 
     body {
         @apply text-body-color antialiased w-full overflow-y-auto overflow-x-hidden text-base;
+        font-family: Poppins, system-ui, sans-serif;
     }
 }
 
