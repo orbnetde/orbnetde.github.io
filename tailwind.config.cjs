@@ -16,16 +16,12 @@ module.exports = {
     screens: {
       sm: '640px',
       // => @media (min-width: 640px) { ... }
-
       md: '768px',
       // => @media (min-width: 768px) { ... }
-
       lg: '1024px',
       // => @media (min-width: 1024px) { ... }
-
       xl: '1280px',
       // => @media (min-width: 1280px) { ... }
-
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
     },
@@ -108,16 +104,6 @@ module.exports = {
         'gray-2': '#F3F4F6',
         'gray-7': '#CED4DA',
       },
-      // boxShadow: {
-      //   'input': '0px 7px 20px rgba(0, 0, 0, 0.03)',
-      //   'form': '0px 1px 55px -11px rgba(0, 0, 0, 0.01)',
-      //   'pricing': '0px 0px 40px 0px rgba(0, 0, 0, 0.08)',
-      //   'switch-1': '0px 0px 5px rgba(0, 0, 0, 0.15)',
-      //   'testimonial': '0px 10px 20px 0px rgba(92, 115, 160, 0.07)',
-      //   'testimonial-btn': '0px 8px 15px 0px rgba(72, 72, 138, 0.08)',
-      //   '1': '0px 1px 3px 0px rgba(166, 175, 195, 0.40)',
-      //   '2': '0px 5px 12px 0px rgba(0, 0, 0, 0.10)',
-      // },
     },
     keyframes: {
       floating: {
