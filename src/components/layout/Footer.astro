@@ -176,8 +176,8 @@ const footerLinks = [
       </div>
     </div>
     <div class="col-span-8 grid grid-cols-1 lg:grid-cols-4 gap-4">
-      <div class="w-full text-sm mb-4 lg:mb-0">
-        <strong class="inline-block mb-9 text-lg font-semibold text-dark-3 dark:text-white">{footerLinks[0].header}</strong>
+      <div class="w-full mb-4 lg:mb-0">
+        <strong class="inline-block mb-9 text-md font-semibold text-dark-3 dark:text-white">{footerLinks[0].header}</strong>
         <ul>
           {footerLinks[0].links.map(link => {
             if ('name' in link) {
@@ -185,7 +185,7 @@ const footerLinks = [
                 <li>
                   <a
                     href={link.href}
-                    class="mb-3 inline-block text-dark-3 dark:text-white hover:text-primary dark:hover:text-primary-400"
+                    class="mb-3 text-xs inline-block text-dark-3 dark:text-white hover:text-primary dark:hover:text-primary-400"
                     target={link.isExternal ? '_blank' : undefined}
                     rel={link.isExternal ? 'noopener' : undefined}
                   >
@@ -197,8 +197,8 @@ const footerLinks = [
           })}
         </ul>
       </div>
-      <div class="w-full text-sm mb-4 lg:mb-0">
-        <strong class="inline-block mb-9 text-lg font-semibold text-dark-3 dark:text-white">{footerLinks[1].header}</strong>
+      <div class="w-full mb-4 lg:mb-0">
+        <strong class="inline-block mb-9 text-md font-semibold text-dark-3 dark:text-white">{footerLinks[1].header}</strong>
         <ul>
           {footerLinks[1].links.map(link => {
             if ('name' in link) {
@@ -206,7 +206,7 @@ const footerLinks = [
                 <li>
                   <a
                     href={link.href}
-                    class="mb-3 inline-block text-dark-3 dark:text-white hover:text-primary dark:hover:text-primary-400"
+                    class="mb-3 text-xs inline-block text-dark-3 dark:text-white hover:text-primary dark:hover:text-primary-400"
                     target={link.isExternal ? '_blank' : undefined}
                     rel={link.isExternal ? 'noopener' : undefined}
                   >
@@ -218,8 +218,8 @@ const footerLinks = [
           })}
         </ul>
       </div>
-      <div class="w-full text-sm mb-4 lg:mb-0">
-        <strong class="inline-block mb-9 text-lg font-semibold text-dark-3 dark:text-white">{footerLinks[2].header}</strong>
+      <div class="w-full mb-4 lg:mb-0">
+        <strong class="inline-block mb-9 text-md font-semibold text-dark-3 dark:text-white">{footerLinks[2].header}</strong>
         <ul>
           {footerLinks[2].links.map(link => {
             if ('name' in link) {
@@ -227,7 +227,7 @@ const footerLinks = [
                 <li>
                   <a
                     href={link.href}
-                    class="mb-3 inline-block text-dark-3 dark:text-white hover:text-primary"
+                    class="mb-3 text-xs inline-block text-dark-3 dark:text-white hover:text-primary"
                     target={link.isExternal ? '_blank' : undefined}
                     rel={link.isExternal ? 'noopener' : undefined}
                   >
@@ -239,8 +239,8 @@ const footerLinks = [
           })}
         </ul>
       </div>
-      <div class="w-full text-sm mb-4 lg:mb-0">
-        <strong class="inline-block mb-9 text-lg font-semibold text-dark-3 dark:text-white">{footerLinks[3].header}</strong>
+      <div class="w-full mb-4 lg:mb-0">
+        <strong class="inline-block mb-9 text-md font-semibold text-dark-3 dark:text-white">{footerLinks[3].header}</strong>
         <ul>
           {footerLinks[3].links.map(link => {
             if ('name' in link) {
@@ -248,7 +248,7 @@ const footerLinks = [
                 <li>
                   <a
                     href={link.href}
-                    class="mb-3 inline-block text-dark-3 dark:text-white hover:text-primary"
+                    class="mb-3 text-xs inline-block text-dark-3 dark:text-white hover:text-primary"
                     target={link.isExternal ? '_blank' : undefined}
                     rel={link.isExternal ? 'noopener' : undefined}
                   >
