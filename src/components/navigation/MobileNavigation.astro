@@ -11,7 +11,15 @@ interface Props {
 
 const { menuItems } = Astro.props;
 ---
-
+<button type="button"
+        @click="mobOpen = true"
+        class="inline-flex lg:hidden items-center justify-center rounded-md text-dark dark:text-white"
+>
+  <span class="sr-only">Menü öffnen</span>
+  <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+  </svg>
+</button>
 <div x-show="mobOpen"
      class="lg:hidden absolute h-dvh max-h-dvh overflow-y-scroll w-dvw inset-0 bg-white dark:bg-dark"
      role="dialog"
@@ -57,7 +65,7 @@ const { menuItems } = Astro.props;
             if (!men.children || men.children.length === 0) {
               return (
                 <a href={men.href}
-                   class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                   class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 dark:text-white"
                 >
                   {men.name}
                 </a>
@@ -71,7 +79,7 @@ const { menuItems } = Astro.props;
               >
                 <button type="button"
                         @click="open = !open"
-                        class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                        class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base leading-7 text-gray-900 dark:text-white"
                 >
                   {men.name}
                   <svg class="h-5 w-5 flex-none" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -84,7 +92,7 @@ const { menuItems } = Astro.props;
                   {[...(men.children || []), ...(men.actions || [])].map((item) => (
                     <>
                     <a href={item.href}
-                       class="block py-1 pl-6 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                       class="block py-1 pl-6 pr-3 text-sm leading-7 text-gray-900 dark:text-white"
                        { ...(item?.external && {target: '_blank'})}
                        { ...(item?.robots && {rel: item.robots})}
                     >
@@ -92,7 +100,7 @@ const { menuItems } = Astro.props;
                     </a>
                     {item.children && item.children.map((subItem: MenuItem) => (
                       <a href={subItem.href}
-                         class="block py-1 pl-12 pr-3 text-sm leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+                         class="block py-1 pl-12 pr-3 text-sm leading-7 text-gray-900 dark:text-white"
                          { ...(subItem?.external && {target: '_blank'})}
                          { ...(subItem?.robots && {rel: subItem.robots})}
                       >
@@ -108,12 +116,12 @@ const { menuItems } = Astro.props;
         </div>
         <div class="pt-4">
           <a href="https://my.orbnet.de/account/login/"
-             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 dark:text-white"
           >
             Log in
           </a>
           <a href="https://my.orbnet.de/account/register/"
-             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 hover:bg-gray-50 dark:text-white"
+             class="-mx-3 block rounded-lg px-3 py-2 text-base leading-7 text-gray-900 dark:text-white"
           >
             Jetzt testen
           </a>

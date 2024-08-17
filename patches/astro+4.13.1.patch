@@ -1,0 +1,13 @@
+diff --git a/node_modules/astro/dist/assets/utils/transformToPath.js b/node_modules/astro/dist/assets/utils/transformToPath.js
+index 33bef4f..33f2f48 100644
+--- a/node_modules/astro/dist/assets/utils/transformToPath.js
++++ b/node_modules/astro/dist/assets/utils/transformToPath.js
+@@ -9,7 +9,7 @@ function propsToFilename(filePath, transform, hash) {
+   filename = basename(filename, ext);
+   const prefixDirname = isESMImportedImage(transform.src) ? dirname(filePath) : "";
+   let outputExt = transform.format ? `.${transform.format}` : ext;
+-  return decodeURIComponent(`${prefixDirname}/${filename}_${hash}${outputExt}`);
++  return decodeURIComponent(`${prefixDirname}/${filename}-${hash}${outputExt}`);
+ }
+ function hashTransform(transform, imageService, propertiesToHash) {
+   const hashFields = propertiesToHash.reduce(

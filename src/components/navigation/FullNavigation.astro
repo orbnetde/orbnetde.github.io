@@ -43,24 +43,11 @@ const { hasHero } = Astro.props;
         />
       </a>
     </div>
-    <div class="flex lg:hidden">
-      <button type="button"
-              @click="mobOpen = true"
-              class="inline-flex items-center justify-center rounded-md text-dark dark:text-white"
-      >
-        <span class="sr-only">Menü öffnen</span>
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
-          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-      </button>
-    </div>
     <div class="hidden lg:flex lg:gap-x-12 lg:items-center">
       {menuItems.map((men: MenuItem) => {
         if (!men.children || men.children.length === 0) {
           return (
-            <a href={men.href}
-               class="menu-btn leading-6"
-            >
+            <a href={men.href} class="menu-btn leading-6">
               {men.name}
             </a>
           );
@@ -150,20 +137,18 @@ const { hasHero } = Astro.props;
         );
       })}
     </div>
-    <div class="hidden lg:flex lg:flex-1 lg:justify-end lg:gap-x-6 lg:items-center">
+    <div class="flex flex-1 justify-end gap-x-6 items-center">
       <ThemeSwitch />
-      <a href="https://my.orbnet.de/account/login/"
-         class="menu-btn leading-6"
-      >
+      <a href="https://my.orbnet.de/account/login/" class="hidden lg:inline menu-btn leading-6">
         Log In
       </a>
       <a href="https://my.orbnet.de/account/register/"
-         class="menu-btn menu-btn-test leading-6 text-white bg-primary px-4 py-2 rounded-lg font-wide font-semibold"
+         class="hidden lg:inline menu-btn menu-btn-test leading-6 text-white bg-primary px-4 py-2 rounded-lg font-wide font-semibold"
       >
         Jetzt testen
       </a>
+      <MobileNavigation menuItems={menuItems} />
     </div>
   </nav>
-  <MobileNavigation menuItems={menuItems} />
   <div id="reading-indicator" class="bg-gradient-to-l from-primary h-1 max-w-full" style="width: 0"></div>
 </header>
