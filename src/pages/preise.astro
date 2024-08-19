@@ -1,13 +1,13 @@
 ---
+import '../theme/pricing.css';
+
 import { getImage, Image } from 'astro:assets';
 
 import { prices } from '../content/prices';
-import { Icon } from 'astro-icon/components';
 
 import Layout from '../layouts/Layout.astro';
 import lines from '../assets/svg/lines.svg';
-import ok from '../assets/svg/greencheck.svg';
-import no from '../assets/svg/red-x.svg';
+import ok from '../assets/svg/check-fill.svg';
 
 const optLines = await getImage({ src: lines, format: 'svg' });
 ---
@@ -54,7 +54,7 @@ const optLines = await getImage({ src: lines, format: 'svg' });
       <div x-data="{monthly: true}" class={` background-image:url(${optLines.src})`}>
         <div class="my-12 flex justify-center">
           <fieldset aria-label="Payment frequency">
-            <div class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200">
+            <div class="grid grid-cols-2 gap-x-1 rounded-full p-1 text-center text-xs font-semibold leading-5 ring-1 ring-inset ring-gray-200 dark:ring-gray-600">
               <label class="cursor-pointer rounded-full px-2.5 py-1 dark:text-white" @click="monthly = true" :class="monthly ? 'bg-primary text-white' : ''">
                 <input type="radio" name="frequency" value="monthly" class="sr-only">
                 <span>Monatlich</span>
@@ -66,87 +66,106 @@ const optLines = await getImage({ src: lines, format: 'svg' });
             </div>
           </fieldset>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 justify-center max-w-screen-xl mx-auto">
-          {prices.map((price) => (
-            <div class={`w-full ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
-              <div
-                class={`relative z-10 mb-10 overflow-hidden rounded-xl ${price.popular ? 'bg-primary dark:bg-primary ' : 'bg-primary-100 dark:bg-dark-2'} py-10 px-8 shadow-pricing sm:p-12 lg:py-10 lg:px-6 xl:p-14`}
-              >
-                <div class="block text-2xl font-semibold">
-                  {price.packageName}
-                </div>
-                <div class={`mb-5 block ${price.popular ? 'text-white dark:text-white' : 'text-dark dark:text-white'}`}>
-                  {price.users} Benutzer
-                </div>
-                <div class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</div>
-                <div class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Jahr &ast;</div>
-                <div class="inline-block border-b border-b-gray-300 w-full">&nbsp;</div>
 
-                <strong class="block mt-8 mb-4 font-semibold text-lg">Funktionen</strong>
-                <div class="flex flex-col gap-2 my-6 text-left">
-                  {price.features.functions.map((item) => (
-                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
-                      {item.amount !== true && item.amount !== false && item.amount}
-                      {item.amount === true &&
-                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.amount === false &&
-                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.title}
-                    </div>
-                  ))}
-                </div>
-
-                <strong class="block mt-8 mb-4 font-semibold text-lg">Integrationen</strong>
-                <div class="flex flex-col gap-2 my-6 text-left">
-                  {price.features.integrations.map((item) => (
-                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
-                      {item.amount !== true && item.amount !== false && item.amount}
-                      {item.amount === true &&
-                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.amount === false &&
-                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.title}
-                    </div>
-                  ))}
-                </div>
-
-                <strong class="block mt-8 mb-4 font-semibold text-lg">Customizing</strong>
-                <div class="flex flex-col gap-2 my-6 text-left">
-                  {price.features.customizing.map((item) => (
-                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
-                      {item.amount !== true && item.amount !== false && item.amount}
-                      {item.amount === true &&
-                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.amount === false &&
-                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.title}
-                    </div>
-                  ))}
-                </div>
-
-                <strong class="block mt-8 mb-4 font-semibold text-lg">Support</strong>
-                <div class="flex flex-col gap-2 my-6 text-left">
-                  {price.features.support.map((item) => (
-                    <div class={`flex items-start min-h-8 text-base ${price.popular ? 'text-white' : 'text-dark dark:text-white'}`}>
-                      {item.amount !== true && item.amount !== false && item.amount}
-                      {item.amount === true &&
-                        <Image src={ok} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.amount === false &&
-                        <Image src={no} width="18" height="18" alt="Inkludiert" class="pt-1 mr-2" />}
-                      {item.title}
-                    </div>
-                  ))}
-                </div>
-                <a href={price.purchaseLink}
-                   class={`group flex flex-row justify-center mt-10 font-semibold text-center ${price.popular ? 'text-white' : 'text-primary dark:text-primary-400'}`}
-                >
-                  {price.btn}
-                  <Icon name="arrow-right" width={20} height={20} class="ml-3 group-hover:translate-x-1.5 duration-500 transition" />
-                </a>
-              </div>
+        <div class="price-grid">
+          <div class="price-sticky">
+            <div class="bg-white dark:bg-dark-2 border-r border-b border-gray-300 dark:border-gray-600"></div>
+            <div class="price-head">
+              <span class="font-semibold">{prices[0].packageName}</span>
+              <span class="price-switch">kostenlos</span>
+              <a href={prices[0].purchaseLink} class="price-btn">{prices[0].btn}</a>
             </div>
+            <div class="price-head">
+              <span class="font-semibold">{prices[1].packageName}</span>
+              <span class="price-switch" x-show="monthly">&euro; {prices[1].price.monthly}/Monat &ast;</span>
+              <span class="price-switch" x-show="!monthly">&euro; {prices[1].price.yearly}/Jahr &ast;</span>
+              <a href={prices[1].purchaseLink} class="price-btn bg-primary text-white border-primary">{prices[1].btn}</a>
+            </div>
+            <div class="hidden lg:block price-head">
+              <span class="font-semibold">{prices[2].packageName}</span>
+              <span class="price-switch" x-show="monthly">&euro; {prices[2].price.monthly}/Monat &ast;</span>
+              <span class="price-switch" x-show="!monthly">&euro; {prices[2].price.yearly}/Jahr &ast;</span>
+              <a href={prices[2].purchaseLink} class="price-btn bg-primary text-white border-primary">{prices[2].btn}</a>
+            </div>
+          </div>
+
+          <div class="price-row-head -mt-4">
+            <div>
+              Funktionen
+            </div>
+          </div>
+          {prices[0].features.functions.map((item, i) => (
+            <>
+            <div class="price-row-left">{item.title}</div>
+            {prices.map((_, k) => (
+              <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
+                {prices[k].features.functions[i].amount !== true && prices[k].features.functions[i].amount !== false && prices[k].features.functions[i].amount}
+                {prices[k].features.functions[i].amount === true &&
+                  <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
+                {prices[k].features.functions[i].amount === false && '-'}
+              </div>
+            ))}
+            </>
+          ))}
+
+          <div class="price-row-head">
+            <div>
+              Integrationen
+            </div>
+          </div>
+          {prices[0].features.integrations.map((item, i) => (
+            <>
+            <div class="price-row-left">{item.title}</div>
+            {prices.map((_, k) => (
+              <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
+                {prices[k].features.integrations[i].amount !== true && prices[k].features.integrations[i].amount !== false && prices[k].features.integrations[i].amount}
+                {prices[k].features.integrations[i].amount === true &&
+                  <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
+                {prices[k].features.integrations[i].amount === false && '-'}
+              </div>
+            ))}
+            </>
+          ))}
+
+          <div class="price-row-head">
+            <div>
+              Customizing
+            </div>
+          </div>
+          {prices[0].features.customizing.map((item, i) => (
+            <>
+            <div class="price-row-left">{item.title}</div>
+            {prices.map((_, k) => (
+              <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
+                {prices[k].features.customizing[i].amount !== true && prices[k].features.customizing[i].amount !== false && prices[k].features.customizing[i].amount}
+                {prices[k].features.customizing[i].amount === true &&
+                  <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
+                {prices[k].features.customizing[i].amount === false && '-'}
+              </div>
+            ))}
+            </>
+          ))}
+
+          <div class="price-row-head">
+            <div>
+              Support
+            </div>
+          </div>
+          {prices[0].features.support.map((item, i) => (
+            <>
+            <div class="price-row-left">{item.title}</div>
+            {prices.map((_, k) => (
+              <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
+                {prices[k].features.support[i].amount !== true && prices[k].features.support[i].amount !== false && prices[k].features.support[i].amount}
+                {prices[k].features.support[i].amount === true &&
+                  <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
+                {prices[k].features.support[i].amount === false && '-'}
+              </div>
+            ))}
+            </>
           ))}
         </div>
+
         <div class="max-w-screen-xl mx-auto text-center dark:text-gray-300">
           * Alle Preise zuzüglich aktuell gültiger USt. Die Vertragslaufzeit beträgt 30 Tage.<br>
           Verkauf nur an gewerbliche Endkunden in Deutschland.

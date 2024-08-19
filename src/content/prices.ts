@@ -58,7 +58,7 @@ export const prices: Array<Price> = [
         { title: 'OCR-Erkennung', amount: false },
         { title: 'Landingpage-Generator', amount: false },
         { title: 'Synchronisierung Kalender auf Endgeräte', amount: false },
-        { title: 'Usermanagement (teilweise nur mit AddOn)', amount: false },
+        { title: 'Benutzer-Management', amount: false },
       ],
       integrations: [
         { title: 'Google Kalender', amount: false },
