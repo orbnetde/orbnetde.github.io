@@ -10,7 +10,6 @@ import MyOrbnetJsonLd from '../components/jsonld/MyOrbnet.astro';
 import OrbnetGmbHJsonLd from '../components/jsonld/OrbnetGmbH.astro';
 import WebsiteJsonLd from '../components/jsonld/Website.astro';
 import BreadcrumbsJsonLd from '../components/jsonld/Breadcrumbs.astro';
-import CookieBanner from '../components/CookieBanner.astro';
 
 interface Props {
   title: string,
@@ -65,21 +64,10 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark, h
     <slot />
     <Footer dark={footerDark || false} />
     <BackToTop />
-    <CookieBanner/>
     <script>
       import '../scripts/darkMode';
       import '../scripts/stickymenu';
       import '../scripts/scrolltop';
-      import '../scripts/cookie-banner';
-    </script>
-    <script is:raw is:inline type="text/plain" data-category="analytics" data-src="https://www.googletagmanager.com/gtag/js?id=G-Y1PV48Q98S"></script>
-    <script is:raw is:inline type="text/plain" data-category="analytics">
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag("js", new Date());
-
-      gtag("consent", "default", {"ad_storage": "granted", "analytics_storage": "granted"});
-      gtag("config", "G-Y1PV48Q98S", {"anonymize_ip": true, cookie_flags: "SameSite=Strict;Secure" });
     </script>
   </body>
 </html>
