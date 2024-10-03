@@ -2,37 +2,38 @@
 
 @layer components {
     .price-grid {
-        @apply grid grid-cols-3 lg:grid-cols-4 border-b border-gray-300 dark:border-gray-600 mb-8;
+        @apply grid grid-cols-3 lg:grid-cols-5 mb-8 max-w-screen-lg mx-auto;
     }
 
     .price-sticky {
-        @apply col-span-3 lg:col-span-4 grid grid-cols-3 lg:grid-cols-4 sticky top-12 md:top-[88px] lg:top-[92px] left-0 z-10;
+        /*@apply col-span-3 lg:col-span-5 grid grid-cols-3 lg:grid-cols-5 sticky top-12 md:top-[88px] lg:top-[92px] left-0 z-10;*/
+        @apply col-span-3 lg:col-span-5 grid grid-cols-3 lg:grid-cols-5;
     }
 
     .price-head {
-        @apply border-r border-b border-gray-300 dark:border-gray-600 py-4 bg-white dark:bg-dark-2;
+        @apply py-4 bg-white dark:bg-dark;
     }
 
     .price-btn {
-        @apply inline-block border border-gray-300 dark:border-gray-600 rounded-md mt-4 px-2 md:px-7 py-1 text-sm;
+        @apply block mx-2 rounded-md mt-4 p-3 text-sm border border-primary dark:border-primary-400;
     }
 
     .price-switch {
-        @apply block mt-4 dark:text-white text-sm;
+        @apply block mt-4 dark:text-white text-lg;
     }
 
     .price-row-head {
-        @apply col-span-3 lg:col-span-4 text-sm pt-8 border-t border-gray-300 dark:border-gray-600;
+        @apply col-span-3 lg:col-span-5 text-sm pt-8 ;
     }
 
     .price-row-head > div {
-        @apply py-6 px-3 bg-white dark:bg-dark-2 text-primary dark:text-primary-400 text-left font-semibold border border-gray-300 dark:border-gray-600 rounded-t-3xl;
+        @apply py-6 px-3 bg-gray-100 dark:bg-dark-2 text-primary dark:text-primary-400 text-left font-semibold rounded;
     }
 
     .price-row-left {
-        @apply p-3 border-l border-r border-gray-300 dark:border-gray-600 text-left overflow-hidden text-xs;
+        @apply p-3 text-left overflow-hidden text-sm;
     }
     .price-row {
-        @apply p-3 border-r border-gray-300 dark:border-gray-600;
+        @apply p-3;
     }
 }

@@ -1,15 +1,20 @@
 interface Features {
   title: string;
-  amount: boolean | number;
+  amount: boolean | string | number;
+  description?: string;
 }
 
 interface Price {
   popular: boolean,
   packageName: string,
-  users: number,
+  users: number | string,
   price: {
     monthly: string,
     yearly: string
+  },
+  userPrice?: {
+    monthly: number,
+    yearly: number
   },
   subtitle: string,
   btn: string,
@@ -30,7 +35,7 @@ export const prices: Array<Price> = [
     users: 1,
     price: { monthly: '0', yearly: '0' },
     subtitle: 'Features',
-    btn: 'Registrieren',
+    btn: 'Start Free',
     purchaseLink: 'https://my.orbnet.de/account/register/',
     top: [
       { title: 'Benutzer', amount: 1 },
@@ -79,9 +84,9 @@ export const prices: Array<Price> = [
       customizing: [
         { title: 'orbnet Branding entfernen', amount: false },
         { title: 'Individuelle Farbgestaltung für Termine', amount: false },
-        { title: 'Eigene Firmen-URL (orbnet.de/meinefirma)', amount: false },
-        { title: 'Event-Übersichtsseite (Landingpage mit allen Angeboten)', amount: false },
-        { title: 'Custom Links für Events (orbnet.de/meinefirme/30min)', amount: false },
+        { title: 'Eigene Firmen-URL', amount: false, description: 'z.B.: orbnet.de/p/meinefirma' },
+        { title: 'Event-Übersichtsseite', amount: false, description: 'Landingpage mit allen Angeboten' },
+        { title: 'Custom Links für Events', amount: false, description: 'z.B.: orbnet.de/p/meinefirma/30min' },
         { title: 'Passwortschutz auf Events', amount: false },
       ],
       support: [
@@ -91,21 +96,22 @@ export const prices: Array<Price> = [
     },
   },
   {
-    popular: false,
-    packageName: 'Starter',
-    users: 1,
-    price: { monthly: '25', yearly: '240' },
+    popular: true,
+    packageName: 'Pro',
+    users: '1-2',
+    price: { monthly: '15', yearly: '12' },
+    userPrice: { monthly: 10, yearly: 8 },
     subtitle: 'Features',
-    btn: 'Auswählen',
+    btn: 'Start Pro',
     purchaseLink: 'https://my.orbnet.de/account/register/',
     top: [
-      { title: 'Benutzer', amount: 1 },
+      { title: 'Benutzer', amount: '1-2' },
       { title: 'Rechnungen schreiben', amount: true },
       { title: 'Angebote schreiben', amount: true },
     ],
     features: {
       functions: [
-        { title: 'Benutzer', amount: 1 },
+        { title: 'Benutzer', amount: '1-2' },
         { title: 'Rechnungen schreiben', amount: true },
         { title: 'Angebote schreiben', amount: true },
         { title: 'Mahnungen (Manuell)', amount: true },
@@ -124,31 +130,31 @@ export const prices: Array<Price> = [
         { title: 'OCR-Erkennung', amount: true },
         { title: 'Landingpage-Generator', amount: true },
         { title: 'Synchronisierung Kalender auf Endgeräte', amount: true },
-        { title: 'Usermanagement (teilweise nur mit AddOn)', amount: true },
+        { title: 'Usermanagement', amount: false },
       ],
       integrations: [
         { title: 'Google Kalender', amount: true },
         { title: 'Apple Kalender', amount: true },
         { title: 'Office365 Kalender', amount: true },
         { title: 'CalDAV Kalender', amount: true },
-        { title: 'PayPal', amount: false },
-        { title: 'Stripe', amount: false },
-        { title: 'Kreditkarte', amount: false },
-        { title: 'SEPA', amount: false },
-        { title: 'Kauf auf Rechnung', amount: false },
-        { title: 'Zoom', amount: false },
-        { title: 'Microsoft Teams', amount: false },
+        { title: 'PayPal', amount: true },
+        { title: 'Stripe', amount: true },
+        { title: 'Kreditkarte', amount: true },
+        { title: 'SEPA', amount: true },
+        { title: 'Kauf auf Rechnung', amount: true },
+        { title: 'Zoom', amount: true },
+        { title: 'Microsoft Teams', amount: true },
         { title: 'Google Analytics', amount: true },
         { title: 'Facebook Pixel', amount: true },
         { title: 'DATEV Format Export', amount: true },
       ],
       customizing: [
         { title: 'orbnet Branding entfernen', amount: true },
-        { title: 'Individuelle Farbgestaltung für Termine', amount: false },
-        { title: 'Eigene Firmen-URL (orbnet.de/meinefirma)', amount: false },
-        { title: 'Event-Übersichtsseite (Landingpage mit allen Angeboten)', amount: false },
-        { title: 'Custom Links für Events (orbnet.de/meinefirme/30min)', amount: false },
-        { title: 'Passwortschutz auf Events', amount: false },
+        { title: 'Individuelle Farbgestaltung für Termine', amount: true },
+        { title: 'Eigene Firmen-URL (orbnet.de/meinefirma)', amount: true },
+        { title: 'Event-Übersichtsseite (Landingpage mit allen Angeboten)', amount: true },
+        { title: 'Custom Links für Events (orbnet.de/meinefirme/30min)', amount: true },
+        { title: 'Passwortschutz auf Events', amount: true },
       ],
       support: [
         { title: 'Support-Ticket', amount: true },
@@ -157,21 +163,22 @@ export const prices: Array<Price> = [
     },
   },
   {
-    popular: true,
-    packageName: 'Premium',
-    users: 10,
-    price: { monthly: '50', yearly: '480' },
+    popular: false,
+    packageName: 'Team',
+    users: '3+',
+    price: { monthly: '35', yearly: '28' },
+    userPrice: { monthly: 5, yearly: 4 },
     subtitle: 'Features',
-    btn: 'Abheben',
+    btn: 'Start Team',
     purchaseLink: 'https://my.orbnet.de/account/register/',
     top: [
-      { title: 'Benutzer', amount: 10 },
+      { title: 'Benutzer', amount: '3+' },
       { title: 'Rechnungen schreiben', amount: true },
       { title: 'Angebote schreiben', amount: true },
     ],
     features: {
       functions: [
-        { title: 'Benutzer', amount: 10 },
+        { title: 'Benutzer', amount: '3+' },
         { title: 'Rechnungen schreiben', amount: true },
         { title: 'Angebote schreiben', amount: true },
         { title: 'Mahnungen (Manuell)', amount: true },
@@ -190,7 +197,7 @@ export const prices: Array<Price> = [
         { title: 'OCR-Erkennung', amount: true },
         { title: 'Landingpage-Generator', amount: true },
         { title: 'Synchronisierung Kalender auf Endgeräte', amount: true },
-        { title: 'Usermanagement (teilweise nur mit AddOn)', amount: true },
+        { title: 'Usermanagement', amount: true },
       ],
       integrations: [
         { title: 'Google Kalender', amount: true },

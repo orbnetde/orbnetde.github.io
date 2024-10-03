@@ -69,23 +69,50 @@ const optLines = await getImage({ src: lines, format: 'svg' });
 
         <div class="price-grid">
           <div class="price-sticky">
-            <div class="bg-white dark:bg-dark-2 border-r border-b border-gray-300 dark:border-gray-600"></div>
+            <div class="bg-white dark:bg-dark lg:col-span-2"></div>
             <div class="price-head">
               <span class="font-semibold">{prices[0].packageName}</span>
               <span class="price-switch">kostenlos</span>
-              <a href={prices[0].purchaseLink} class="price-btn">{prices[0].btn}</a>
+              <span>&nbsp;</span>
+              <a href={prices[0].purchaseLink} class="price-btn text-primary dark:text-primary-400">
+                {prices[0].btn}
+              </a>
             </div>
             <div class="price-head">
-              <span class="font-semibold">{prices[1].packageName}</span>
-              <span class="price-switch" x-show="monthly">&euro; {prices[1].price.monthly}/Monat &ast;</span>
-              <span class="price-switch" x-show="!monthly">&euro; {prices[1].price.yearly}/Jahr &ast;</span>
-              <a href={prices[1].purchaseLink} class="price-btn bg-primary text-white border-primary">{prices[1].btn}</a>
+              <span class="font-semibold">{prices[1].packageName} &ast;</span>
+              <span class="price-switch" x-show="monthly">
+                &euro; {prices[1].price.monthly}<span class="text-xs text-gray-600 dark:text-gray-400">/Monat</span>
+              </span>
+              <span class="price-switch" x-show="!monthly">
+                &euro; {prices[1].price.yearly}<span class="text-xs text-gray-600 dark:text-gray-400">/Monat</span>
+              </span>
+              <span class="user-switch" x-show="monthly">
+                &euro; {prices[1].userPrice.monthly} <span class="text-xs text-gray-600 dark:text-gray-400">zus. Benutzer</span>
+              </span>
+              <span class="user-switch" x-show="!monthly">
+                &euro; {prices[1].userPrice.yearly} <span class="text-xs text-gray-600 dark:text-gray-400">zus. Benutzer</span>
+              </span>
+              <a href={prices[1].purchaseLink} class="price-btn bg-primary dark:bg-primary-400 text-white">
+                {prices[1].btn}
+              </a>
             </div>
             <div class="hidden lg:block price-head">
-              <span class="font-semibold">{prices[2].packageName}</span>
-              <span class="price-switch" x-show="monthly">&euro; {prices[2].price.monthly}/Monat &ast;</span>
-              <span class="price-switch" x-show="!monthly">&euro; {prices[2].price.yearly}/Jahr &ast;</span>
-              <a href={prices[2].purchaseLink} class="price-btn bg-primary text-white border-primary">{prices[2].btn}</a>
+              <span class="font-semibold">{prices[2].packageName} &ast;</span>
+              <span class="price-switch" x-show="monthly">
+                &euro; {prices[2].price.monthly}<span class="text-xs text-gray-600 dark:text-gray-400">/Monat</span>
+              </span>
+              <span class="price-switch" x-show="!monthly">
+                &euro; {prices[2].price.yearly}<span class="text-xs text-gray-600 dark:text-gray-400">/Monat</span>
+              </span>
+              <span class="user-switch" x-show="monthly">
+                &euro; {prices[2].userPrice.monthly} <span class="text-xs text-gray-600 dark:text-gray-400">zus. Benutzer</span>
+              </span>
+              <span class="user-switch" x-show="!monthly">
+                &euro; {prices[2].userPrice.yearly} <span class="text-xs text-gray-600 dark:text-gray-400">zus. Benutzer</span>
+              </span>
+              <a href={prices[2].purchaseLink} class="price-btn text-primary dark:text-primary-400">
+                {prices[2].btn}
+              </a>
             </div>
           </div>
 
@@ -96,13 +123,16 @@ const optLines = await getImage({ src: lines, format: 'svg' });
           </div>
           {prices[0].features.functions.map((item, i) => (
             <>
-            <div class="price-row-left">{item.title}</div>
+            <div class="price-row-left lg:col-span-2">
+              {item.title}
+              {item?.description && <i class="text-xs italic"><br />{item.description}</i>}
+            </div>
             {prices.map((_, k) => (
               <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
                 {prices[k].features.functions[i].amount !== true && prices[k].features.functions[i].amount !== false && prices[k].features.functions[i].amount}
                 {prices[k].features.functions[i].amount === true &&
                   <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
-                {prices[k].features.functions[i].amount === false && '-'}
+                {prices[k].features.functions[i].amount === false && ''}
               </div>
             ))}
             </>
@@ -115,13 +145,16 @@ const optLines = await getImage({ src: lines, format: 'svg' });
           </div>
           {prices[0].features.integrations.map((item, i) => (
             <>
-            <div class="price-row-left">{item.title}</div>
+            <div class="price-row-left lg:col-span-2">
+              {item.title}
+              {item?.description && <i class="text-xs italic"><br />{item.description}</i>}
+            </div>
             {prices.map((_, k) => (
               <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
                 {prices[k].features.integrations[i].amount !== true && prices[k].features.integrations[i].amount !== false && prices[k].features.integrations[i].amount}
                 {prices[k].features.integrations[i].amount === true &&
                   <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
-                {prices[k].features.integrations[i].amount === false && '-'}
+                {prices[k].features.integrations[i].amount === false && ''}
               </div>
             ))}
             </>
@@ -134,13 +167,16 @@ const optLines = await getImage({ src: lines, format: 'svg' });
           </div>
           {prices[0].features.customizing.map((item, i) => (
             <>
-            <div class="price-row-left">{item.title}</div>
+            <div class="price-row-left lg:col-span-2">
+              {item.title}
+              {item?.description && <i class="text-xs italic"><br />{item.description}</i>}
+            </div>
             {prices.map((_, k) => (
               <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
                 {prices[k].features.customizing[i].amount !== true && prices[k].features.customizing[i].amount !== false && prices[k].features.customizing[i].amount}
                 {prices[k].features.customizing[i].amount === true &&
                   <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
-                {prices[k].features.customizing[i].amount === false && '-'}
+                {prices[k].features.customizing[i].amount === false && ''}
               </div>
             ))}
             </>
@@ -153,21 +189,42 @@ const optLines = await getImage({ src: lines, format: 'svg' });
           </div>
           {prices[0].features.support.map((item, i) => (
             <>
-            <div class="price-row-left">{item.title}</div>
+            <div class="price-row-left lg:col-span-2">
+              {item.title}
+              {item?.description && <i><br />{item.description}</i>}
+            </div>
             {prices.map((_, k) => (
               <div class=`${k === 2 ? 'hidden lg:block ' : ''}price-row`>
                 {prices[k].features.support[i].amount !== true && prices[k].features.support[i].amount !== false && prices[k].features.support[i].amount}
                 {prices[k].features.support[i].amount === true &&
                   <Image src={ok} width="20" height="20" alt="Inkludiert" class="mx-auto" />}
-                {prices[k].features.support[i].amount === false && '-'}
+                {prices[k].features.support[i].amount === false && ''}
               </div>
             ))}
             </>
           ))}
+          <div class="price-sticky">
+            <div class="bg-white dark:bg-dark lg:col-span-2"></div>
+            <div class="price-head">
+              <a href={prices[0].purchaseLink} class="price-btn text-primary dark:text-primary-400">
+                {prices[0].btn}
+              </a>
+            </div>
+            <div class="price-head">
+              <a href={prices[1].purchaseLink} class="price-btn bg-primary dark:bg-primary-400 text-white">
+                {prices[1].btn}
+              </a>
+            </div>
+            <div class="hidden lg:block price-head">
+              <a href={prices[2].purchaseLink} class="price-btn text-primary dark:text-primary-400">
+                {prices[2].btn}
+              </a>
+            </div>
+          </div>
         </div>
 
         <div class="max-w-screen-xl mx-auto text-center dark:text-gray-300">
-          * Alle Preise zuzüglich aktuell gültiger USt. Die Vertragslaufzeit beträgt 30 Tage.<br>
+          * Alle Preise zuzüglich aktuell gültiger USt. monatliche Vertragslaufzeit.<br>
           Verkauf nur an gewerbliche Endkunden in Deutschland.
         </div>
       </div>
