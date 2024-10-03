@@ -58,8 +58,8 @@ const { blok } = Astro.props;
               <>
               <span aria-label="Monatlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="monthly">&euro; {price.price.monthly}/Monat &ast;</span>
               <span aria-label="Jährlicher Abo Preis" class="inline-block mt-6 text-2xl dark:text-white" x-show="!monthly">&euro; {price.price.yearly}/Monat &ast;</span>
-              <span aria-label="Preis zusätzlicher Benutzer" class="block text-sm dark:text-white" x-show="monthly">&euro; {price?.userPrice?.monthly} zus. Benutzer</span>
-              <span aria-label="Preis zusätzlicher Benutzer" class="block text-sm dark:text-white" x-show="!monthly">&euro; {price?.userPrice?.yearly} zus. Benutzer</span>
+              <span aria-label="Preis zusätzlicher Benutzer" class="block text-sm dark:text-white" x-show="monthly">&euro; {price?.userPrice.monthly} zus. Benutzer</span>
+              <span aria-label="Preis zusätzlicher Benutzer" class="block text-sm dark:text-white" x-show="!monthly">&euro; {price?.userPrice.yearly} zus. Benutzer</span>
               </>
             }
             <span class="inline-block border-b border-b-gray-300 w-full">&nbsp;</span>

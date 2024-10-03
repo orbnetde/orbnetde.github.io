@@ -12,7 +12,7 @@ interface Price {
     monthly: string,
     yearly: string
   },
-  userPrice?: {
+  userPrice: {
     monthly: number,
     yearly: number
   },
@@ -34,6 +34,7 @@ export const prices: Array<Price> = [
     packageName: 'Free',
     users: 1,
     price: { monthly: '0', yearly: '0' },
+    userPrice: { monthly: 0, yearly: 0 },
     subtitle: 'Features',
     btn: 'Start Free',
     purchaseLink: 'https://my.orbnet.de/account/register/',
