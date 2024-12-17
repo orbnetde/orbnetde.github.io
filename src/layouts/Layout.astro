@@ -61,6 +61,11 @@ const { title, description, canonical, robots, image, breadcrumbs, footerDark, h
   </head>
   <body id="top" class="bg-white dark:bg-dark">
     <Header hasHero={hasHero} />
+    <div class="fixed top-[92px] left-0 bg-primary-500 text-white px-1.5 py-1 w-full text-center z-40">
+      <a href="/funktionen/buchhaltung/e-rechnung/">
+        E-Rechnungspflicht 2025: Mit orbnet erfüllen Sie schon jetzt die Anforderungen an E-Rechnungen für 2025
+      </a>
+    </div>
     <slot />
     <Footer dark={footerDark || false} />
     <BackToTop />
